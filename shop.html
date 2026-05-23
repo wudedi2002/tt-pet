@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>宠物商城 · 宠物之家</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/shop.css" />
+</head>
+<body class="shop-page">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">🐾</span>
+        <span>宠物之家</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">首页</a>
+        <a href="shop.html" class="active">宠物商城</a>
+      </nav>
+      <button class="mobile-menu-btn" aria-label="菜单">☰</button>
+    </div>
+  </header>
+
+  <!-- Banner 轮播（3 张） -->
+  <section class="carousel shop-banner">
+    <div class="carousel-track">
+      <div class="carousel-slide">
+        <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=1200&q=80" alt="新品上市" />
+        <div class="carousel-overlay">
+          <h2>🎉 春季新品上市 · 全场满 199 减 30</h2>
+          <p>精选天然粮、冻干零食，给爱宠最好的味蕾体验</p>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=1200&q=80" alt="玩具特惠" />
+        <div class="carousel-overlay">
+          <h2>🧸 互动玩具专区 · 第二件半价</h2>
+          <p>磨牙棒、逗猫棒、益智玩具，让毛孩子玩个不停</p>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <img src="https://images.unsplash.com/photo-1623387641168-79e9a5a7c4e1?w=1200&q=80" alt="清洁护理" />
+        <div class="carousel-overlay">
+          <h2>✨ 清洁护理专场 · 买二送一</h2>
+          <p>沐浴露、梳毛器、除臭喷雾，呵护宠物每一寸肌肤</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-arrows carousel-prev" aria-label="上一张">‹</button>
+    <button class="carousel-arrows carousel-next" aria-label="下一张">›</button>
+    <div class="carousel-dots"></div>
+  </section>
+
+  <!-- 移动端分类 -->
+  <div class="mobile-categories">
+    <button class="active" data-category="all">全部</button>
+    <button data-category="food">🍖 粮食</button>
+    <button data-category="toy">🎾 玩具</button>
+    <button data-category="bed">🛏️ 窝垫</button>
+    <button data-category="clean">🧴 清洁</button>
+    <button data-category="travel">🎒 出行</button>
+    <button data-category="health">💊 保健</button>
+  </div>
+
+  <div class="shop-layout">
+    <!-- 侧边分类导航 -->
+    <aside class="shop-sidebar">
+      <h3>商品分类</h3>
+      <ul class="category-nav">
+        <li><button class="active" data-category="all"><span class="cat-icon">🏪</span> 全部商品</button></li>
+        <li><button data-category="food"><span class="cat-icon">🍖</span> 宠物粮食</button></li>
+        <li><button data-category="toy"><span class="cat-icon">🎾</span> 玩具娱乐</button></li>
+        <li><button data-category="bed"><span class="cat-icon">🛏️</span> 窝垫寝具</button></li>
+        <li><button data-category="clean"><span class="cat-icon">🧴</span> 清洁护理</button></li>
+        <li><button data-category="travel"><span class="cat-icon">🎒</span> 出行装备</button></li>
+        <li><button data-category="health"><span class="cat-icon">💊</span> 健康保健</button></li>
+      </ul>
+    </aside>
+
+    <!-- 商品列表 -->
+    <main class="shop-main">
+      <h2>
+        <span class="shop-category-title">全部商品</span>
+        <span class="count shop-product-count">共 0 件</span>
+      </h2>
+      <div class="product-grid">
+        <!-- 粮食 -->
+        <article class="product-card" data-category="food">
+          <div class="product-img">
+            <span class="product-tag">热销</span>
+            <img src="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=400&q=80" alt="天然猫粮" />
+          </div>
+          <div class="product-body">
+            <h4>天然无谷猫粮 2kg</h4>
+            <p class="product-desc">高蛋白低敏配方，适合全龄猫</p>
+            <div class="product-footer">
+              <span class="price">¥128 <small>起</small></span>
+              <button class="add-cart" aria-label="加入购物车">+</button>
+            </div>
+          </div>
+        </article>
+        <article class="product-card" data-category="food">
+          <div class="product-img">
+            <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&q=80" alt="狗粮" />
+          </div>
+          <div class="product-body">
+            <h4>鲜肉狗粮 5kg 装</h4>
+            <p class="product-desc">65% 鲜肉含量，中小型犬适用</p>
+            <div class="product-footer">
+              <span class="price">¥198</span>
+              <button class="add-cart" aria-label="加入购物车">+</button>
+            </div>
+          </div>
+        </article>
+        <article class="product-card" data-category="food">
+          <div class="product-img">
+            <span class="product-tag">新品</span>
+            <img src="https://images.unsplash.com/photo-1616541823724-86f5a7c5a4b0?w=400&q=80" alt="冻干零食" />
+          </div>
+          <div class="product-body">
+            <h4>混合冻干零食罐 100g</h4>
+            <p class="product-desc">鸡肉+三文鱼+蛋黄，训练奖励首选</p>
+            <div class="product-footer">
+              <span class="price">¥45</span>
+              <button class="add-cart" aria-label="加入购物车">+</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 玩具 -->
+        <article class="product-card" data-category="toy">
+          <div class="product-img">
+            <span class="product-tag">特惠</span>
+            <img src="https://images.unsplash.com/photo-1535294435445-d7249524ef2e?w=400&q=80" alt="逗猫棒" />
+          </div>
+          <div class="product-body">
+            <h4>羽毛逗猫棒 3 件套</h4>
+            <p class="product-desc">可替换头，激发猫咪狩猎本能</p>
+            <div class="product-footer">
+              <span class="price">¥29</span>
+              <button class="add-cart" aria-label="加入购物车">+</button>
+            </div>
+          </div>
+        </article>
+        <article class="product-card" data-category="toy">
+          <div class="product-img">
+            <img src="https://images.unsplash.com/photo-1605236453806-6ff368512a0b?w=400&q=80" alt="磨牙玩具" />
+          </div>
+          <div class="product-body">
+            <h4>耐咬橡胶磨牙玩具</h4>
+            <p class="product-desc">凹凸纹理清洁牙齿，缓解焦虑</p>
+            <div class="product-footer">
+              <span class="price">¥35</span>
+              <button class="add-cart" aria-label="加入购物车">+</button>
+            </div>
+          </div>
+        </article>
+        <article class="product-card" data-category="toy">
+          <div class="product-img">
+            <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400&q=80" alt="益智球" />
+          </div>
+          <div class="product-body">
+            <h4>漏食益智球 大号</h4>
+            <p class="product-desc">边玩边吃，锻炼智力与嗅觉</p>
+            <div class="product-footer">
+              <span class="price">¥42</span>
+              <button class="add-cart" aria-label="加入购物车">+</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 窝垫 -->
+        <article class="product-card" data-category="bed">
+          <div class="product-img">
+            <span class="product-tag">热销</span>
+            <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=400&q=80" alt="宠物窝" />
+          </div>
+          <div class="product-body">
+            <h4>云朵绒宠物窝 中号</h4>
+            <p class="product-desc">可拆洗，四季通用，猫狗皆宜</p>
+            <div class="product-footer">
+              <span class="price">¥89</span>
+              <button class="add-cart" aria-label="加入购物车">+</button>
+            </div>
+          </div>
+        </article>
+        <article class="product-card" data-category="bed">
+          <div class="product-img">
+            <img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=400&q=80" alt="宠物垫" />
+          </div>
+          <div class="product-body">
+            <h4>记忆棉宠物睡垫 L 码</h4>
+            <p class="product-desc">贴合身形，缓解关节压力</p>
+            <div class="product-footer">
+              <span class="price">¥156</span>
+              <button class="add-cart" aria-label="加入购物车">+</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 清洁 -->
+        <article class="product-card" data-category="clean">
+          <div class="product-img">
+            <img src="https://images.unsplash.com/photo-1623387641168-79e9a5a7c4e1?w=400&q=80" alt="沐浴露" />
+          </div>
+          <div class="product-body">
+            <h4>温和宠物沐浴露 500ml</h4>
+            <p class="product-desc">天然植物配方，敏感肌可用</p>
+            <div class="product-footer">
+              <span class="price">¥48</span>
+              <button class="add-cart" aria-label="加入购物车">+</button>
+            </div>
+          </div>
+        </article>
+        <article class="product-card" data-category="clean">
+          <div class="product-img">
+            <span class="product-tag">买二送一</span>
+            <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=400&q=80" alt="梳毛器" />
+          </div>
+          <div class="product-body">
+            <h4>不锈钢祛毛梳</h4>
+            <p class="product-desc">一键推毛设计，清理方便不伤肤</p>
+            <div class="product-footer">
+              <span class="price">¥36</span>
+              <button class="add-cart" aria-label="加入购物车">+</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 出行 -->
+        <article class="product-card" data-category="travel">
+          <div class="product-img">
+            <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad9d7?w=400&q=80" alt="航空箱" />
+          </div>
+          <div class="product-body">
+            <h4>透气航空宠物箱 中号</h4>
+            <p class="product-desc">符合 IATA 标准，出行托运必备</p>
+            <div class="product-footer">
+              <span class="price">¥168</span>
+              <button class="add-cart" aria-label="加入购物车">+</button>
+            </div>
+          </div>
+        </article>
+        <article class="product-card" data-category="travel">
+          <div class="product-img">
+            <span class="product-tag">新品</span>
+            <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&q=80" alt="牵引绳" />
+          </div>
+          <div class="product-body">
+            <h4>反光防爆冲牵引绳套装</h4>
+            <p class="product-desc">夜间反光条，胸背一体更舒适</p>
+            <div class="product-footer">
+              <span class="price">¥58</span>
+              <button class="add-cart" aria-label="加入购物车">+</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 保健 -->
+        <article class="product-card" data-category="health">
+          <div class="product-img">
+            <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=400&q=80" alt="营养膏" />
+          </div>
+          <div class="product-body">
+            <h4>复合维生素营养膏 120g</h4>
+            <p class="product-desc">增强免疫力，改善毛发亮泽</p>
+            <div class="product-footer">
+              <span class="price">¥68</span>
+              <button class="add-cart" aria-label="加入购物车">+</button>
+            </div>
+          </div>
+        </article>
+        <article class="product-card" data-category="health">
+          <div class="product-img">
+            <span class="product-tag">推荐</span>
+            <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400&q=80" alt="化毛膏" />
+          </div>
+          <div class="product-body">
+            <h4>天然化毛膏 猫咪专用</h4>
+            <p class="product-desc">促进毛球排出，呵护肠道健康</p>
+            <div class="product-footer">
+              <span class="price">¥52</span>
+              <button class="add-cart" aria-label="加入购物车">+</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <span class="logo-icon">🐾</span>
+          <span>宠物之家</span>
+        </a>
+        <p>优质宠物用品，给毛孩子最好的呵护。</p>
+      </div>
+      <div class="footer-col">
+        <h4>快速导航</h4>
+        <a href="index.html">首页</a>
+        <a href="shop.html">宠物商城</a>
+      </div>
+      <div class="footer-col">
+        <h4>联系我们</h4>
+        <a href="tel:400-888-6666">400-888-6666</a>
+        <a href="mailto:hello@pet-home.com">hello@pet-home.com</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 宠物之家 Pet Home. 用爱陪伴，快乐养宠。</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

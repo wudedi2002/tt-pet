@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>宠物之家 · 温馨陪伴，快乐养宠</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">🐾</span>
+        <span>宠物之家</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="active">首页</a>
+        <a href="shop.html">宠物商城</a>
+      </nav>
+      <button class="mobile-menu-btn" aria-label="菜单">☰</button>
+    </div>
+  </header>
+
+  <!-- 主轮播 -->
+  <section class="carousel hero-carousel">
+    <div class="carousel-track">
+      <div class="carousel-slide">
+        <img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=1400&q=80" alt="温馨宠物家庭" />
+        <div class="carousel-overlay">
+          <h2>给毛孩子一个温暖的家</h2>
+          <p>专业寄养、科学饲养、贴心陪伴，让每一只宠物都被温柔以待。</p>
+          <a href="#rental" class="btn-primary">查看租养方案 →</a>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=1400&q=80" alt="快乐小狗" />
+        <div class="carousel-overlay">
+          <h2>科学饲养，健康快乐每一天</h2>
+          <p>从饮食到运动，我们为您定制专属饲养方案，新手也能轻松上手。</p>
+          <a href="#care" class="btn-primary">了解饲养模式</a>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=1400&q=80" alt="可爱猫咪" />
+        <div class="carousel-overlay">
+          <h2>短期租养，先试后爱</h2>
+          <p>灵活租养计划，让您在承诺长期饲养前，先体验与宠物相处的美好。</p>
+          <a href="shop.html" class="btn-primary">逛逛宠物商城</a>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <img src="https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=1400&q=80" alt="萌宠兔子" />
+        <div class="carousel-overlay">
+          <h2>多样宠物，总有一款打动你</h2>
+          <p>猫、狗、兔、鸟……丰富宠物类型，找到最适合您生活方式的伙伴。</p>
+          <a href="#types" class="btn-primary">探索宠物类型</a>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-arrows carousel-prev" aria-label="上一张">‹</button>
+    <button class="carousel-arrows carousel-next" aria-label="下一张">›</button>
+    <div class="carousel-dots"></div>
+  </section>
+
+  <!-- 特色条 -->
+  <div class="container features-bar">
+    <div class="feature-item">
+      <div class="icon">🏠</div>
+      <h4>温馨环境</h4>
+      <p>消毒清洁的标准寄养空间</p>
+    </div>
+    <div class="feature-item">
+      <div class="icon">👨‍⚕️</div>
+      <h4>专业照护</h4>
+      <p>持证护理员 24 小时巡查</p>
+    </div>
+    <div class="feature-item">
+      <div class="icon">📱</div>
+      <h4>实时视频</h4>
+      <p>随时查看爱宠动态</p>
+    </div>
+    <div class="feature-item">
+      <div class="icon">💝</div>
+      <h4>灵活租养</h4>
+      <p>按天计费，无长期束缚</p>
+    </div>
+  </div>
+
+  <!-- 宠物类型 -->
+  <section class="section" id="types">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">🌈 宠物类型</span>
+        <h2>遇见你的命定萌宠</h2>
+        <p>不同性格、不同需求的宠物伙伴，我们帮您找到最契合的那一位。</p>
+      </div>
+      <div class="pet-types-grid">
+        <article class="pet-type-card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80" alt="狗狗" />
+          </div>
+          <div class="card-body">
+            <div class="emoji">🐕</div>
+            <h3>狗狗</h3>
+            <p>忠诚活泼，适合喜欢户外运动、希望有陪伴感的家庭。需每日遛弯与社交训练。</p>
+            <div class="tags">
+              <span>中型犬</span><span>小型犬</span><span>大型犬</span>
+            </div>
+          </div>
+        </article>
+        <article class="pet-type-card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&q=80" alt="猫咪" />
+          </div>
+          <div class="card-body">
+            <div class="emoji">🐈</div>
+            <h3>猫咪</h3>
+            <p>独立优雅，适合公寓生活。相对安静，日常打理较为省心，是上班族的热门选择。</p>
+            <div class="tags">
+              <span>英短</span><span>布偶</span><span>田园猫</span>
+            </div>
+          </div>
+        </article>
+        <article class="pet-type-card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=600&q=80" alt="兔子" />
+          </div>
+          <div class="card-body">
+            <div class="emoji">🐰</div>
+            <h3>兔子</h3>
+            <p>温顺可爱，适合有孩子的家庭。食性以干草为主，需要足够的活动空间。</p>
+            <div class="tags">
+              <span>垂耳兔</span><span>侏儒兔</span>
+            </div>
+          </div>
+        </article>
+        <article class="pet-type-card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1552728080-bbd3a9f37f8a?w=600&q=80" alt="鸟类" />
+          </div>
+          <div class="card-body">
+            <div class="emoji">🦜</div>
+            <h3>鸟类</h3>
+            <p>聪慧灵动，能学会简单互动。占用空间小，适合喜欢鸟语花香的朋友。</p>
+            <div class="tags">
+              <span>鹦鹉</span><span>文鸟</span><span>金丝雀</span>
+            </div>
+          </div>
+        </article>
+        <article class="pet-type-card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?w=600&q=80" alt="仓鼠" />
+          </div>
+          <div class="card-body">
+            <div class="emoji">🐹</div>
+            <h3>小宠</h3>
+            <p>仓鼠、龙猫、荷兰猪等迷你宠物，入门门槛低，是孩子的最佳宠物启蒙伙伴。</p>
+            <div class="tags">
+              <span>仓鼠</span><span>龙猫</span><span>豚鼠</span>
+            </div>
+          </div>
+        </article>
+        <article class="pet-type-card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1535591273668-578e31182c4f?w=600&q=80" alt="观赏鱼" />
+          </div>
+          <div class="card-body">
+            <div class="emoji">🐠</div>
+            <h3>水族</h3>
+            <p>观赏鱼与水草造景，带来宁静治愈的视觉享受，适合喜欢安静氛围的家居环境。</p>
+            <div class="tags">
+              <span>热带鱼</span><span>金鱼</span><span>水草缸</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 饲养模式 -->
+  <section class="section care-modes" id="care">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">🥣 饲养模式</span>
+        <h2>科学饲养，省心又安心</h2>
+        <p>根据您的生活方式，选择最适合的饲养方案。</p>
+      </div>
+      <div class="care-tabs">
+        <button class="care-tab active" data-tab="care-home">家庭自养</button>
+        <button class="care-tab" data-tab="care-board">寄养托管</button>
+        <button class="care-tab" data-tab="care-rent">租养体验</button>
+        <button class="care-tab" data-tab="care-share">共享养宠</button>
+      </div>
+      <div id="care-home" class="care-panel active">
+        <img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=700&q=80" alt="家庭自养" />
+        <div class="care-panel-content">
+          <h3>🏡 家庭自养模式</h3>
+          <p>宠物与您同住，我们提供全程饲养指导与用品推荐，适合有稳定时间和居住空间的家庭。</p>
+          <ul>
+            <li>一对一饲养顾问，定期回访</li>
+            <li>定制饮食计划与运动方案</li>
+            <li>疫苗接种与驱虫提醒服务</li>
+            <li>新手上路 30 天陪伴计划</li>
+          </ul>
+          <div class="care-tip">💡 适合：有养宠经验或愿意投入时间学习的新手家庭</div>
+        </div>
+      </div>
+      <div id="care-board" class="care-panel">
+        <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=700&q=80" alt="寄养托管" />
+        <div class="care-panel-content">
+          <h3>🏨 寄养托管模式</h3>
+          <p>出差旅行无需担忧，专业寄养中心提供星级照护，每日视频汇报让您放心。</p>
+          <ul>
+            <li>独立消毒房间，恒温恒湿</li>
+            <li>每日三次巡查 + 晚间视频</li>
+            <li>按宠物习性定制喂食与运动</li>
+            <li>紧急医疗绿色通道</li>
+          </ul>
+          <div class="care-tip">💡 适合：短期出行、装修搬家期间的宠物安置</div>
+        </div>
+      </div>
+      <div id="care-rent" class="care-panel">
+        <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=700&q=80" alt="租养体验" />
+        <div class="care-panel-content">
+          <h3>🎀 租养体验模式</h3>
+          <p>先租后养，最低 7 天起租。在正式领养前充分体验与宠物相处的日常，降低冲动饲养风险。</p>
+          <ul>
+            <li>含基础粮食、窝垫、玩具套装</li>
+            <li>租期结束可选择续租或正式领养</li>
+            <li>全程饲养指导，零基础上手</li>
+            <li>租养费用可抵扣领养手续费</li>
+          </ul>
+          <div class="care-tip">💡 适合：第一次养宠、不确定能否长期坚持的朋友</div>
+        </div>
+      </div>
+      <div id="care-share" class="care-panel">
+        <img src="https://images.unsplash.com/photo-1513360371669-4adf3dd7dc8a?w=700&q=80" alt="共享养宠" />
+        <div class="care-panel-content">
+          <h3>🤝 共享养宠模式</h3>
+          <p>与邻居或好友结对共养一只宠物，分摊时间与费用，让养宠变得更轻松有趣。</p>
+          <ul>
+            <li>平台匹配合适的共养伙伴</li>
+            <li>智能排班系统，公平分配照护日</li>
+            <li>共同账户管理宠物开支</li>
+            <li>社区活动与宠物社交聚会</li>
+          </ul>
+          <div class="care-tip">💡 适合：工作繁忙但热爱宠物、希望分摊责任的年轻人</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 租养价格 -->
+  <section class="section rental-section" id="rental">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">💰 租养价格</span>
+        <h2>透明定价，灵活选择</h2>
+        <p>所有价格含基础护理与每日视频反馈，无隐藏费用。</p>
+      </div>
+      <div class="pricing-cards">
+        <article class="pricing-card">
+          <div class="pet-icon">🐹</div>
+          <h3>小宠租养</h3>
+          <p>仓鼠 / 兔子 / 龙猫</p>
+          <div class="price">¥29 <span>/ 天起</span></div>
+          <ul class="features">
+            <li>✓ 基础笼舍与垫料</li>
+            <li>✓ 7 天起租</li>
+            <li>✓ 每日喂食护理</li>
+            <li>✓ 饲养指导手册</li>
+          </ul>
+          <a href="shop.html" class="btn-primary">立即预约</a>
+        </article>
+        <article class="pricing-card featured">
+          <span class="badge">热门</span>
+          <div class="pet-icon">🐈</div>
+          <h3>猫咪租养</h3>
+          <p>各品种猫咪</p>
+          <div class="price">¥59 <span>/ 天起</span></div>
+          <ul class="features">
+            <li>✓ 独立猫房 + 猫砂</li>
+            <li>✓ 14 天起租享 9 折</li>
+            <li>✓ 每日视频汇报</li>
+            <li>✓ 租期满可抵扣领养费</li>
+          </ul>
+          <a href="shop.html" class="btn-primary">立即预约</a>
+        </article>
+        <article class="pricing-card">
+          <div class="pet-icon">🐕</div>
+          <h3>狗狗租养</h3>
+          <p>中小型犬</p>
+          <div class="price">¥79 <span>/ 天起</span></div>
+          <ul class="features">
+            <li>✓ 每日遛弯 2 次</li>
+            <li>✓ 基础训练陪伴</li>
+            <li>✓ 专属护理员</li>
+            <li>✓ 健康档案记录</li>
+          </ul>
+          <a href="shop.html" class="btn-primary">立即预约</a>
+        </article>
+        <article class="pricing-card">
+          <div class="pet-icon">🦜</div>
+          <h3>异宠租养</h3>
+          <p>鸟类 / 水族 / 爬宠</p>
+          <div class="price">¥39 <span>/ 天起</span></div>
+          <ul class="features">
+            <li>✓ 专业恒温设备</li>
+            <li>✓ 按物种定制方案</li>
+            <li>✓ 专家定期巡检</li>
+            <li>✓ 设备可买断</li>
+          </ul>
+          <a href="shop.html" class="btn-primary">立即预约</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <span class="logo-icon">🐾</span>
+          <span>宠物之家</span>
+        </a>
+        <p>致力于为每一只宠物找到温暖的家，为每一位主人提供专业的养宠服务。</p>
+      </div>
+      <div class="footer-col">
+        <h4>快速导航</h4>
+        <a href="index.html">首页</a>
+        <a href="shop.html">宠物商城</a>
+        <a href="#types">宠物类型</a>
+        <a href="#rental">租养价格</a>
+      </div>
+      <div class="footer-col">
+        <h4>联系我们</h4>
+        <a href="tel:400-888-6666">400-888-6666</a>
+        <a href="mailto:hello@pet-home.com">hello@pet-home.com</a>
+        <a>周一至周日 9:00 - 21:00</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 宠物之家 Pet Home. 用爱陪伴，快乐养宠。</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
