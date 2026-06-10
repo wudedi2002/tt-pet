@@ -47,14 +47,14 @@
   ];
 
   const IMAGE_SCENE_TEMPLATES = [
-    { id: 'scene-1', title: '电商主图', desc: '纯白背景产品图，突出质感与卖点', prompt: '电商产品主图，纯白背景，无线耳机居中，高级质感棚拍，适合主图上架', image: 'assets/inspire/scene-1-product.png', category: 'ecommerce', hot: true, weekly: true, model: '智能图片 V2', ratio: '1:1', count: 1 },
-    { id: 'scene-2', title: '赛博海报', desc: '霓虹未来风，适合活动与潮牌视觉', prompt: '赛博朋克雨夜街景，霓虹灯光，未来城市，电影感海报，视觉冲击力强', image: 'assets/inspire/scene-2-cyber.png', category: 'design', hot: true, weekly: true, model: 'Seedream 5.0', ratio: '16:9', count: 1 },
-    { id: 'scene-3', title: '插画头像', desc: '柔和插画感，个人品牌与社交场景', prompt: '日系插画侧脸头像，柔和粉紫色调，清新 aesthetic，适合社交头像', image: 'assets/inspire/scene-3-anime.png', category: 'illustration', hot: false, weekly: false, model: 'Qwen-Image', ratio: '1:1', count: 1 },
-    { id: 'scene-4', title: '3D 产品', desc: '潮玩质感棚拍，科技产品展示', prompt: '3D潮玩盲盒风格，毛绒熊公仔，工作室暖光，精致产品展示', image: 'assets/inspire/scene-4-3d.png', category: '3d', hot: false, weekly: false, model: '智能图片 V2', ratio: '1:1', count: 1 },
-    { id: 'scene-5', title: '国潮美食', desc: '红金国潮，餐饮与节日促销', prompt: '中秋国潮海报，红金配色，月饼主题，传统节日促销视觉', image: 'assets/inspire/scene-5-festival.png', category: 'ecommerce', hot: true, weekly: true, model: '智能图片 V2', ratio: '4:3', count: 1 },
-    { id: 'scene-6', title: '人像写真', desc: '柔光浅景深，高级感人像摄影', prompt: '高级感人像写真，柔光，浅景深，自然表情，杂志封面质感', image: 'assets/inspire/scene-3-anime.png', category: 'photo', hot: false, weekly: false, model: '智能图片 V2', ratio: '9:16', count: 1 },
-    { id: 'scene-7', title: '动漫角色', desc: '赛璐璐风角色立绘，游戏宣传', prompt: '日系动漫角色立绘，赛璐璐上色，游戏宣传图，动态姿势', image: 'assets/inspire/scene-2-cyber.png', category: 'anime', hot: true, weekly: true, model: 'Qwen-Image', ratio: '9:16', count: 1 },
-    { id: 'scene-8', title: '促销海报', desc: '大标题留白，节日活动吸睛', prompt: '节日促销海报，大标题留白，红金配色，视觉冲击力强', image: 'assets/inspire/scene-5-festival.png', category: 'design', hot: false, weekly: false, model: 'Seedream 5.0', ratio: '16:9', count: 2 },
+    { id: 'scene-1', title: '电商主图', desc: '纯白背景产品图，突出质感与卖点', prompt: '电商产品主图，纯白背景，无线耳机居中，高级质感棚拍，适合主图上架', image: 'assets/inspire/scene-1-product.svg', category: 'ecommerce', hot: true, weekly: true, model: '智能图片 V2', ratio: '1:1', count: 1 },
+    { id: 'scene-2', title: '赛博海报', desc: '霓虹未来风，适合活动与潮牌视觉', prompt: '赛博朋克雨夜街景，霓虹灯光，未来城市，电影感海报，视觉冲击力强', image: 'assets/inspire/scene-2-cyber.svg', category: 'design', hot: true, weekly: true, model: 'Seedream 5.0', ratio: '16:9', count: 1 },
+    { id: 'scene-3', title: '插画头像', desc: '柔和插画感，个人品牌与社交场景', prompt: '日系插画侧脸头像，柔和粉紫色调，清新 aesthetic，适合社交头像', image: 'assets/inspire/scene-3-anime.svg', category: 'illustration', hot: false, weekly: false, model: 'Qwen-Image', ratio: '1:1', count: 1 },
+    { id: 'scene-4', title: '3D 产品', desc: '潮玩质感棚拍，科技产品展示', prompt: '3D潮玩盲盒风格，毛绒熊公仔，工作室暖光，精致产品展示', image: 'assets/inspire/scene-4-3d.svg', category: '3d', hot: false, weekly: false, model: '智能图片 V2', ratio: '1:1', count: 1 },
+    { id: 'scene-5', title: '国潮美食', desc: '红金国潮，餐饮与节日促销', prompt: '中秋国潮海报，红金配色，月饼主题，传统节日促销视觉', image: 'assets/inspire/scene-5-festival.svg', category: 'ecommerce', hot: true, weekly: true, model: '智能图片 V2', ratio: '4:3', count: 1 },
+    { id: 'scene-6', title: '人像写真', desc: '柔光浅景深，高级感人像摄影', prompt: '高级感人像写真，柔光，浅景深，自然表情，杂志封面质感', image: 'assets/inspire/scene-6-portrait.svg', category: 'photo', hot: false, weekly: false, model: '智能图片 V2', ratio: '9:16', count: 1 },
+    { id: 'scene-7', title: '动漫角色', desc: '赛璐璐风角色立绘，游戏宣传', prompt: '日系动漫角色立绘，赛璐璐上色，游戏宣传图，动态姿势', image: 'assets/inspire/scene-2-cyber.svg', category: 'anime', hot: true, weekly: true, model: 'Qwen-Image', ratio: '9:16', count: 1 },
+    { id: 'scene-8', title: '促销海报', desc: '大标题留白，节日活动吸睛', prompt: '节日促销海报，大标题留白，红金配色，视觉冲击力强', image: 'assets/inspire/scene-5-festival.svg', category: 'design', hot: false, weekly: false, model: 'Seedream 5.0', ratio: '16:9', count: 2 },
   ];
 
   const STATE = {
@@ -165,11 +165,11 @@
   };
 
   const INSPIRE_TEMPLATES = [
-    { type: 'image', title: '电商主图', badge: '智能图片 V2', emoji: '🛍', image: 'assets/inspire/scene-1-product.png', prompt: '电商产品主图，纯白背景，无线耳机居中，高级质感棚拍，适合主图上架' },
-    { type: 'image', title: '赛博海报', badge: 'Seedream', emoji: '🌃', image: 'assets/inspire/scene-2-cyber.png', prompt: '赛博朋克雨夜街景，霓虹灯光，未来城市，电影感海报，视觉冲击力强' },
-    { type: 'image', title: '插画头像', badge: 'Qwen-Image', emoji: '🎨', image: 'assets/inspire/scene-3-anime.png', prompt: '日系插画侧脸头像，柔和粉紫色调，清新 aesthetic，适合社交头像' },
-    { type: 'image', title: '3D 产品', badge: '智能图片 V2', emoji: '✨', image: 'assets/inspire/scene-4-3d.png', prompt: '3D潮玩盲盒风格，毛绒熊公仔，工作室暖光，精致产品展示' },
-    { type: 'image', title: '国潮美食', badge: 'FLUX', emoji: '🍜', image: 'assets/inspire/scene-5-festival.png', prompt: '中秋国潮海报，红金配色，月饼主题，传统节日促销视觉' },
+    { type: 'image', title: '电商主图', badge: '智能图片 V2', emoji: '🛍', image: 'assets/inspire/scene-1-product.svg', prompt: '电商产品主图，纯白背景，无线耳机居中，高级质感棚拍，适合主图上架' },
+    { type: 'image', title: '赛博海报', badge: 'Seedream', emoji: '🌃', image: 'assets/inspire/scene-2-cyber.svg', prompt: '赛博朋克雨夜街景，霓虹灯光，未来城市，电影感海报，视觉冲击力强' },
+    { type: 'image', title: '插画头像', badge: 'Qwen-Image', emoji: '🎨', image: 'assets/inspire/scene-3-anime.svg', prompt: '日系插画侧脸头像，柔和粉紫色调，清新 aesthetic，适合社交头像' },
+    { type: 'image', title: '3D 产品', badge: '智能图片 V2', emoji: '✨', image: 'assets/inspire/scene-4-3d.svg', prompt: '3D潮玩盲盒风格，毛绒熊公仔，工作室暖光，精致产品展示' },
+    { type: 'image', title: '国潮美食', badge: 'FLUX', emoji: '🍜', image: 'assets/inspire/scene-5-festival.svg', prompt: '中秋国潮海报，红金配色，月饼主题，传统节日促销视觉' },
     { type: 'image', title: '品牌 IP', badge: 'MJ', emoji: '🐱', prompt: '极简扁平插画，品牌 IP 形象，可爱风格' },
     { type: 'image', title: '人像写真', badge: 'V2-Hash', emoji: '👤', prompt: '高级感人像写真，柔光，浅景深' },
     { type: 'image', title: '节日海报', badge: 'Seedream 5.0', emoji: '🎉', prompt: '节日促销海报，喜庆氛围，大标题留白' },
@@ -305,12 +305,12 @@
   };
 
   const HUB_INSPIRE_ITEMS = [
-    { id: 'hi-1', primary: 'image', subTag: 'ecommerce', hot: true, title: '电商主图精选', author: '设计师小L', likes: 2340, type: 'image', emoji: '🛍', image: 'assets/inspire/scene-1-product.png', prompt: '电商产品主图，纯白背景，无线耳机居中，高级质感棚拍，适合主图上架' },
-    { id: 'hi-2', primary: 'image', subTag: 'design', hot: true, title: '赛博雨夜街景', author: '视觉阿K', likes: 1892, type: 'image', emoji: '🌃', image: 'assets/inspire/scene-2-cyber.png', prompt: '赛博朋克雨夜街景，霓虹灯光，未来城市，电影感海报，视觉冲击力强' },
-    { id: 'hi-3', primary: 'image', subTag: 'avatar-ip', title: '插画社交头像', author: '插画师Mio', likes: 1560, type: 'image', emoji: '🎨', image: 'assets/inspire/scene-3-anime.png', prompt: '日系插画侧脸头像，柔和粉紫色调，清新 aesthetic，适合社交头像' },
-    { id: 'hi-4', primary: 'image', subTag: 'illustration', title: '3D 潮玩展示', author: '3D 工作室', likes: 980, type: 'image', emoji: '✨', image: 'assets/inspire/scene-4-3d.png', prompt: '3D潮玩盲盒风格，毛绒熊公仔，工作室暖光，精致产品展示' },
-    { id: 'hi-5', primary: 'image', subTag: 'ecommerce', title: '国潮促销海报', author: '品牌设计', likes: 1210, type: 'image', emoji: '🍜', image: 'assets/inspire/scene-5-festival.png', prompt: '中秋国潮海报，红金配色，月饼主题，传统节日促销视觉' },
-    { id: 'hi-6', primary: 'image', subTag: 'anime', hot: true, title: '动漫角色立绘', author: '游戏美术', likes: 1430, type: 'image', emoji: '🎭', image: 'assets/inspire/scene-2-cyber.png', prompt: '日系动漫角色立绘，赛璐璐上色，游戏宣传图，动态姿势' },
+    { id: 'hi-1', primary: 'image', subTag: 'ecommerce', hot: true, title: '电商主图精选', author: '设计师小L', likes: 2340, type: 'image', emoji: '🛍', image: 'assets/inspire/scene-1-product.svg', prompt: '电商产品主图，纯白背景，无线耳机居中，高级质感棚拍，适合主图上架' },
+    { id: 'hi-2', primary: 'image', subTag: 'design', hot: true, title: '赛博雨夜街景', author: '视觉阿K', likes: 1892, type: 'image', emoji: '🌃', image: 'assets/inspire/scene-2-cyber.svg', prompt: '赛博朋克雨夜街景，霓虹灯光，未来城市，电影感海报，视觉冲击力强' },
+    { id: 'hi-3', primary: 'image', subTag: 'avatar-ip', title: '插画社交头像', author: '插画师Mio', likes: 1560, type: 'image', emoji: '🎨', image: 'assets/inspire/scene-3-anime.svg', prompt: '日系插画侧脸头像，柔和粉紫色调，清新 aesthetic，适合社交头像' },
+    { id: 'hi-4', primary: 'image', subTag: 'illustration', title: '3D 潮玩展示', author: '3D 工作室', likes: 980, type: 'image', emoji: '✨', image: 'assets/inspire/scene-4-3d.svg', prompt: '3D潮玩盲盒风格，毛绒熊公仔，工作室暖光，精致产品展示' },
+    { id: 'hi-5', primary: 'image', subTag: 'ecommerce', title: '国潮促销海报', author: '品牌设计', likes: 1210, type: 'image', emoji: '🍜', image: 'assets/inspire/scene-5-festival.svg', prompt: '中秋国潮海报，红金配色，月饼主题，传统节日促销视觉' },
+    { id: 'hi-6', primary: 'image', subTag: 'anime', hot: true, title: '动漫角色立绘', author: '游戏美术', likes: 1430, type: 'image', emoji: '🎭', image: 'assets/inspire/scene-2-cyber.svg', prompt: '日系动漫角色立绘，赛璐璐上色，游戏宣传图，动态姿势' },
     { id: 'hi-7', primary: 'image', subTag: 'photo', title: '人像写真', author: '摄影师阿南', likes: 760, type: 'image', emoji: '👤', prompt: '高级感人像写真，柔光，浅景深，自然表情，杂志封面质感' },
     { id: 'hi-8', primary: 'image', subTag: 'design', title: '节日促销海报', author: '平面设计师', likes: 640, type: 'image', emoji: '🎉', prompt: '节日促销海报，大标题留白，红金配色，视觉冲击力强' },
     { id: 'hi-v1', primary: 'video', subTag: 'koubo', hot: true, title: '口播带货视频', author: '带货教练', likes: 1820, type: 'video', emoji: '🎤', prompt: '口播短视频，博主面对镜头介绍产品，自然表情，快节奏剪辑感' },
