@@ -30,8 +30,8 @@
   ];
 
   const IMAGE_HISTORY_DEMOS = [
-    { emoji: '🛍', title: '电商主图示例', prompt: '夏季清爽护肤品主图，白色背景，产品居中…', time: '示例 · 10:20', cost: 10 },
-    { emoji: '🌃', title: '赛博海报示例', prompt: '赛博朋克风城市夜景，霓虹灯光，未来感…', time: '示例 · 昨天', cost: 10 },
+    { emoji: '🛍', title: '电商主图示例', prompt: '夏季清爽护肤品主图，白色背景，产品居中…', time: '示例 · 10:20', cost: 10, resultImage: 'assets/inspire/scene-1-product.png', resultImages: ['assets/inspire/scene-1-product.png'] },
+    { emoji: '🌃', title: '赛博海报示例', prompt: '赛博朋克风城市夜景，霓虹灯光，未来感…', time: '示例 · 昨天', cost: 10, resultImage: 'assets/inspire/scene-2-cyber.png', resultImages: ['assets/inspire/scene-2-cyber.png'] },
   ];
 
   const VIDEO_HISTORY_DEMOS = [
@@ -47,14 +47,14 @@
   ];
 
   const IMAGE_SCENE_TEMPLATES = [
-    { id: 'scene-1', title: '电商主图', desc: '纯白背景产品图，突出质感与卖点', prompt: '电商产品主图，纯白背景，无线耳机居中，高级质感棚拍，适合主图上架', image: 'assets/inspire/scene-1-product.svg', category: 'ecommerce', hot: true, weekly: true, model: '智能图片 V2', ratio: '1:1', count: 1 },
-    { id: 'scene-2', title: '赛博海报', desc: '霓虹未来风，适合活动与潮牌视觉', prompt: '赛博朋克雨夜街景，霓虹灯光，未来城市，电影感海报，视觉冲击力强', image: 'assets/inspire/scene-2-cyber.svg', category: 'design', hot: true, weekly: true, model: 'Seedream 5.0', ratio: '16:9', count: 1 },
-    { id: 'scene-3', title: '插画头像', desc: '柔和插画感，个人品牌与社交场景', prompt: '日系插画侧脸头像，柔和粉紫色调，清新 aesthetic，适合社交头像', image: 'assets/inspire/scene-3-anime.svg', category: 'illustration', hot: false, weekly: false, model: 'Qwen-Image', ratio: '1:1', count: 1 },
-    { id: 'scene-4', title: '3D 产品', desc: '潮玩质感棚拍，科技产品展示', prompt: '3D潮玩盲盒风格，毛绒熊公仔，工作室暖光，精致产品展示', image: 'assets/inspire/scene-4-3d.svg', category: '3d', hot: false, weekly: false, model: '智能图片 V2', ratio: '1:1', count: 1 },
-    { id: 'scene-5', title: '国潮美食', desc: '红金国潮，餐饮与节日促销', prompt: '中秋国潮海报，红金配色，月饼主题，传统节日促销视觉', image: 'assets/inspire/scene-5-festival.svg', category: 'ecommerce', hot: true, weekly: true, model: '智能图片 V2', ratio: '4:3', count: 1 },
-    { id: 'scene-6', title: '人像写真', desc: '柔光浅景深，高级感人像摄影', prompt: '高级感人像写真，柔光，浅景深，自然表情，杂志封面质感', image: 'assets/inspire/scene-6-portrait.svg', category: 'photo', hot: false, weekly: false, model: '智能图片 V2', ratio: '9:16', count: 1 },
-    { id: 'scene-7', title: '动漫角色', desc: '赛璐璐风角色立绘，游戏宣传', prompt: '日系动漫角色立绘，赛璐璐上色，游戏宣传图，动态姿势', image: 'assets/inspire/scene-2-cyber.svg', category: 'anime', hot: true, weekly: true, model: 'Qwen-Image', ratio: '9:16', count: 1 },
-    { id: 'scene-8', title: '促销海报', desc: '大标题留白，节日活动吸睛', prompt: '节日促销海报，大标题留白，红金配色，视觉冲击力强', image: 'assets/inspire/scene-5-festival.svg', category: 'design', hot: false, weekly: false, model: 'Seedream 5.0', ratio: '16:9', count: 2 },
+    { id: 'scene-1', title: '电商主图', desc: '纯白背景产品图，突出质感与卖点', prompt: '电商产品主图，纯白背景，无线耳机居中，高级质感棚拍，适合主图上架', image: 'assets/inspire/scene-1-product.png', category: 'ecommerce', hot: true, weekly: true, model: '智能图片 V2', ratio: '1:1', count: 1 },
+    { id: 'scene-2', title: '赛博海报', desc: '霓虹未来风，适合活动与潮牌视觉', prompt: '赛博朋克雨夜街景，霓虹灯光，未来城市，电影感海报，视觉冲击力强', image: 'assets/inspire/scene-2-cyber.png', category: 'design', hot: true, weekly: true, model: 'Seedream 5.0', ratio: '16:9', count: 1 },
+    { id: 'scene-3', title: '插画头像', desc: '柔和插画感，个人品牌与社交场景', prompt: '日系插画侧脸头像，柔和粉紫色调，清新 aesthetic，适合社交头像', image: 'assets/inspire/scene-3-anime.png', category: 'illustration', hot: false, weekly: false, model: 'Qwen-Image', ratio: '1:1', count: 1 },
+    { id: 'scene-4', title: '3D 产品', desc: '潮玩质感棚拍，科技产品展示', prompt: '3D潮玩盲盒风格，毛绒熊公仔，工作室暖光，精致产品展示', image: 'assets/inspire/scene-4-3d.png', category: '3d', hot: false, weekly: false, model: '智能图片 V2', ratio: '1:1', count: 1 },
+    { id: 'scene-5', title: '国潮美食', desc: '红金国潮，餐饮与节日促销', prompt: '中秋国潮海报，红金配色，月饼主题，传统节日促销视觉', image: 'assets/inspire/scene-5-festival.png', category: 'ecommerce', hot: true, weekly: true, model: '智能图片 V2', ratio: '4:3', count: 1 },
+    { id: 'scene-6', title: '人像写真', desc: '柔光浅景深，高级感人像摄影', prompt: '高级感人像写真，柔光，浅景深，自然表情，杂志封面质感', image: 'assets/inspire/scene-3-anime.png', category: 'photo', hot: false, weekly: false, model: '智能图片 V2', ratio: '9:16', count: 1 },
+    { id: 'scene-7', title: '动漫角色', desc: '赛璐璐风角色立绘，游戏宣传', prompt: '日系动漫角色立绘，赛璐璐上色，游戏宣传图，动态姿势', image: 'assets/inspire/scene-2-cyber.png', category: 'anime', hot: true, weekly: true, model: 'Qwen-Image', ratio: '9:16', count: 1 },
+    { id: 'scene-8', title: '促销海报', desc: '大标题留白，节日活动吸睛', prompt: '节日促销海报，大标题留白，红金配色，视觉冲击力强', image: 'assets/inspire/scene-5-festival.png', category: 'design', hot: false, weekly: false, model: 'Seedream 5.0', ratio: '16:9', count: 2 },
   ];
 
   const STATE = {
@@ -69,14 +69,71 @@
     avatarWorksFilter: 'all',
     contentSubTab: 'create',
     contentWorksFilter: 'all',
+    contentPlatform: 'xiaohongshu',
+    contentStyle: 'tech',
+    contentRatio: '3:4',
+    contentResults: [],
+    contentActiveCard: null,
+    contentInspireCat: 'all',
+    contentInspireSort: 'hot',
+    contentInspirePage: 1,
     imageInspireFilter: 'all',
     hubTemplateFilter: 'all',
     hubInspirePrimary: 'image',
     hubInspireSub: 'all',
+    hubWorksFilter: 'all',
     meSubTab: 'profile',
     avatar: { name: '', category: '', emoji: '' },
     avatarGalleryFilter: 'all',
+    imageRefs: [],
+    imageRatio: '1:1',
+    imageStyle: 'default',
   };
+
+  const IMAGE_REF_MAX = 4;
+
+  const IMAGE_RESULT_POOL = [
+    'assets/inspire/scene-1-product.png',
+    'assets/inspire/scene-2-cyber.png',
+    'assets/inspire/scene-3-anime.png',
+    'assets/inspire/scene-4-3d.png',
+    'assets/inspire/scene-5-festival.png',
+  ];
+
+  function pickImageResultUrls(count, seed = 0) {
+    const n = Math.min(Math.max(count || 1, 1), 4);
+    const start = Math.abs(seed) % IMAGE_RESULT_POOL.length;
+    const out = [];
+    for (let i = 0; i < n; i++) out.push(IMAGE_RESULT_POOL[(start + i) % IMAGE_RESULT_POOL.length]);
+    return out;
+  }
+
+  function getImageResultUrls(item, fallbackIndex = 0) {
+    if (item?.resultImages?.length) return item.resultImages;
+    if (item?.resultImage) return [item.resultImage];
+    const count = item?.count || 1;
+    const seed = item?.createdAt || fallbackIndex;
+    return pickImageResultUrls(count, seed);
+  }
+
+  const IMAGE_RATIO_OPTIONS = [
+    { value: '1:1', label: '1:1', w: 1, h: 1 },
+    { value: '4:3', label: '4:3', w: 4, h: 3 },
+    { value: '3:4', label: '3:4', w: 3, h: 4 },
+    { value: '16:9', label: '16:9', w: 16, h: 9 },
+    { value: '9:16', label: '9:16', w: 9, h: 16 },
+  ];
+
+  const IMAGE_STYLE_OPTIONS = [
+    { id: 'default', label: '默认', emoji: '◻', hint: '不限定风格', tag: '' },
+    { id: 'photo', label: '摄影写实', emoji: '📷', hint: '高清棚拍质感', tag: '写实摄影，高清细节，自然光影' },
+    { id: 'illustration', label: '插画', emoji: '🎨', hint: '平面插画', tag: '扁平插画风格，色彩鲜明' },
+    { id: '3d', label: '3D', emoji: '🧊', hint: '立体渲染', tag: '3D 渲染质感，柔和光影' },
+    { id: 'anime', label: '动漫', emoji: '🎭', hint: '日系动漫', tag: '日系动漫风格，赛璐璐上色' },
+    { id: 'cyber', label: '赛博朋克', emoji: '🌃', hint: '霓虹未来', tag: '赛博朋克，霓虹灯光，未来都市' },
+    { id: 'oil', label: '油画', emoji: '🖼', hint: '笔触油画', tag: '油画笔触，艺术质感' },
+    { id: 'watercolor', label: '水彩', emoji: '💧', hint: '水彩晕染', tag: '水彩插画，柔和晕染' },
+  ];
 
   const AVATAR_GALLERY_ITEMS = [
     { name: '直播主播', category: 'anchor', emoji: '🎙', desc: '带货直播 · 口播视频', accent: '#a78bfa' },
@@ -107,6 +164,10 @@
     bindInspire();
     bindOneClickTemplates();
     bindAvatarGallery();
+    bindImageInspireCategories();
+    renderImageInspireStrip();
+    bindImageRefUpload();
+    bindImageComposerPickers();
     bindPageSpecific();
     updateCreditsUI();
     navigate(getPageFromHash() || 'home');
@@ -115,11 +176,13 @@
   function loadState() {
     const saved = localStorage.getItem(STORAGE.credits);
     if (saved) STATE.credits = parseInt(saved, 10);
-    const avatar = localStorage.getItem(STORAGE.avatar);
-    if (avatar) {
-      const parsed = JSON.parse(avatar);
-      if (parsed?.name) STATE.avatar = parsed;
-    }
+    try {
+      const avatar = localStorage.getItem(STORAGE.avatar);
+      if (avatar) {
+        const parsed = JSON.parse(avatar);
+        if (parsed?.name) STATE.avatar = parsed;
+      }
+    } catch (_) { /* ignore corrupt local storage */ }
   }
 
   function saveCredits() {
@@ -165,11 +228,11 @@
   };
 
   const INSPIRE_TEMPLATES = [
-    { type: 'image', title: '电商主图', badge: '智能图片 V2', emoji: '🛍', image: 'assets/inspire/scene-1-product.svg', prompt: '电商产品主图，纯白背景，无线耳机居中，高级质感棚拍，适合主图上架' },
-    { type: 'image', title: '赛博海报', badge: 'Seedream', emoji: '🌃', image: 'assets/inspire/scene-2-cyber.svg', prompt: '赛博朋克雨夜街景，霓虹灯光，未来城市，电影感海报，视觉冲击力强' },
-    { type: 'image', title: '插画头像', badge: 'Qwen-Image', emoji: '🎨', image: 'assets/inspire/scene-3-anime.svg', prompt: '日系插画侧脸头像，柔和粉紫色调，清新 aesthetic，适合社交头像' },
-    { type: 'image', title: '3D 产品', badge: '智能图片 V2', emoji: '✨', image: 'assets/inspire/scene-4-3d.svg', prompt: '3D潮玩盲盒风格，毛绒熊公仔，工作室暖光，精致产品展示' },
-    { type: 'image', title: '国潮美食', badge: 'FLUX', emoji: '🍜', image: 'assets/inspire/scene-5-festival.svg', prompt: '中秋国潮海报，红金配色，月饼主题，传统节日促销视觉' },
+    { type: 'image', title: '电商主图', badge: '智能图片 V2', emoji: '🛍', image: 'assets/inspire/scene-1-product.png', prompt: '电商产品主图，纯白背景，无线耳机居中，高级质感棚拍，适合主图上架' },
+    { type: 'image', title: '赛博海报', badge: 'Seedream', emoji: '🌃', image: 'assets/inspire/scene-2-cyber.png', prompt: '赛博朋克雨夜街景，霓虹灯光，未来城市，电影感海报，视觉冲击力强' },
+    { type: 'image', title: '插画头像', badge: 'Qwen-Image', emoji: '🎨', image: 'assets/inspire/scene-3-anime.png', prompt: '日系插画侧脸头像，柔和粉紫色调，清新 aesthetic，适合社交头像' },
+    { type: 'image', title: '3D 产品', badge: '智能图片 V2', emoji: '✨', image: 'assets/inspire/scene-4-3d.png', prompt: '3D潮玩盲盒风格，毛绒熊公仔，工作室暖光，精致产品展示' },
+    { type: 'image', title: '国潮美食', badge: 'FLUX', emoji: '🍜', image: 'assets/inspire/scene-5-festival.png', prompt: '中秋国潮海报，红金配色，月饼主题，传统节日促销视觉' },
     { type: 'image', title: '品牌 IP', badge: 'MJ', emoji: '🐱', prompt: '极简扁平插画，品牌 IP 形象，可爱风格' },
     { type: 'image', title: '人像写真', badge: 'V2-Hash', emoji: '👤', prompt: '高级感人像写真，柔光，浅景深' },
     { type: 'image', title: '节日海报', badge: 'Seedream 5.0', emoji: '🎉', prompt: '节日促销海报，喜庆氛围，大标题留白' },
@@ -231,12 +294,20 @@
   ];
 
   const HUB_TEMPLATES = [
-    { id: 'ht-1', title: '电商主图', emoji: '🖼', nav: 'image', category: 'ecommerce', prompt: '电商产品主图，纯白背景，产品居中，高级质感棚拍' },
+    { id: 'ht-1', title: '电商主图', emoji: '🖼', nav: 'image', category: 'ecommerce', prompt: '电商产品主图，纯白背景，产品居中，高级质感棚拍', image: 'assets/inspire/scene-1-product.png', model: '智能图片 V2', ratio: '1:1', count: 1 },
     { id: 'ht-2', title: '口播短视频', emoji: '🎬', nav: 'video', category: 'media', prompt: '口播短视频，博主面对镜头介绍产品，自然表情' },
-    { id: 'ht-3', title: '职场数字人', emoji: '🤖', nav: 'avatar', category: 'avatar', prompt: '各位同事好，今天为大家带来产品功能亮点讲解…' },
-    { id: 'ht-4', title: '小红书种草', emoji: '📝', nav: 'content', category: 'media', prompt: '小红书种草文案，真实体验感，emoji 点缀，分段清晰' },
-    { id: 'ht-5', title: '插画头像', emoji: '🎨', nav: 'image', category: 'creative', prompt: '日系插画侧脸头像，柔和粉紫色调，清新 aesthetic' },
+    { id: 'ht-3', title: '职场数字人', emoji: '🤖', nav: 'avatar', category: 'avatar', prompt: '各位同事好，今天为大家带来产品功能亮点讲解…', avatarName: '职场精英' },
+    { id: 'ht-4', title: '小红书种草', emoji: '📝', nav: 'content', category: 'media', prompt: '小红书种草文案，真实体验感，emoji 点缀，分段清晰', contentTemplate: '小红书种草' },
+    { id: 'ht-5', title: '插画头像', emoji: '🎨', nav: 'image', category: 'creative', prompt: '日系插画侧脸头像，柔和粉紫色调，清新 aesthetic', image: 'assets/inspire/scene-3-anime.png', model: 'Qwen-Image', ratio: '1:1', count: 1 },
   ];
+
+  const MODULE_ENTER_LABELS = {
+    image: '进入 AI 图片',
+    video: '进入 AI 视频',
+    avatar: '进入数字人创作',
+    content: '进入爆款图文',
+    workflow: '进入创作工作流',
+  };
 
   const ONECLICK_TEMPLATES = [
     { id: 'oc-1', title: '口播', desc: '博主出镜介绍，自然口播带货', emoji: '🎤', nav: 'video', accent: '#a78bfa', prompt: '口播短视频，博主面对镜头介绍产品，自然表情', videoScene: '口播短视频，博主面对镜头介绍产品，自然表情' },
@@ -305,14 +376,23 @@
   };
 
   const HUB_INSPIRE_ITEMS = [
-    { id: 'hi-1', primary: 'image', subTag: 'ecommerce', hot: true, title: '电商主图精选', author: '设计师小L', likes: 2340, type: 'image', emoji: '🛍', image: 'assets/inspire/scene-1-product.svg', prompt: '电商产品主图，纯白背景，无线耳机居中，高级质感棚拍，适合主图上架' },
-    { id: 'hi-2', primary: 'image', subTag: 'design', hot: true, title: '赛博雨夜街景', author: '视觉阿K', likes: 1892, type: 'image', emoji: '🌃', image: 'assets/inspire/scene-2-cyber.svg', prompt: '赛博朋克雨夜街景，霓虹灯光，未来城市，电影感海报，视觉冲击力强' },
-    { id: 'hi-3', primary: 'image', subTag: 'avatar-ip', title: '插画社交头像', author: '插画师Mio', likes: 1560, type: 'image', emoji: '🎨', image: 'assets/inspire/scene-3-anime.svg', prompt: '日系插画侧脸头像，柔和粉紫色调，清新 aesthetic，适合社交头像' },
-    { id: 'hi-4', primary: 'image', subTag: 'illustration', title: '3D 潮玩展示', author: '3D 工作室', likes: 980, type: 'image', emoji: '✨', image: 'assets/inspire/scene-4-3d.svg', prompt: '3D潮玩盲盒风格，毛绒熊公仔，工作室暖光，精致产品展示' },
-    { id: 'hi-5', primary: 'image', subTag: 'ecommerce', title: '国潮促销海报', author: '品牌设计', likes: 1210, type: 'image', emoji: '🍜', image: 'assets/inspire/scene-5-festival.svg', prompt: '中秋国潮海报，红金配色，月饼主题，传统节日促销视觉' },
-    { id: 'hi-6', primary: 'image', subTag: 'anime', hot: true, title: '动漫角色立绘', author: '游戏美术', likes: 1430, type: 'image', emoji: '🎭', image: 'assets/inspire/scene-2-cyber.svg', prompt: '日系动漫角色立绘，赛璐璐上色，游戏宣传图，动态姿势' },
-    { id: 'hi-7', primary: 'image', subTag: 'photo', title: '人像写真', author: '摄影师阿南', likes: 760, type: 'image', emoji: '👤', prompt: '高级感人像写真，柔光，浅景深，自然表情，杂志封面质感' },
-    { id: 'hi-8', primary: 'image', subTag: 'design', title: '节日促销海报', author: '平面设计师', likes: 640, type: 'image', emoji: '🎉', prompt: '节日促销海报，大标题留白，红金配色，视觉冲击力强' },
+    { id: 'hi-1', primary: 'image', subTag: 'ecommerce', hot: true, title: '电商主图精选', author: '设计师小L', likes: 2340, type: 'image', emoji: '🛍', image: 'assets/inspire/scene-1-product.png', prompt: '电商产品主图，纯白背景，无线耳机居中，高级质感棚拍，适合主图上架' },
+    { id: 'hi-2', primary: 'image', subTag: 'design', hot: true, title: '赛博雨夜街景', author: '视觉阿K', likes: 1892, type: 'image', emoji: '🌃', image: 'assets/inspire/scene-2-cyber.png', prompt: '赛博朋克雨夜街景，霓虹灯光，未来城市，电影感海报，视觉冲击力强' },
+    { id: 'hi-3', primary: 'image', subTag: 'avatar-ip', title: '插画社交头像', author: '插画师Mio', likes: 1560, type: 'image', emoji: '🎨', image: 'assets/inspire/scene-3-anime.png', prompt: '日系插画侧脸头像，柔和粉紫色调，清新 aesthetic，适合社交头像' },
+    { id: 'hi-4', primary: 'image', subTag: 'illustration', title: '3D 潮玩展示', author: '3D 工作室', likes: 980, type: 'image', emoji: '✨', image: 'assets/inspire/scene-4-3d.png', prompt: '3D潮玩盲盒风格，毛绒熊公仔，工作室暖光，精致产品展示' },
+    { id: 'hi-5', primary: 'image', subTag: 'ecommerce', title: '国潮促销海报', author: '品牌设计', likes: 1210, type: 'image', emoji: '🍜', image: 'assets/inspire/scene-5-festival.png', prompt: '中秋国潮海报，红金配色，月饼主题，传统节日促销视觉' },
+    { id: 'hi-6', primary: 'image', subTag: 'anime', hot: true, title: '动漫角色立绘', author: '游戏美术', likes: 1430, type: 'image', emoji: '🎭', image: 'assets/inspire/scene-2-cyber.png', prompt: '日系动漫角色立绘，赛璐璐上色，游戏宣传图，动态姿势' },
+    { id: 'hi-7', primary: 'image', subTag: 'photo', title: '人像写真', author: '摄影师阿南', likes: 760, type: 'image', emoji: '👤', image: 'assets/inspire/scene-3-anime.png', prompt: '高级感人像写真，柔光，浅景深，自然表情，杂志封面质感' },
+    { id: 'hi-8', primary: 'image', subTag: 'design', title: '节日促销海报', author: '平面设计师', likes: 640, type: 'image', emoji: '🎉', image: 'assets/inspire/scene-5-festival.png', prompt: '节日促销海报，大标题留白，红金配色，视觉冲击力强' },
+    { id: 'hi-9', primary: 'image', subTag: 'ecommerce', title: '自媒体创作', author: '内容工作室', likes: 920, type: 'image', emoji: '📱', image: 'assets/hub/scene-media.png', prompt: '自媒体口播场景，居家布景，自然光线，适合短视频封面' },
+    { id: 'hi-10', primary: 'image', subTag: 'ecommerce', title: '电商直播间', author: '直播设计', likes: 880, type: 'image', emoji: '🛒', image: 'assets/hub/scene-ecommerce.png', prompt: '电商直播间视觉，产品陈列，屏幕展示，专业带货氛围' },
+    { id: 'hi-11', primary: 'image', subTag: 'avatar-ip', title: '虚拟主播', author: '数字人团队', likes: 1050, type: 'image', emoji: '🤖', image: 'assets/hub/scene-avatar.png', prompt: '虚拟主播形象，横竖屏适配，口播带货场景' },
+    { id: 'hi-12', primary: 'image', subTag: 'illustration', title: '文案带货', author: '种草文案', likes: 710, type: 'image', emoji: '📝', image: 'assets/hub/scene-sales.png', prompt: '带货文案海报，标题醒目，促销氛围浓厚' },
+    { id: 'hi-13', primary: 'image', subTag: 'photo', title: '职场办公', author: '商务视觉', likes: 540, type: 'image', emoji: '💼', image: 'assets/hub/scene-workplace.png', prompt: '职场办公场景，专业汇报氛围，简洁商务风' },
+    { id: 'hi-14', primary: 'image', subTag: 'anime', title: '知识科普', author: '教育设计', likes: 620, type: 'image', emoji: '📚', image: 'assets/hub/scene-knowledge.png', prompt: '知识科普插画，清晰构图，适合课程封面' },
+    { id: 'hi-15', primary: 'image', subTag: 'design', title: '品牌宣传', author: '品牌策划', likes: 790, type: 'image', emoji: '🏷', image: 'assets/hub/scene-brand.png', prompt: '品牌宣传海报，店铺引流，视觉统一' },
+    { id: 'hi-16', primary: 'image', subTag: 'illustration', title: '亲子教育', author: '儿童内容', likes: 480, type: 'image', emoji: '🧒', image: 'assets/hub/scene-family.png', prompt: '亲子教育绘本风，温暖配色，儿童启蒙场景' },
+    { id: 'hi-17', primary: 'image', subTag: 'photo', title: '生活记录', author: '生活博主', likes: 560, type: 'image', emoji: '📷', image: 'assets/hub/scene-life.png', prompt: '日常生活 vlog 封面，朋友圈配图，清新自然' },
     { id: 'hi-v1', primary: 'video', subTag: 'koubo', hot: true, title: '口播带货视频', author: '带货教练', likes: 1820, type: 'video', emoji: '🎤', prompt: '口播短视频，博主面对镜头介绍产品，自然表情，快节奏剪辑感' },
     { id: 'hi-v2', primary: 'video', subTag: 'koubo', title: '产品种草慢镜', author: '种草达人', likes: 1320, type: 'video', emoji: '🌿', prompt: '产品种草，慢镜头展示护肤品质地与包装，氛围感灯光' },
     { id: 'hi-v3', primary: 'video', subTag: 'manju', hot: true, title: '漫剧对白片段', author: '漫剧工作室', likes: 1560, type: 'video', emoji: '🎭', prompt: '漫剧片段，动漫风格角色对话，电影感镜头，情绪张力强' },
@@ -337,14 +417,58 @@
     { id: 'hi-w4', primary: 'workflow', subTag: 'image2video', title: '灵感图转短片', author: '创作者社区', likes: 980, type: 'workflow', emoji: '✨', workflow: 'image2video', prompt: '将图片灵感延展为 5 秒动态短片，自动匹配口播脚本' },
   ];
 
+  const CONTENT_PLATFORMS = {
+    xiaohongshu: { label: '小红书种草', badge: '小红书', defaultRatio: '3:4' },
+    douyin: { label: '抖音封面', badge: '抖音', defaultRatio: '9:16' },
+    wechat: { label: '公众号头图', badge: '公众号', defaultRatio: '16:9' },
+    moments: { label: '朋友圈海报', badge: '朋友圈', defaultRatio: '3:4' },
+  };
+
+  const CONTENT_TEMPLATE_PLATFORM = {
+    '小红书种草': 'xiaohongshu',
+    '短视频脚本': 'douyin',
+    '朋友圈文案': 'moments',
+    '产品标题': 'wechat',
+    '海报标语': 'moments',
+  };
+
+  const CONTENT_INSPIRE_ITEMS = [
+    { id: 'ci-1', title: '美妆种草·清新粉', platform: 'xiaohongshu', ratio: '3:4', likes: 2300, image: 'assets/inspire/scene-1-product.png', category: 'beauty', prompt: '夏日清爽护肤好物推荐，敏感肌也能用的宝藏单品合集' },
+    { id: 'ci-2', title: '美食探店·氛围感', platform: 'xiaohongshu', ratio: '3:4', likes: 1800, image: 'assets/inspire/scene-5-festival.png', category: 'food', prompt: '城市宝藏小店探店，氛围感拉满的美食打卡文案' },
+    { id: 'ci-3', title: '穿搭时尚·街拍', platform: 'douyin', ratio: '9:16', likes: 3100, image: 'assets/inspire/scene-2-cyber.png', category: 'fashion', prompt: '秋冬穿搭灵感，简约高级感街拍封面' },
+    { id: 'ci-4', title: '旅行攻略·治愈', platform: 'xiaohongshu', ratio: '3:4', likes: 1560, image: 'assets/inspire/scene-3-anime.png', category: 'travel', prompt: '周末短途旅行攻略，治愈风景与实用路线分享' },
+    { id: 'ci-5', title: '数码科技·极简', platform: 'wechat', ratio: '16:9', likes: 980, image: 'assets/inspire/scene-4-3d.png', category: 'tech', prompt: '新品数码开箱测评，极简科技风公众号头图' },
+    { id: 'ci-6', title: '生活好物·治愈', platform: 'moments', ratio: '3:4', likes: 1240, image: 'assets/inspire/scene-1-product.png', category: 'lifestyle', prompt: '提升幸福感的生活好物清单，温馨治愈海报' },
+    { id: 'ci-7', title: '知识干货·条理', platform: 'wechat', ratio: '16:9', likes: 870, image: 'assets/inspire/scene-2-cyber.png', category: 'knowledge', prompt: '职场效率提升干货，条理清晰的知识分享头图' },
+    { id: 'ci-8', title: '护肤测评·真实', platform: 'xiaohongshu', ratio: '3:4', likes: 2680, image: 'assets/inspire/scene-3-anime.png', category: 'beauty', prompt: '真实护肤测评分享，成分党友好种草文案' },
+    { id: 'ci-9', title: '火锅探店·烟火', platform: 'douyin', ratio: '9:16', likes: 1920, image: 'assets/inspire/scene-5-festival.png', category: 'food', prompt: '市井火锅探店，烟火气满满的封面视觉' },
+    { id: 'ci-10', title: 'OOTD·街头', platform: 'moments', ratio: '3:4', likes: 1450, image: 'assets/inspire/scene-2-cyber.png', category: 'fashion', prompt: '街头 OOTD 穿搭分享，朋友圈海报风格' },
+    { id: 'ci-11', title: '露营攻略·自然', platform: 'xiaohongshu', ratio: '3:4', likes: 1120, image: 'assets/inspire/scene-3-anime.png', category: 'travel', prompt: '秋日露营攻略，自然风光与装备清单' },
+    { id: 'ci-12', title: '耳机测评·科技', platform: 'wechat', ratio: '16:9', likes: 760, image: 'assets/inspire/scene-4-3d.png', category: 'tech', prompt: '无线耳机深度测评，科技感公众号封面' },
+    { id: 'ci-13', title: '收纳好物·实用', platform: 'moments', ratio: '3:4', likes: 890, image: 'assets/inspire/scene-1-product.png', category: 'lifestyle', prompt: '小户型收纳好物，实用生活海报文案' },
+    { id: 'ci-14', title: '读书笔记·文艺', platform: 'xiaohongshu', ratio: '3:4', likes: 640, image: 'assets/inspire/scene-3-anime.png', category: 'knowledge', prompt: '本月书单推荐，文艺清新的读书笔记分享' },
+    { id: 'ci-15', title: '口红试色·显白', platform: 'xiaohongshu', ratio: '3:4', likes: 2100, image: 'assets/inspire/scene-1-product.png', category: 'beauty', prompt: '秋冬口红试色合集，显白色号种草推荐' },
+    { id: 'ci-16', title: '咖啡探店·慵懒', platform: 'xiaohongshu', ratio: '3:4', likes: 1340, image: 'assets/inspire/scene-5-festival.png', category: 'food', prompt: '城市咖啡馆探店，慵懒午后氛围感图文' },
+    { id: 'ci-17', title: '球鞋穿搭·潮流', platform: 'douyin', ratio: '9:16', likes: 1780, image: 'assets/inspire/scene-2-cyber.png', category: 'fashion', prompt: '潮流球鞋穿搭封面，街头运动风视觉' },
+    { id: 'ci-18', title: '海岛旅行·度假', platform: 'xiaohongshu', ratio: '3:4', likes: 2200, image: 'assets/inspire/scene-3-anime.png', category: 'travel', prompt: '海岛度假攻略，碧海蓝天旅行种草图文' },
+    { id: 'ci-19', title: '平板办公·效率', platform: 'wechat', ratio: '16:9', likes: 920, image: 'assets/inspire/scene-4-3d.png', category: 'tech', prompt: '平板办公效率工具推荐，专业公众号头图' },
+    { id: 'ci-20', title: '香薰好物·氛围', platform: 'moments', ratio: '3:4', likes: 1050, image: 'assets/inspire/scene-1-product.png', category: 'lifestyle', prompt: '居家香薰好物，氛围感朋友圈海报' },
+    { id: 'ci-21', title: '考研干货·冲刺', platform: 'xiaohongshu', ratio: '3:4', likes: 1580, image: 'assets/inspire/scene-2-cyber.png', category: 'knowledge', prompt: '考研冲刺干货笔记，高效学习方法分享' },
+    { id: 'ci-22', title: '面膜测评·补水', platform: 'xiaohongshu', ratio: '3:4', likes: 1890, image: 'assets/inspire/scene-1-product.png', category: 'beauty', prompt: '补水面膜测评合集，干皮救星种草推荐' },
+    { id: 'ci-23', title: '甜品探店·治愈', platform: 'douyin', ratio: '9:16', likes: 1420, image: 'assets/inspire/scene-5-festival.png', category: 'food', prompt: '治愈系甜品店探店，高颜值封面设计' },
+    { id: 'ci-24', title: '通勤穿搭·简约', platform: 'moments', ratio: '3:4', likes: 990, image: 'assets/inspire/scene-2-cyber.png', category: 'fashion', prompt: '通勤穿搭一周不重样，简约职场海报' },
+  ];
+
   const HUB_MY_WORKS_DEMOS = [
-    { type: 'image', title: '电商主图示例', preview: '夏季清爽护肤品主图，白色背景…', prompt: '夏季清爽护肤品主图，白色背景，产品居中…', time: '示例 · 10:20', cost: 10, emoji: '🛍', module: 'AI 图片', createdAt: Date.now() - 3600000 },
-    { type: 'video', title: '口播短视频示例', preview: '口播介绍新品上架活动…', prompt: '口播介绍新品上架活动，博主面对镜头…', time: '示例 · 昨天', cost: 25, emoji: '🎬', module: 'AI 视频', createdAt: Date.now() - 86400000 },
-    { type: 'avatar', title: '数字人口播示例', preview: '各位同事好，今天为大家带来…', prompt: '各位同事好，今天为大家带来产品功能亮点讲解…', time: '示例 · 2 天前', cost: 30, emoji: '🤖', module: '数字人', createdAt: Date.now() - 172800000 },
+    { type: 'image', title: '电商主图示例', preview: '夏季清爽护肤品主图，白色背景…', prompt: '夏季清爽护肤品主图，白色背景，产品居中…', time: '示例 · 10:20', cost: 10, emoji: '🛍', module: 'AI 图片', resultImage: 'assets/inspire/scene-1-product.png', createdAt: Date.now() - 3600000 },
+    { type: 'video', title: '口播短视频示例', preview: '口播介绍新品上架活动…', prompt: '口播介绍新品上架活动，博主面对镜头…', time: '示例 · 昨天', cost: 25, emoji: '🎬', module: 'AI 视频', resultImage: 'assets/inspire/scene-2-cyber.png', createdAt: Date.now() - 86400000 },
+    { type: 'avatar', title: '数字人口播示例', preview: '各位同事好，今天为大家带来…', prompt: '各位同事好，今天为大家带来产品功能亮点讲解…', time: '示例 · 2 天前', cost: 20, emoji: '🤖', module: '数字人', resultImage: 'assets/hub/scene-avatar.png', createdAt: Date.now() - 172800000 },
+    { type: 'content', title: '小红书种草示例', preview: '真实体验感种草文案，分段清晰…', prompt: '小红书种草文案，真实体验感，emoji 点缀，分段清晰…', time: '示例 · 3 天前', cost: 5, emoji: '📝', module: '爆款图文', createdAt: Date.now() - 259200000 },
   ];
 
   function getPageFromHash() {
     const hash = location.hash.replace('#', '');
+    if (hash === 'chat') return 'hub';
     const valid = ['home', 'hub', 'me', 'image', 'video', 'avatar', 'avatar-select', 'content'];
     return valid.includes(hash) ? hash : null;
   }
@@ -371,6 +495,11 @@
     addRecent(page);
     if (page === 'hub') renderHubPage();
     if (page === 'me') renderMePage();
+    if (page === 'image') renderImageInspireStrip();
+    if (page === 'avatar' || page === 'avatar-select') {
+      renderAvatarSelect();
+      syncAvatarSelectValue();
+    }
   }
 
   function updateTopbar(page) {
@@ -413,12 +542,373 @@
   function switchContentSubTab(tab) {
     STATE.contentSubTab = tab;
     document.querySelectorAll('[data-tab-group="content-sub"] [data-tab]').forEach(t => {
-      t.classList.toggle('active', t.dataset.tab === tab);
+      const active = t.dataset.tab === tab || (tab === 'inspire' && t.dataset.tab === 'create');
+      t.classList.toggle('active', active);
     });
     document.querySelectorAll('[data-panel="content-sub"]').forEach(p => {
       p.classList.toggle('active', p.dataset.panelValue === tab);
     });
     if (tab === 'history') renderHistory('content');
+    if (tab === 'inspire') renderContentInspireLibrary();
+    if (tab === 'create') updateContentModeLabel();
+  }
+
+  function applyContentTemplate(templateName, prompt) {
+    const platform = CONTENT_TEMPLATE_PLATFORM[templateName] || STATE.contentPlatform || 'xiaohongshu';
+    setContentPlatform(platform);
+    const el = document.getElementById('content-editor');
+    if (el && prompt) {
+      el.value = prompt;
+      setDraft('content-editor', prompt);
+      updateContentCharCount();
+    }
+  }
+
+  function setContentPlatform(platform) {
+    if (!CONTENT_PLATFORMS[platform]) return;
+    STATE.contentPlatform = platform;
+    document.querySelectorAll('[data-content-platform]').forEach(tab => {
+      const active = tab.dataset.contentPlatform === platform;
+      tab.classList.toggle('active', active);
+      tab.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    const defaultRatio = CONTENT_PLATFORMS[platform].defaultRatio;
+    if (defaultRatio) setContentRatio(defaultRatio, { silent: true });
+    updateContentModeLabel();
+  }
+
+  function setContentStyle(style) {
+    STATE.contentStyle = style;
+    document.querySelectorAll('[data-content-style]').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.contentStyle === style);
+    });
+  }
+
+  function setContentRatio(ratio, options = {}) {
+    STATE.contentRatio = ratio;
+    document.querySelectorAll('[data-content-ratio]').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.contentRatio === ratio);
+    });
+    if (!options.silent) updateContentModeLabel();
+  }
+
+  function updateContentModeLabel() {
+    const el = document.getElementById('content-mode-label');
+    if (!el) return;
+    const platform = CONTENT_PLATFORMS[STATE.contentPlatform] || CONTENT_PLATFORMS.xiaohongshu;
+    el.textContent = platform.label + ' · ' + (STATE.contentRatio || '3:4');
+  }
+
+  function updateContentCharCount() {
+    const editor = document.getElementById('content-editor');
+    const countEl = document.getElementById('content-char-count');
+    if (!editor || !countEl) return;
+    countEl.textContent = String(editor.value.length) + '/500';
+  }
+
+  function inferContentTags(prompt) {
+    const tags = [];
+    const text = (prompt || '').toLowerCase();
+    if (/护肤|面膜|美妆|口红/.test(prompt)) tags.push('#护肤', '#美妆');
+    if (/敏感/.test(prompt)) tags.push('#敏感肌');
+    if (/夏日|夏天|清爽/.test(prompt)) tags.push('#夏日');
+    if (/穿搭|ootd|时尚/.test(text)) tags.push('#穿搭', '#时尚');
+    if (/旅行|露营|度假/.test(prompt)) tags.push('#旅行');
+    if (/美食|探店|火锅/.test(prompt)) tags.push('#美食');
+    if (!tags.length) tags.push('#种草', '#好物', '#分享');
+    return tags.slice(0, 3);
+  }
+
+  function buildContentResults(prompt, count = 4) {
+    const title = prompt.trim().slice(0, 24) || '夏日清爽护肤好物推荐';
+    const tags = inferContentTags(prompt);
+    const seed = Date.now();
+    return Array.from({ length: count }, (_, i) => ({
+      id: seed + i,
+      title,
+      image: IMAGE_RESULT_POOL[(seed + i) % IMAGE_RESULT_POOL.length],
+      tags,
+      platform: STATE.contentPlatform,
+      ratio: STATE.contentRatio,
+      style: STATE.contentStyle,
+      prompt: prompt.trim(),
+    }));
+  }
+
+  function showContentResultState(state) {
+    const empty = document.getElementById('content-result-empty');
+    const loading = document.getElementById('content-result-loading');
+    const grid = document.getElementById('content-result-grid');
+    const countEl = document.getElementById('content-result-count');
+    if (empty) empty.hidden = state !== 'empty';
+    if (loading) loading.hidden = state !== 'loading';
+    if (grid) grid.hidden = state !== 'results';
+    if (countEl) {
+      if (state === 'results' && STATE.contentResults.length) {
+        countEl.hidden = false;
+        countEl.textContent = String(STATE.contentResults.length);
+      } else {
+        countEl.hidden = true;
+      }
+    }
+  }
+
+  function renderContentResultGrid() {
+    const grid = document.getElementById('content-result-grid');
+    if (!grid) return;
+    if (!STATE.contentResults.length) {
+      showContentResultState('empty');
+      grid.innerHTML = '';
+      return;
+    }
+    showContentResultState('results');
+    grid.innerHTML = STATE.contentResults.map(item => `
+      <button type="button" class="content-result-card-item" data-content-result-id="${item.id}">
+        <div class="content-result-card-thumb" data-ratio="${item.ratio || '3:4'}">
+          <img src="${item.image}" alt="" loading="lazy">
+        </div>
+        <div class="content-result-card-title">${item.title}</div>
+        <div class="content-result-tags">${item.tags.map(t => `<span class="content-result-tag">${t}</span>`).join('')}</div>
+      </button>`).join('');
+    grid.querySelectorAll('[data-content-result-id]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = STATE.contentResults.find(r => r.id === Number(btn.dataset.contentResultId));
+        if (item) openContentCardModal(item);
+      });
+    });
+  }
+
+  function openContentCardModal(item) {
+    STATE.contentActiveCard = item;
+    const overlay = document.getElementById('content-card-modal');
+    const body = document.getElementById('content-card-modal-body');
+    if (!overlay || !body || !item) return;
+    const platform = CONTENT_PLATFORMS[item.platform] || CONTENT_PLATFORMS.xiaohongshu;
+    body.innerHTML = `
+      <div class="content-card-modal-preview">
+        <img src="${item.image}" alt="">
+      </div>
+      <div class="content-card-modal-title">${item.title}</div>
+      <div class="content-result-tags">${item.tags.map(t => `<span class="content-result-tag">${t}</span>`).join('')}</div>
+      <p class="text-sm text-muted" style="margin-top:8px">${platform.label} · ${item.ratio || '3:4'}</p>`;
+    overlay.hidden = false;
+    overlay.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeContentCardModal() {
+    const overlay = document.getElementById('content-card-modal');
+    if (!overlay) return;
+    overlay.hidden = true;
+    overlay.setAttribute('aria-hidden', 'true');
+    STATE.contentActiveCard = null;
+  }
+
+  function renderContentInspireLibrary() {
+    const grid = document.getElementById('content-inspire-grid');
+    const countEl = document.getElementById('content-inspire-count');
+    const pagination = document.getElementById('content-inspire-pagination');
+    if (!grid) return;
+
+    const q = (document.getElementById('content-inspire-search')?.value || '').trim().toLowerCase();
+    const cat = STATE.contentInspireCat || 'all';
+    let items = CONTENT_INSPIRE_ITEMS.filter(item => {
+      if (cat !== 'all' && item.category !== cat) return false;
+      if (q && !item.title.toLowerCase().includes(q) && !item.prompt.toLowerCase().includes(q)) return false;
+      return true;
+    });
+    if (STATE.contentInspireSort === 'new') {
+      items = [...items].reverse();
+    } else {
+      items = [...items].sort((a, b) => b.likes - a.likes);
+    }
+
+    const perPage = 10;
+    const totalPages = Math.max(1, Math.ceil(items.length / perPage));
+    const page = Math.min(STATE.contentInspirePage || 1, totalPages);
+    STATE.contentInspirePage = page;
+    const pageItems = items.slice((page - 1) * perPage, page * perPage);
+
+    if (countEl) countEl.textContent = items.length + ' 个灵感';
+    grid.innerHTML = pageItems.length
+      ? pageItems.map(item => {
+          const platform = CONTENT_PLATFORMS[item.platform] || CONTENT_PLATFORMS.xiaohongshu;
+          const likes = item.likes >= 1000 ? (item.likes / 1000).toFixed(1) + 'k' : String(item.likes);
+          return `
+          <button type="button" class="content-inspire-card" data-content-inspire-id="${item.id}">
+            <div class="content-inspire-card-thumb"><img src="${item.image}" alt="" loading="lazy"></div>
+            <div class="content-inspire-card-body">
+              <div class="content-inspire-card-title">${item.title}</div>
+              <div class="content-inspire-card-meta">
+                <span class="content-inspire-card-badge">${platform.badge}</span>
+                <span>${item.ratio}</span>
+                <span class="content-inspire-card-likes">♥ ${likes}</span>
+              </div>
+            </div>
+          </button>`;
+        }).join('')
+      : '<div class="hub-empty" style="grid-column:1/-1">暂无匹配灵感</div>';
+
+    grid.querySelectorAll('[data-content-inspire-id]').forEach(card => {
+      card.addEventListener('click', () => {
+        const item = CONTENT_INSPIRE_ITEMS.find(x => x.id === card.dataset.contentInspireId);
+        if (item) applyContentInspireItem(item);
+      });
+    });
+
+    if (pagination) {
+      pagination.innerHTML = '';
+      const prev = document.createElement('button');
+      prev.type = 'button';
+      prev.className = 'content-inspire-page-btn';
+      prev.textContent = '‹';
+      prev.disabled = page <= 1;
+      prev.addEventListener('click', () => {
+        STATE.contentInspirePage = Math.max(1, page - 1);
+        renderContentInspireLibrary();
+      });
+      pagination.appendChild(prev);
+      for (let i = 1; i <= totalPages; i += 1) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'content-inspire-page-btn' + (i === page ? ' active' : '');
+        btn.textContent = String(i);
+        btn.addEventListener('click', () => {
+          STATE.contentInspirePage = i;
+          renderContentInspireLibrary();
+        });
+        pagination.appendChild(btn);
+      }
+      const next = document.createElement('button');
+      next.type = 'button';
+      next.className = 'content-inspire-page-btn';
+      next.textContent = '›';
+      next.disabled = page >= totalPages;
+      next.addEventListener('click', () => {
+        STATE.contentInspirePage = Math.min(totalPages, page + 1);
+        renderContentInspireLibrary();
+      });
+      pagination.appendChild(next);
+    }
+
+    document.querySelectorAll('[data-content-inspire-cat]').forEach(tab => {
+      tab.classList.toggle('active', tab.dataset.contentInspireCat === cat);
+    });
+    document.querySelectorAll('[data-tab-group="content-inspire-sort"] [data-tab]').forEach(tab => {
+      tab.classList.toggle('active', tab.dataset.tab === STATE.contentInspireSort);
+    });
+  }
+
+  function applyContentInspireItem(item) {
+    if (!item) return;
+    switchContentSubTab('create');
+    setContentPlatform(item.platform);
+    setContentRatio(item.ratio);
+    const el = document.getElementById('content-editor');
+    if (el) {
+      el.value = item.prompt;
+      setDraft('content-editor', item.prompt);
+      updateContentCharCount();
+    }
+    toast('已应用灵感「' + item.title + '」', 'success');
+  }
+
+  function bindContentStudio() {
+    const editor = document.getElementById('content-editor');
+    if (editor) {
+      updateContentCharCount();
+      editor.addEventListener('input', () => {
+        updateContentCharCount();
+        setDraft('content-editor', editor.value);
+      });
+    }
+
+    document.querySelectorAll('[data-content-platform]').forEach(tab => {
+      tab.addEventListener('click', () => setContentPlatform(tab.dataset.contentPlatform));
+    });
+    document.querySelectorAll('[data-content-style]').forEach(btn => {
+      btn.addEventListener('click', () => setContentStyle(btn.dataset.contentStyle));
+    });
+    document.querySelectorAll('[data-content-ratio]').forEach(btn => {
+      btn.addEventListener('click', () => setContentRatio(btn.dataset.contentRatio));
+    });
+
+    document.getElementById('content-regenerate-btn')?.addEventListener('click', () => {
+      const prompt = document.getElementById('content-editor')?.value?.trim();
+      if (!prompt) {
+        toast('请先输入创作主题', 'info');
+        return;
+      }
+      const btn = document.getElementById('content-generate-btn');
+      if (btn) startGeneration('content', parseInt(btn.dataset.cost || '5', 10), btn);
+    });
+
+    document.getElementById('content-download-btn')?.addEventListener('click', () => {
+      if (!STATE.contentResults.length) {
+        toast('暂无可下载的生成结果', 'info');
+        return;
+      }
+      toast('下载已开始（原型演示）', 'success');
+    });
+
+    document.getElementById('content-inspire-back')?.addEventListener('click', () => switchContentSubTab('create'));
+    document.getElementById('content-inspire-search')?.addEventListener('input', debounce(() => {
+      STATE.contentInspirePage = 1;
+      renderContentInspireLibrary();
+    }, 200));
+
+    document.querySelectorAll('[data-content-inspire-cat]').forEach(tab => {
+      tab.addEventListener('click', () => {
+        STATE.contentInspireCat = tab.dataset.contentInspireCat || 'all';
+        STATE.contentInspirePage = 1;
+        renderContentInspireLibrary();
+      });
+    });
+    document.querySelectorAll('[data-tab-group="content-inspire-sort"] [data-tab]').forEach(tab => {
+      tab.addEventListener('click', () => {
+        STATE.contentInspireSort = tab.dataset.tab || 'hot';
+        renderContentInspireLibrary();
+      });
+    });
+
+    document.getElementById('content-card-modal-close')?.addEventListener('click', closeContentCardModal);
+    document.getElementById('content-card-modal')?.addEventListener('click', e => {
+      if (e.target.id === 'content-card-modal') closeContentCardModal();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && !document.getElementById('content-card-modal')?.hidden) {
+        closeContentCardModal();
+      }
+    });
+    document.getElementById('content-card-edit-btn')?.addEventListener('click', () => {
+      const item = STATE.contentActiveCard;
+      if (!item) return;
+      closeContentCardModal();
+      switchContentSubTab('create');
+      const el = document.getElementById('content-editor');
+      if (el) {
+        el.value = item.prompt || item.title;
+        setDraft('content-editor', el.value);
+        updateContentCharCount();
+      }
+      toast('已进入二次编辑', 'info');
+    });
+    document.getElementById('content-card-regen-btn')?.addEventListener('click', () => {
+      const item = STATE.contentActiveCard;
+      closeContentCardModal();
+      if (item?.prompt) {
+        const el = document.getElementById('content-editor');
+        if (el) {
+          el.value = item.prompt;
+          setDraft('content-editor', item.prompt);
+          updateContentCharCount();
+        }
+      }
+      const btn = document.getElementById('content-generate-btn');
+      if (btn) startGeneration('content', parseInt(btn.dataset.cost || '5', 10), btn);
+    });
+
+    updateContentModeLabel();
+    showContentResultState('empty');
   }
 
   function switchAvatarSubTab(tab) {
@@ -430,6 +920,10 @@
       p.classList.toggle('active', p.dataset.panelValue === tab);
     });
     if (tab === 'history') renderHistory('avatar');
+    if (tab === 'create') {
+      renderAvatarSelect();
+      syncAvatarSelectValue();
+    }
   }
 
   function switchVideoSubTab(tab) {
@@ -516,6 +1010,101 @@
     return items.filter(item => item.category === category);
   }
 
+  const HUB_INSPIRE_TILE_RATIOS = ['r-tall', 'r-short', 'r-square', 'r-wide', 'r-xl', 'r-md', 'r-tall', 'r-short', 'r-square', 'r-wide', 'r-md', 'r-xl', 'r-tall', 'r-short', 'r-square', 'r-wide', 'r-md'];
+
+  const HUB_INSPIRE_IMAGE_FALLBACKS = [
+    'assets/inspire/scene-1-product.png',
+    'assets/inspire/scene-2-cyber.png',
+    'assets/inspire/scene-3-anime.png',
+    'assets/inspire/scene-4-3d.png',
+    'assets/inspire/scene-5-festival.png',
+    'assets/hub/scene-media.png',
+    'assets/hub/scene-ecommerce.png',
+    'assets/hub/scene-avatar.png',
+    'assets/hub/scene-sales.png',
+    'assets/hub/scene-workplace.png',
+    'assets/hub/scene-knowledge.png',
+    'assets/hub/scene-brand.png',
+    'assets/hub/scene-family.png',
+    'assets/hub/scene-life.png',
+  ];
+
+  function getInspireRefImages(item) {
+    if (!item) return [];
+    if (item.refImages?.length) return item.refImages.slice(0, IMAGE_REF_MAX);
+    const pool = [];
+    const add = u => { if (u && !pool.includes(u)) pool.push(u); };
+    add(item.image);
+    if (item.id) {
+      const scene = IMAGE_SCENE_TEMPLATES.find(t => t.id === item.id);
+      if (scene?.image) add(scene.image);
+    }
+    HUB_INSPIRE_IMAGE_FALLBACKS.forEach(add);
+    IMAGE_SCENE_TEMPLATES.forEach(t => add(t.image));
+    return pool.slice(0, IMAGE_REF_MAX);
+  }
+
+  function renderImageRefUI() {
+    const strip = document.getElementById('image-ref-strip');
+    const list = document.getElementById('image-ref-list');
+    const addWrap = document.getElementById('image-ref-add-wrap');
+    if (!strip || !list) return;
+    const refs = STATE.imageRefs || [];
+    strip.classList.toggle('has-refs', refs.length > 0);
+    const isImg2img = refs.some(r => r.source === 'img2img');
+    document.querySelector('.image-composer-unified')?.classList.toggle('is-img2img-mode', isImg2img);
+    const promptEl = document.getElementById('image-prompt');
+    if (promptEl && !isImg2img) {
+      promptEl.placeholder = '描述你想生成的画面，例：夏季清爽护肤品主图，白色背景，产品居中，突出水润质感';
+    }
+    if (addWrap) addWrap.hidden = refs.length >= IMAGE_REF_MAX;
+    list.innerHTML = refs.map(ref => `
+      <div class="image-ref-thumb" data-image-ref="${ref.id}" title="${ref.name}">
+        <img src="${ref.dataUrl}" alt="${ref.name}">
+        <button type="button" class="image-ref-thumb-remove" data-remove-image-ref="${ref.id}" aria-label="移除参考图">×</button>
+      </div>
+    `).join('');
+    list.querySelectorAll('[data-remove-image-ref]').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        STATE.imageRefs = (STATE.imageRefs || []).filter(r => r.id !== btn.dataset.removeImageRef);
+        renderImageRefUI();
+        toast('已移除参考图', 'info');
+      });
+    });
+  }
+
+  function applyInspireRefImages(item) {
+    const urls = getInspireRefImages(item);
+    if (!urls.length) return false;
+    STATE.imageRefs = urls.map((url, i) => ({
+      id: 'ref-' + Date.now() + '-' + i + '-' + Math.random().toString(36).slice(2, 5),
+      name: ((item?.title || '参考图') + ' ' + (i + 1)).slice(0, 32),
+      dataUrl: url,
+    }));
+    renderImageRefUI();
+    return true;
+  }
+
+  function flashInteractiveCard(cardEl) {
+    if (!cardEl) return;
+    cardEl.classList.add('is-flash-highlight');
+    window.setTimeout(() => cardEl.classList.remove('is-flash-highlight'), 1200);
+  }
+
+  function runInteractiveCardApply(cardEl, applyFn) {
+    if (cardEl) {
+      cardEl.classList.add('is-pressing');
+      flashInteractiveCard(cardEl);
+      window.setTimeout(() => {
+        cardEl.classList.remove('is-pressing');
+        applyFn();
+      }, 200);
+    } else {
+      applyFn();
+    }
+  }
+
   function filterHubInspireItems() {
     const primary = STATE.hubInspirePrimary || 'image';
     const sub = STATE.hubInspireSub || 'all';
@@ -546,21 +1135,42 @@
     });
   }
 
-  function applyHubTemplate(template) {
+  function applyHubTemplate(template, cardEl) {
     if (!template) return;
-    navigate(template.nav);
-    if (template.nav === 'image') applyImagePrompt(template.prompt);
-    else if (template.nav === 'content') {
-      const el = document.getElementById('content-editor');
-      if (el) { el.value = template.prompt; setDraft('content-editor', template.prompt); }
-    } else if (template.nav === 'video') {
-      const el = document.getElementById('video-prompt');
-      if (el) { el.value = template.prompt; setDraft('video-script', template.prompt); }
-    } else if (template.nav === 'avatar') {
-      const el = document.getElementById('avatar-script');
-      if (el) { el.value = template.prompt; setDraft('avatar-script', template.prompt); }
-    }
-    toast('已套用「' + template.title + '」模板', 'success');
+    runInteractiveCardApply(cardEl, () => {
+      navigate(template.nav);
+      if (template.nav === 'image') {
+        switchImageSubTab('create');
+        applyImagePrompt(template.prompt);
+        if (template.model) setImageModel(template.model);
+        if (template.ratio) setImageRatio(template.ratio);
+        if (template.count != null) setSelectByValue('image-count-select', template.count);
+        updateImageCost();
+        const hasRefs = applyInspireRefImages(template);
+        toast(
+          hasRefs ? '已套用「' + template.title + '」模型与参考素材' : '已套用「' + template.title + '」参数预设',
+          hasRefs ? 'success' : 'info',
+        );
+      } else if (template.nav === 'content') {
+        switchContentSubTab('create');
+        applyContentTemplate(template.contentTemplate, template.prompt);
+        toast('已套用「' + template.title + '」模板', 'success');
+      } else if (template.nav === 'video') {
+        switchVideoSubTab('create');
+        const el = document.getElementById('video-prompt');
+        if (el) { el.value = template.prompt; setDraft('video-script', template.prompt); }
+        toast('已套用「' + template.title + '」模板', 'success');
+      } else if (template.nav === 'avatar') {
+        switchAvatarSubTab('create');
+        if (template.avatarName) {
+          const item = AVATAR_GALLERY_ITEMS.find(a => a.name === template.avatarName);
+          if (item) setSelectedAvatar({ name: item.name, category: item.category, emoji: item.emoji }, { toast: false });
+        }
+        const el = document.getElementById('avatar-script');
+        if (el) { el.value = template.prompt; setDraft('avatar-script', template.prompt); }
+        toast('已套用「' + template.title + '」模板', 'success');
+      }
+    });
   }
 
   function applyOneClickTemplate(template) {
@@ -590,8 +1200,8 @@
       const el = document.getElementById('avatar-script');
       if (el) { el.value = template.prompt; setDraft('avatar-script', template.prompt); }
     } else if (template.nav === 'content') {
-      const el = document.getElementById('content-editor');
-      if (el) { el.value = template.prompt; setDraft('content-editor', template.prompt); }
+      switchContentSubTab('create');
+      applyContentTemplate(template.contentTemplate, template.prompt);
     }
 
     toast('已套用「' + template.title + '」模板', 'success');
@@ -882,7 +1492,7 @@
     window.addEventListener('resize', updateAvatarGalleryScrollBtn);
   }
 
-  function applyHubInspireItem(item) {
+  function applyInspireMaterials(item) {
     if (!item) return;
     if (item.type === 'workflow') {
       if (item.workflow === 'content2avatar') {
@@ -893,8 +1503,10 @@
       if (item.workflow === 'image2video') {
         navigate('image');
         if (item.prompt) applyImagePrompt(item.prompt);
-        setTimeout(() => {
+        applyInspireRefImages(item);
+        window.setTimeout(() => {
           navigate('video');
+          switchVideoSubTab('create');
           const el = document.getElementById('video-prompt');
           if (el && item.prompt) {
             el.value = item.prompt;
@@ -912,119 +1524,123 @@
       toast(item.prompt || '工作流（原型演示）', 'info');
       return;
     }
-    if (item.type === 'avatar' && item.avatarName) {
-      const galleryItem = AVATAR_GALLERY_ITEMS.find(a => a.name === item.avatarName);
-      if (galleryItem) {
-        setSelectedAvatar(
-          { name: galleryItem.name, category: galleryItem.category, emoji: galleryItem.emoji },
-          { toast: false }
-        );
-      }
-    }
     if (item.type === 'content' && item.contentTemplate) {
       navigate('content');
+      switchContentSubTab('create');
       requestAnimationFrame(() => {
-        document.querySelectorAll('.content-scene-item').forEach(el => {
-          el.classList.toggle('active', el.textContent.trim() === item.contentTemplate);
-        });
-        const editor = document.getElementById('content-editor');
-        if (editor && item.prompt) {
-          editor.value = item.prompt;
-          setDraft('content-editor', item.prompt);
-        }
+        applyContentTemplate(item.contentTemplate, item.prompt);
         toast('已带入「' + item.title + '」灵感', 'success');
       });
+      return;
+    }
+    if (item.type === 'image') {
+      navigate('image');
+      switchImageSubTab('create');
+      if (item.prompt) applyImagePrompt(item.prompt);
+      if (item.model) setImageModel(item.model);
+      if (item.ratio) setImageRatio(item.ratio);
+      if (item.styleId) setImageStyle(item.styleId);
+      if (item.count != null) setSelectByValue('image-count-select', item.count);
+      updateImageCost();
+      const hasRefs = applyInspireRefImages(item);
+      toast(
+        hasRefs ? '已套用模型素材与参数，可直接开始创作' : '已加载风格与参数（该模型暂无配套参考图）',
+        hasRefs ? 'success' : 'info',
+      );
+      return;
+    }
+    if (item.type === 'video') {
+      navigate('video');
+      switchVideoSubTab('create');
+      const el = document.getElementById('video-prompt');
+      if (el && item.prompt) {
+        el.value = item.prompt;
+        setDraft('video-script', item.prompt);
+        const imgDesc = document.querySelector('[data-draft="video-img-desc"]');
+        if (imgDesc) {
+          imgDesc.value = item.prompt;
+          setDraft('video-img-desc', item.prompt);
+        }
+      }
+      toast('已套用视频模板与参数预设', 'success');
+      return;
+    }
+    if (item.type === 'avatar') {
+      navigate('avatar');
+      switchAvatarSubTab('create');
+      if (item.avatarName) {
+        const galleryItem = AVATAR_GALLERY_ITEMS.find(a => a.name === item.avatarName);
+        if (galleryItem) {
+          setSelectedAvatar(
+            { name: galleryItem.name, category: galleryItem.category, emoji: galleryItem.emoji },
+            { toast: false },
+          );
+        }
+      }
+      const el = document.getElementById('avatar-script');
+      if (el && item.prompt) {
+        el.value = item.prompt;
+        setDraft('avatar-script', item.prompt);
+      }
+      toast('已套用数字人模板与口播预设', 'success');
       return;
     }
     applyInspirePrompt(item.prompt, item.type);
   }
 
-  function getHubMyWorks() {
+  function applyHubInspireItem(item, cardEl) {
+    if (!item) return;
+    runInteractiveCardApply(cardEl, () => applyInspireMaterials(item));
+  }
+
+  function getHubMyWorks(limit = 12) {
     const history = JSON.parse(localStorage.getItem(STORAGE.history) || '{}');
     const types = ['image', 'video', 'avatar', 'content'];
     const labels = { image: 'AI 图片', video: 'AI 视频', avatar: '数字人', content: '爆款图文' };
     const works = [];
     types.forEach(type => {
       (history[type] || []).forEach((item, index) => {
+        const resultImage = type === 'image'
+          ? (item.resultImage || getImageResultUrls(item, index)[0])
+          : type === 'video' || type === 'avatar'
+            ? (item.resultImage || item.poster || IMAGE_RESULT_POOL[index % IMAGE_RESULT_POOL.length])
+            : null;
         works.push({
           ...item,
           type,
           module: labels[type],
           index,
           preview: item.preview || item.prompt || item.title || '',
-          cost: item.cost ?? (type === 'video' ? 25 : type === 'avatar' ? 30 : 10),
+          cost: item.cost ?? (type === 'video' ? 25 : type === 'avatar' ? 20 : type === 'content' ? 5 : 10),
           time: item.time || formatHubTime(item.createdAt),
+          resultImage,
         });
       });
     });
     works.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
-    return works.slice(0, 6);
+    return works.slice(0, limit);
   }
 
-  function renderHubTemplates() {
-    const grid = document.getElementById('hub-template-grid');
-    if (!grid) return;
-    const cat = STATE.hubTemplateFilter || 'all';
-    const items = filterHubByCategory(HUB_TEMPLATES, cat);
-    grid.innerHTML = items.length
-      ? items.map(t => `
-          <article class="hub-template-card hub-card" data-hub-template="${t.id}">
-            <div class="hub-template-thumb">${t.emoji}</div>
-            <div class="hub-template-title">${t.title}</div>
-          </article>`).join('')
-      : '<div class="hub-empty">该分类暂无模板</div>';
-    grid.querySelectorAll('[data-hub-template]').forEach(card => {
-      card.addEventListener('click', () => {
-        const t = HUB_TEMPLATES.find(x => x.id === card.dataset.hubTemplate);
-        applyHubTemplate(t);
-      });
-    });
+  function getHubWorkThumbHtml(w) {
+    if (w.type === 'content') {
+      const text = (w.preview || w.prompt || '').slice(0, 72);
+      return `<div class="hub-work-thumb hub-work-thumb--text"><span class="hub-work-type-badge">图文</span>${text || '爆款文案'}</div>`;
+    }
+    if (w.resultImage) {
+      return `<div class="hub-work-thumb hub-work-thumb--cover"><img src="${w.resultImage}" alt="" loading="lazy"><span class="hub-work-type-badge">${w.module || ''}</span></div>`;
+    }
+    return `<div class="hub-work-thumb hub-work-thumb--emoji"><span>${w.emoji || '✨'}</span><span class="hub-work-type-badge">${w.module || ''}</span></div>`;
   }
 
-  function renderHubInspire() {
-    const grid = document.getElementById('hub-inspire-grid');
-    if (!grid) return;
-    const items = filterHubInspireItems();
-    grid.innerHTML = items.length
-      ? items.map(item => {
-          const thumb = item.image
-            ? `<img src="${item.image}" alt="${item.title}" loading="lazy">`
-            : `<div class="hub-inspire-placeholder">${item.emoji || '✨'}</div>`;
-          return `
-          <article class="hub-inspire-card hub-card" data-hub-inspire="${item.id}">
-            <div class="hub-inspire-thumb">
-              ${thumb}
-              <div class="hub-inspire-use"><button type="button" class="hub-quick-enter">一键套用</button></div>
-            </div>
-            <div class="hub-inspire-body">
-              <strong>${item.title}</strong>
-              <span>${item.author} · ${item.likes.toLocaleString()} 赞</span>
-            </div>
-          </article>`;
-        }).join('')
-      : '<div class="hub-empty">该分类暂无灵感内容</div>';
-    grid.querySelectorAll('[data-hub-inspire]').forEach(card => {
-      card.addEventListener('click', e => {
-        if (e.target.closest('.hub-quick-enter')) e.stopPropagation();
-        const item = HUB_INSPIRE_ITEMS.find(x => x.id === card.dataset.hubInspire);
-        applyHubInspireItem(item);
-      });
-    });
-  }
-
-  function renderMeWorks() {
-    const grid = document.getElementById('me-works-grid');
-    if (!grid) return;
-    const works = getHubMyWorks();
-    const list = works.length ? works : HUB_MY_WORKS_DEMOS;
-    grid.innerHTML = list.map(w => {
+  function renderHubWorkCardsHtml(list) {
+    return list.map(w => {
       const prompt = encodeURIComponent(w.prompt || w.preview || w.script || '');
       return `
       <article class="hub-work-card hub-card" data-hub-work-type="${w.type}" data-work-prompt="${prompt}">
-        <div class="hub-work-thumb">${w.emoji || '✨'}</div>
+        ${getHubWorkThumbHtml(w)}
         <div class="hub-work-main">
-          <div class="hub-work-title">${w.title || w.preview?.slice(0, 20) || '未命名作品'}</div>
-          <div class="hub-work-meta">${w.time} · 消耗 ${w.cost} 积分${w.module ? ' · ' + w.module : ''}</div>
+          <div class="hub-work-title">${w.title || w.preview?.slice(0, 24) || '未命名作品'}</div>
+          <div class="hub-work-meta">${w.time} · 消耗 ${w.cost} 积分 · ${w.module || ''}</div>
           <div class="hub-work-actions">
             <button type="button" class="hub-work-btn" data-hub-action="reuse">复用</button>
             <button type="button" class="hub-work-btn" data-hub-action="edit">编辑</button>
@@ -1033,7 +1649,11 @@
         </div>
       </article>`;
     }).join('');
-    grid.querySelectorAll('.hub-work-card').forEach(card => {
+  }
+
+  function bindHubWorkCards(container) {
+    if (!container) return;
+    container.querySelectorAll('.hub-work-card').forEach(card => {
       card.querySelectorAll('[data-hub-action]').forEach(btn => {
         btn.addEventListener('click', e => {
           e.stopPropagation();
@@ -1055,6 +1675,133 @@
     });
   }
 
+  function renderWorksGrid(gridId, options = {}) {
+    const grid = document.getElementById(gridId);
+    if (!grid) return;
+    const limit = options.limit ?? 6;
+    const filter = options.filter || 'all';
+    let works = getHubMyWorks(limit);
+    if (filter !== 'all') works = works.filter(w => w.type === filter);
+    const demos = filter === 'all'
+      ? HUB_MY_WORKS_DEMOS
+      : HUB_MY_WORKS_DEMOS.filter(d => d.type === filter);
+    const list = works.length ? works : (options.showDemo ? demos : []);
+    if (!list.length) {
+      grid.innerHTML = `<div class="hub-works-empty"><p>暂无${filter === 'all' ? '' : demos[0]?.module || ''}作品</p><button type="button" class="btn btn-sm btn-primary" data-hub-works-create>去创作</button></div>`;
+      const createBtn = grid.querySelector('[data-hub-works-create]');
+      const createPage = filter === 'all' ? 'image' : filter;
+      createBtn?.addEventListener('click', () => navigate(createPage));
+      return;
+    }
+    grid.innerHTML = renderHubWorkCardsHtml(list);
+    bindHubWorkCards(grid);
+  }
+
+  function renderHubTemplates() {
+    const grid = document.getElementById('hub-template-grid');
+    if (!grid) return;
+    const cat = STATE.hubTemplateFilter || 'all';
+    const items = filterHubByCategory(HUB_TEMPLATES, cat);
+    grid.innerHTML = items.length
+      ? items.map(t => {
+          const thumb = t.image
+            ? `<img src="${t.image}" alt="${t.title}" loading="lazy" decoding="async">`
+            : `<span class="hub-template-emoji">${t.emoji}</span>`;
+          return `
+          <article class="hub-template-card hub-card interactive-card inspire-interactive-card" data-hub-template="${t.id}" tabindex="0" role="button" aria-label="${t.title}">
+            <div class="interactive-card-media">
+              <div class="hub-template-thumb hub-inspire-thumb r-square">${thumb}</div>
+              <div class="interactive-card-overlay" aria-hidden="true"></div>
+            </div>
+            <div class="interactive-card-action-zone" aria-hidden="true">
+              <span class="interactive-card-action-text">使用该模型</span>
+            </div>
+          </article>`;
+        }).join('')
+      : '<div class="hub-empty">该分类暂无模板</div>';
+    grid.querySelectorAll('[data-hub-template]').forEach(card => {
+      card.addEventListener('click', () => {
+        const t = HUB_TEMPLATES.find(x => x.id === card.dataset.hubTemplate);
+        applyHubTemplate(t, card);
+      });
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          const t = HUB_TEMPLATES.find(x => x.id === card.dataset.hubTemplate);
+          applyHubTemplate(t, card);
+        }
+      });
+    });
+  }
+
+  function renderHubInspire() {
+    const grid = document.getElementById('hub-inspire-grid');
+    if (!grid) return;
+    const items = filterHubInspireItems();
+    grid.innerHTML = items.length
+      ? items.map((item, index) => {
+          const ratioClass = HUB_INSPIRE_TILE_RATIOS[index % HUB_INSPIRE_TILE_RATIOS.length];
+          const imgSrc = item.image || HUB_INSPIRE_IMAGE_FALLBACKS[index % HUB_INSPIRE_IMAGE_FALLBACKS.length];
+          const thumb = item.image || item.type === 'image'
+            ? `<img src="${imgSrc}" alt="${item.title}" loading="lazy" decoding="async">`
+            : `<div class="hub-inspire-placeholder">${item.emoji || '✨'}</div>`;
+          return `
+          <article class="hub-inspire-card hub-inspire-tile interactive-card inspire-interactive-card ${ratioClass}" data-hub-inspire="${item.id}" tabindex="0" role="button" aria-label="${item.title}">
+            <div class="interactive-card-media">
+              <div class="hub-inspire-thumb ${ratioClass}">${thumb}</div>
+              <div class="interactive-card-overlay" aria-hidden="true"></div>
+            </div>
+            <div class="interactive-card-action-zone" aria-hidden="true">
+              <span class="interactive-card-action-text">使用该模型</span>
+            </div>
+          </article>`;
+        }).join('')
+      : '<div class="hub-empty">该分类暂无灵感内容</div>';
+    grid.querySelectorAll('[data-hub-inspire]').forEach(card => {
+      card.addEventListener('click', () => {
+        const item = HUB_INSPIRE_ITEMS.find(x => x.id === card.dataset.hubInspire);
+        applyHubInspireItem(item, card);
+      });
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          const item = HUB_INSPIRE_ITEMS.find(x => x.id === card.dataset.hubInspire);
+          applyHubInspireItem(item, card);
+        }
+      });
+    });
+  }
+
+  function renderMeWorks() {
+    renderWorksGrid('me-works-grid', { limit: 6, showDemo: true });
+  }
+
+  function renderHubMyWorks() {
+    renderWorksGrid('hub-my-works-grid', {
+      limit: 12,
+      filter: STATE.hubWorksFilter || 'all',
+      showDemo: true,
+    });
+    document.querySelectorAll('#hub-my-works-filters [data-hub-works-filter]').forEach(tab => {
+      const active = tab.dataset.hubWorksFilter === (STATE.hubWorksFilter || 'all');
+      tab.classList.toggle('active', active);
+      tab.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+  }
+
+  function bindHubMyWorks() {
+    document.getElementById('hub-my-works-more')?.addEventListener('click', () => {
+      navigate('me');
+      switchMeSubTab('works');
+    });
+    document.querySelectorAll('#hub-my-works-filters [data-hub-works-filter]').forEach(tab => {
+      tab.addEventListener('click', () => {
+        STATE.hubWorksFilter = tab.dataset.hubWorksFilter || 'all';
+        renderHubMyWorks();
+      });
+    });
+  }
+
   function updateMeStats() {
     const history = JSON.parse(localStorage.getItem(STORAGE.history) || '{}');
     const total = ['image', 'video', 'avatar', 'content']
@@ -1072,6 +1819,7 @@
     renderHubTemplates();
     renderHubInspireSubtabs();
     renderHubInspire();
+    renderHubMyWorks();
   }
 
   function bindHubAdBanners() {
@@ -1200,63 +1948,78 @@
       page: 'content',
       template: '小红书种草',
       prompt: '小红书种草文案，真实体验感，emoji 点缀，分段清晰，适合自媒体传播',
+      enterLabel: '进入爆款图文',
     },
     'image-ecommerce': {
       page: 'image',
       prompt: '电商产品主图，白色背景，产品居中，突出质感与卖点，高清商业摄影风',
+      enterLabel: '进入 AI 图片',
+      model: '智能图片 V2',
+      ratio: '1:1',
+      count: 1,
+      image: 'assets/hub/scene-ecommerce.png',
     },
     'avatar-host': {
       page: 'avatar',
       prompt: '各位家人们好，今天给大家带来一款超值好物，关注我不迷路，限时优惠不要错过…',
       avatarName: '直播主播',
+      enterLabel: '进入数字人创作',
     },
     'content-sales': {
       page: 'content',
       template: '产品标题',
       prompt: '电商爆款标题，突出核心卖点与优惠信息，吸引点击，适合直播带货场景',
+      enterLabel: '进入爆款图文',
     },
     'workplace-office': {
       page: 'avatar',
       prompt: '各位同事好，今天汇报本周工作进展与下周计划，会议纪要已整理完毕，请查阅…',
       avatarName: '职场精英',
+      enterLabel: '进入数字人创作',
     },
     'knowledge-science': {
       page: 'avatar',
       prompt: '你知道吗？今天我们来聊一个有趣的知识点，用简单易懂的方式讲清楚原理…',
       avatarName: '卡通男孩',
+      enterLabel: '进入数字人创作',
     },
     'brand-promo': {
       page: 'image',
       prompt: '品牌宣传海报，店铺引流视觉，活力配色，突出品牌 LOGO 与优惠信息，适合线上线下传播',
+      enterLabel: '进入 AI 图片',
+      model: 'Seedream 5.0',
+      ratio: '16:9',
+      count: 1,
+      image: 'assets/hub/scene-brand.png',
     },
     'family-edu': {
       page: 'image',
       prompt: '儿童绘本插画，温馨启蒙教学场景，色彩柔和，适合亲子阅读与早教内容',
+      enterLabel: '进入 AI 图片',
+      model: 'Qwen-Image',
+      ratio: '4:3',
+      count: 1,
+      image: 'assets/hub/scene-family.png',
     },
     'life-record': {
       page: 'video',
       prompt: '日常生活 vlog，阳光氛围，咖啡馆、公园、书桌等生活场景切换，适合朋友圈分享',
+      enterLabel: '进入 AI 视频',
     },
   };
 
-  function applyHubScenePreset(presetId) {
+  function applyHubScenePreset(presetId, cardEl) {
     const preset = HUB_SCENE_PRESETS[presetId];
     if (!preset) return;
 
+    runInteractiveCardApply(cardEl, () => {
     navigate(preset.page);
+    if (preset.page === 'content') switchContentSubTab('create');
+    if (preset.page === 'video') switchVideoSubTab('create');
+    if (preset.page === 'avatar') switchAvatarSubTab('create');
     requestAnimationFrame(() => {
       if (preset.page === 'content') {
-        if (preset.template) {
-          document.querySelectorAll('.content-scene-item').forEach(item => {
-            item.classList.toggle('active', item.textContent.trim() === preset.template);
-          });
-        }
-        const editor = document.getElementById('content-editor');
-        if (editor && preset.prompt) {
-          editor.value = preset.prompt;
-          setDraft('content-editor', preset.prompt);
-          editor.placeholder = '在此编辑「' + (preset.template || '文案') + '」文案…';
-        }
+        applyContentTemplate(preset.template, preset.prompt);
       }
       if (preset.page === 'image' && preset.prompt) {
         const el = document.getElementById('image-prompt');
@@ -1290,7 +2053,21 @@
           }
         }
       }
-      toast('已带入「' + (document.querySelector('[data-preset="' + presetId + '"] .hub-scene-name')?.textContent?.trim() || '场景') + '」模板', 'success');
+      if (preset.page === 'image') {
+        switchImageSubTab('create');
+        if (preset.model) setImageModel(preset.model);
+        if (preset.ratio) setImageRatio(preset.ratio);
+        if (preset.count != null) setSelectByValue('image-count-select', preset.count);
+        updateImageCost();
+        const hasRefs = applyInspireRefImages(preset);
+        toast(
+          hasRefs ? '已带入场景模板与参考素材' : '已带入场景风格与参数预设',
+          hasRefs ? 'success' : 'info',
+        );
+      } else {
+        toast('已带入「' + (preset.enterLabel || '场景') + '」模板', 'success');
+      }
+    });
     });
   }
 
@@ -1336,8 +2113,17 @@
 
   function bindHubPage() {
     document.querySelectorAll('.hub-scene-card[data-preset]').forEach(card => {
+      const preset = HUB_SCENE_PRESETS[card.dataset.preset];
+      const labelEl = card.querySelector('.scene-enter-label');
+      if (labelEl && preset?.enterLabel) labelEl.textContent = preset.enterLabel;
       card.addEventListener('click', () => {
-        applyHubScenePreset(card.dataset.preset);
+        applyHubScenePreset(card.dataset.preset, card);
+      });
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          applyHubScenePreset(card.dataset.preset, card);
+        }
       });
     });
 
@@ -1369,6 +2155,7 @@
     });
 
     bindHubPromoCarousel();
+    bindHubMyWorks();
   }
 
   function bindMePage() {
@@ -1442,53 +2229,90 @@
     STATE.generating = true;
     if (btn) btn.disabled = true;
 
-    const useInline = type === 'image' || type === 'avatar';
+    const useInline = type === 'image' || type === 'avatar' || type === 'content';
     const overlay = document.getElementById('gen-overlay');
     const inlineWrap = type === 'image'
       ? document.getElementById('image-gen-progress')
       : type === 'avatar'
         ? document.getElementById('avatar-gen-progress')
-        : null;
+        : type === 'content'
+          ? document.getElementById('content-result-loading')
+          : null;
     const fill = type === 'image'
       ? document.getElementById('image-gen-progress-fill')
       : type === 'avatar'
         ? document.getElementById('avatar-gen-progress-fill')
-        : document.getElementById('gen-progress-fill');
+        : type === 'content'
+          ? document.getElementById('content-gen-progress-fill')
+          : document.getElementById('gen-progress-fill');
     const status = type === 'image'
       ? document.getElementById('image-gen-status')
       : type === 'avatar'
         ? document.getElementById('avatar-gen-status')
-        : document.getElementById('gen-status');
+        : type === 'content'
+          ? document.getElementById('content-gen-status')
+          : document.getElementById('gen-status');
     const eta = type === 'image'
       ? document.getElementById('image-gen-eta')
       : type === 'avatar'
         ? document.getElementById('avatar-gen-eta')
         : document.getElementById('gen-eta');
     const genText = btn?.querySelector('.avatar-gen-text');
+    const contentGenText = btn?.querySelector('.content-generate-text');
+
+    if (type === 'content') {
+      const prompt = document.getElementById('content-editor')?.value?.trim();
+      if (!prompt) {
+        STATE.generating = false;
+        if (btn) btn.disabled = false;
+        toast('请先输入创作主题', 'info');
+        return;
+      }
+      switchContentSubTab('create');
+      showContentResultState('loading');
+      const contentProgress = document.getElementById('content-gen-progress');
+      if (contentProgress) contentProgress.hidden = false;
+    }
 
     if (useInline && inlineWrap) {
       inlineWrap.hidden = false;
-    } else {
+    } else if (overlay) {
       overlay.classList.add('show');
     }
 
     if (type === 'avatar' && genText) genText.textContent = '生成中…';
     if (type === 'avatar') btn?.classList.add('is-generating');
+    if (type === 'content' && contentGenText) contentGenText.textContent = '生成中…';
+    if (type === 'content') btn?.classList.add('is-generating');
 
     const messages = GEN_MESSAGES[type] || GEN_MESSAGES.image;
+    const hasImageRefs = type === 'image' && (STATE.imageRefs || []).length > 0;
     let progress = 0;
     let msgIndex = 0;
-    status.textContent = messages[0];
-    eta.textContent = '预计剩余 ' + (type === 'video' ? '45' : '20') + ' 秒';
-    fill.style.width = '0%';
+    if (status) {
+      status.textContent = hasImageRefs ? '解析参考图与提示词…' : messages[0];
+    }
+    if (eta) eta.textContent = '预计剩余 ' + (type === 'video' ? '45' : '20') + ' 秒';
+    if (fill) fill.style.width = '0%';
 
     const finish = () => {
-      if (useInline && inlineWrap) {
+      if (type === 'content') {
+        const prompt = document.getElementById('content-editor')?.value?.trim() || '';
+        STATE.contentResults = buildContentResults(prompt, 4);
+        renderContentResultGrid();
         inlineWrap.hidden = true;
-      } else {
+        const contentProgress = document.getElementById('content-gen-progress');
+        if (contentProgress) contentProgress.hidden = true;
+        btn?.classList.remove('is-generating');
+        if (contentGenText) contentGenText.textContent = '立即生成';
+        const statusEl = document.getElementById('content-gen-status');
+        if (statusEl) statusEl.textContent = 'AI 正在为你生成图文…';
+      } else if (useInline && inlineWrap) {
+        inlineWrap.hidden = true;
+      } else if (overlay) {
         overlay.classList.remove('show');
       }
-      fill.style.width = '0%';
+      if (fill) fill.style.width = '0%';
       STATE.generating = false;
       if (btn) btn.disabled = false;
       if (type === 'avatar') {
@@ -1498,15 +2322,16 @@
       STATE.credits -= cost;
       saveCredits();
       addHistory(type);
-      toast('生成成功！已消耗 ' + cost + ' 积分', 'success');
-      if (useInline) {
+      const refNote = type === 'image' && (STATE.imageRefs || []).length
+        ? '（已参考 ' + STATE.imageRefs.length + ' 张图）'
+        : '';
+      toast('生成成功！已消耗 ' + cost + ' 积分' + refNote, 'success');
+      if (type === 'image') {
         switchImageSubTab('works');
       } else if (type === 'video') {
         switchVideoSubTab('history');
       } else if (type === 'avatar') {
         switchAvatarSubTab('history');
-      } else if (type === 'content') {
-        switchContentSubTab('history');
       }
     };
 
@@ -1515,18 +2340,18 @@
       if (progress >= 100) {
         progress = 100;
         clearInterval(interval);
-        fill.style.width = '100%';
-        status.textContent = '生成完成';
+        if (fill) fill.style.width = '100%';
+        if (status) status.textContent = '生成完成';
         setTimeout(finish, 500);
         return;
       }
-      fill.style.width = progress + '%';
+      if (fill) fill.style.width = progress + '%';
       const newIndex = Math.min(Math.floor(progress / 25), messages.length - 1);
       if (newIndex !== msgIndex) {
         msgIndex = newIndex;
-        status.textContent = messages[msgIndex];
+        if (status) status.textContent = messages[msgIndex];
       }
-      eta.textContent = '预计剩余 ' + Math.max(1, Math.round((100 - progress) / 5)) + ' 秒';
+      if (eta) eta.textContent = '预计剩余 ' + Math.max(1, Math.round((100 - progress) / 5)) + ' 秒';
     }, 400);
   }
 
@@ -1561,19 +2386,27 @@
     const count = parseInt(document.getElementById('image-count-select')?.value || '1', 10);
     const imageCost = count * 10;
     const items = {
-      image: {
-        title: 'AI 生成图片 #' + (history.image?.length + 1 || 1),
-        time: '刚刚',
-        prompt: getDraft('image-prompt') || getDraft('image-simple') || 'AI 生成作品',
-        preview: (getDraft('image-prompt') || getDraft('image-simple') || 'AI 生成作品').slice(0, 48),
-        cost: imageCost,
-        emoji: '🖼',
-        ratio: document.getElementById('image-ratio-select')?.value || '1:1',
-        count,
-        model: document.getElementById('image-model-select')?.value || '智能图片 V2',
-        starred: false,
-        createdAt: Date.now(),
-      },
+      image: (() => {
+        const prompt = getImagePromptWithStyle();
+        const resultImages = pickImageResultUrls(count, Date.now());
+        return {
+          title: 'AI 生成图片 #' + (history.image?.length + 1 || 1),
+          time: '刚刚',
+          prompt,
+          preview: prompt.slice(0, 48),
+          cost: imageCost,
+          emoji: '🖼',
+          ratio: STATE.imageRatio || document.getElementById('image-ratio-select')?.value || '1:1',
+          style: getImageStyleLabel(STATE.imageStyle),
+          styleId: STATE.imageStyle,
+          count,
+          model: document.getElementById('image-model-select')?.value || '智能图片 V2',
+          resultImages,
+          resultImage: resultImages[0],
+          starred: false,
+          createdAt: Date.now(),
+        };
+      })(),
       video: (() => {
         const snap = getVideoHistoryPayload();
         return {
@@ -1605,16 +2438,23 @@
         starred: false,
         createdAt: Date.now(),
       },
-      content: {
-        title: '爆款文案 #' + (history.content?.length + 1 || 1),
-        time: '刚刚',
-        preview: getDraft('content-editor')?.slice(0, 60) || '新生成的文案内容…',
-        prompt: getDraft('content-editor') || '',
-        cost: 5,
-        emoji: '📝',
-        starred: false,
-        createdAt: Date.now(),
-      },
+      content: (() => {
+        const prompt = getDraft('content-editor') || '';
+        const firstResult = STATE.contentResults?.[0];
+        return {
+          title: firstResult?.title || '爆款图文 #' + (history.content?.length + 1 || 1),
+          time: '刚刚',
+          preview: prompt.slice(0, 60) || firstResult?.title || '新生成的图文内容…',
+          prompt,
+          resultImage: firstResult?.image,
+          platform: STATE.contentPlatform,
+          ratio: STATE.contentRatio,
+          cost: 5,
+          emoji: '📝',
+          starred: false,
+          createdAt: Date.now(),
+        };
+      })(),
     };
     if (items[type]) {
       history[type].unshift(items[type]);
@@ -1622,8 +2462,11 @@
       localStorage.setItem(STORAGE.history, JSON.stringify(history));
       renderHistory(type);
       renderMeWorks();
+      renderHubMyWorks();
       updateMeStats();
+      return items[type];
     }
+    return null;
   }
 
   function applyImagePrompt(prompt) {
@@ -1647,6 +2490,151 @@
     }
   }
 
+  function ratioGlyphSize(w, h, max = 22) {
+    if (w >= h) return { width: max, height: Math.max(8, Math.round(max * h / w)) };
+    return { width: Math.max(8, Math.round(max * w / h)), height: max };
+  }
+
+  function getImagePromptWithStyle() {
+    const base = getDraft('image-prompt') || getDraft('image-simple') || 'AI 生成作品';
+    const style = getImageStyleOption(STATE.imageStyle);
+    if (!style || style.id === 'default' || !style.tag) return base;
+    if (base.includes(style.tag) || base.includes(style.label)) return base;
+    return base + '，' + style.tag;
+  }
+
+  function getImageStyleLabel(styleId) {
+    const style = IMAGE_STYLE_OPTIONS.find(s => s.id === styleId);
+    return style?.label || '默认';
+  }
+
+  function getImageStyleOption(styleId) {
+    return IMAGE_STYLE_OPTIONS.find(s => s.id === styleId) || IMAGE_STYLE_OPTIONS[0];
+  }
+
+  function setImageRatio(value) {
+    const opt = IMAGE_RATIO_OPTIONS.find(r => r.value === value) || IMAGE_RATIO_OPTIONS[0];
+    STATE.imageRatio = opt.value;
+    setSelectByValue('image-ratio-select', opt.value);
+    updateImageRatioTrigger(opt);
+    document.querySelectorAll('#image-ratio-grid .image-ratio-opt').forEach(btn => {
+      const active = btn.dataset.ratio === opt.value;
+      btn.classList.toggle('active', active);
+      btn.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+  }
+
+  function setImageStyle(styleId) {
+    const opt = getImageStyleOption(styleId);
+    STATE.imageStyle = opt.id;
+    updateImageStyleTrigger(opt);
+    document.querySelectorAll('#image-style-grid .image-style-opt').forEach(btn => {
+      const active = btn.dataset.style === opt.id;
+      btn.classList.toggle('active', active);
+      btn.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+  }
+
+  function updateImageRatioTrigger(opt) {
+    const trigger = document.getElementById('image-ratio-trigger');
+    if (trigger) {
+      trigger.dataset.ratio = opt.value;
+      trigger.title = '比例：' + opt.label;
+    }
+  }
+
+  function updateImageStyleTrigger(opt) {
+    const trigger = document.getElementById('image-style-trigger');
+    if (trigger) {
+      trigger.dataset.style = opt.id;
+      trigger.title = opt.id === 'default' ? '风格：默认' : '风格：' + opt.label;
+    }
+  }
+
+  function closeImageComposerPickers(except) {
+    document.querySelectorAll('.image-picker-wrap').forEach(wrap => {
+      if (except && wrap === except) return;
+      const pop = wrap.querySelector('.image-picker-popover');
+      const btn = wrap.querySelector('.image-picker-trigger');
+      if (pop) pop.hidden = true;
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  function toggleImagePickerPopover(wrap) {
+    const pop = wrap.querySelector('.image-picker-popover');
+    const btn = wrap.querySelector('.image-picker-trigger');
+    if (!pop || !btn) return;
+    const willOpen = pop.hidden;
+    closeImageComposerPickers(willOpen ? wrap : null);
+    pop.hidden = !willOpen;
+    btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+  }
+
+  function renderImageComposerPickers() {
+    const ratioGrid = document.getElementById('image-ratio-grid');
+    const styleGrid = document.getElementById('image-style-grid');
+    if (ratioGrid) {
+      ratioGrid.innerHTML = IMAGE_RATIO_OPTIONS.map(opt => {
+        const sz = ratioGlyphSize(opt.w, opt.h, 22);
+        return `
+        <button type="button" class="image-ratio-opt${opt.value === STATE.imageRatio ? ' active' : ''}"
+          data-ratio="${opt.value}" role="option" aria-selected="${opt.value === STATE.imageRatio ? 'true' : 'false'}">
+          <span class="image-ratio-opt-glyph"><i style="width:${sz.width}px;height:${sz.height}px"></i></span>
+          <span class="image-ratio-opt-label">${opt.label}</span>
+        </button>`;
+      }).join('');
+    }
+    if (styleGrid) {
+      styleGrid.innerHTML = IMAGE_STYLE_OPTIONS.map(opt => `
+        <button type="button" class="image-style-opt${opt.id === STATE.imageStyle ? ' active' : ''}"
+          data-style="${opt.id}" role="option" aria-selected="${opt.id === STATE.imageStyle ? 'true' : 'false'}" title="${opt.hint}">
+          <span class="image-style-opt-emoji">${opt.emoji}</span>
+          <span class="image-style-opt-label">${opt.label}</span>
+        </button>
+      `).join('');
+    }
+    setImageRatio(STATE.imageRatio || '1:1');
+    setImageStyle(STATE.imageStyle || 'default');
+  }
+
+  function bindImageComposerPickers() {
+    renderImageComposerPickers();
+
+    document.querySelectorAll('.image-picker-wrap').forEach(wrap => {
+      const trigger = wrap.querySelector('.image-picker-trigger');
+      trigger?.addEventListener('click', e => {
+        e.stopPropagation();
+        toggleImagePickerPopover(wrap);
+      });
+    });
+
+    document.getElementById('image-ratio-grid')?.addEventListener('click', e => {
+      const btn = e.target.closest('.image-ratio-opt');
+      if (!btn) return;
+      setImageRatio(btn.dataset.ratio);
+      closeImageComposerPickers();
+      toast('已选择比例 ' + btn.dataset.ratio, 'info');
+    });
+
+    document.getElementById('image-style-grid')?.addEventListener('click', e => {
+      const btn = e.target.closest('.image-style-opt');
+      if (!btn) return;
+      setImageStyle(btn.dataset.style);
+      closeImageComposerPickers();
+      const label = getImageStyleLabel(btn.dataset.style);
+      toast(label === '默认' ? '已恢复默认风格' : '已选择风格：' + label, 'success');
+    });
+
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.image-picker-wrap')) closeImageComposerPickers();
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeImageComposerPickers();
+    });
+  }
+
   function setImageModel(modelName) {
     const sel = document.getElementById('image-model-select');
     if (!sel || !modelName) return;
@@ -1658,17 +2646,27 @@
     }
   }
 
-  function applyImageSceneTemplate(template, mode) {
+  function applyImageSceneTemplate(template, mode, cardEl) {
     if (!template) return;
-    applyImagePrompt(template.prompt);
-    setImageModel(template.model);
-    if (mode === 'template') {
-      setSelectByValue('image-ratio-select', template.ratio);
-      setSelectByValue('image-count-select', template.count);
-      updateImageCost();
-    }
-    document.getElementById('image-prompt')?.focus({ preventScroll: true });
-    toast(mode === 'model' ? '已切换模型并套用示例提示词' : '已套用模板参数与提示词', 'success');
+    const apply = () => {
+      applyImagePrompt(template.prompt);
+      setImageModel(template.model);
+      if (mode === 'template') {
+        if (template.ratio) setImageRatio(template.ratio);
+        setSelectByValue('image-count-select', template.count);
+        updateImageCost();
+        const hasRefs = applyInspireRefImages(template);
+        toast(
+          hasRefs ? '已套用模型素材与参数，可直接开始创作' : '已加载风格与参数（暂无配套参考图）',
+          hasRefs ? 'success' : 'info',
+        );
+      } else {
+        toast('已切换模型并套用示例提示词', 'success');
+      }
+      document.getElementById('image-prompt')?.focus({ preventScroll: true });
+    };
+    if (cardEl) runInteractiveCardApply(cardEl, apply);
+    else apply();
   }
 
   function getImageSceneTemplate(id) {
@@ -1685,18 +2683,15 @@
 
   function renderImageInspireCard(t) {
     return `
-      <div class="image-inspire-card" data-template-id="${t.id}" tabindex="0" role="group" aria-label="${t.title}">
-        <div class="image-inspire-thumb-wrap">
+      <div class="image-inspire-card interactive-card inspire-interactive-card" data-template-id="${t.id}" tabindex="0" role="button" aria-label="${t.title}">
+        <div class="interactive-card-media image-inspire-thumb-wrap">
           <div class="image-inspire-thumb">
-            <img src="${t.image}" alt="${t.title}" loading="lazy">
+            <img src="${t.image}" alt="${t.title}" loading="lazy" decoding="async" onerror="this.classList.add('is-broken')">
           </div>
+          <div class="interactive-card-overlay" aria-hidden="true"></div>
         </div>
-        <div class="image-inspire-card-action">
-          <button type="button" class="btn btn-sm btn-primary image-inspire-overlay-btn" data-inspire-action="template">使用该模板</button>
-        </div>
-        <div class="image-inspire-body">
-          <strong>${t.title}</strong>
-          <span>${t.desc}</span>
+        <div class="interactive-card-action-zone image-inspire-card-action" aria-hidden="true">
+          <span class="interactive-card-action-text">使用该模型</span>
         </div>
       </div>`;
   }
@@ -1712,45 +2707,96 @@
   }
 
   function bindImageInspireCards(container) {
-    const isTouch = window.matchMedia('(hover: none)').matches;
     container.querySelectorAll('.image-inspire-card[data-template-id]').forEach(card => {
       if (card.dataset.bound) return;
       card.dataset.bound = '1';
       const template = () => getImageSceneTemplate(card.dataset.templateId);
 
-      card.querySelector('[data-inspire-action="template"]')?.addEventListener('click', e => {
-        e.stopPropagation();
-        applyImageSceneTemplate(template(), 'template');
-        card.classList.remove('is-active');
-      });
-
-      card.addEventListener('click', e => {
-        if (e.target.closest('[data-inspire-action]')) return;
-        if (isTouch && !card.classList.contains('is-active')) {
-          container.querySelectorAll('.image-inspire-card.is-active').forEach(c => c.classList.remove('is-active'));
-          card.classList.add('is-active');
-          return;
-        }
-        applyImageSceneTemplate(template(), 'template');
-        card.classList.remove('is-active');
+      card.addEventListener('click', () => {
+        applyImageSceneTemplate(template(), 'template', card);
       });
 
       card.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          applyImageSceneTemplate(template(), 'template');
+          applyImageSceneTemplate(template(), 'template', card);
         }
       });
     });
+  }
 
-    if (isTouch && !document.body.dataset.inspireTouchBound) {
-      document.body.dataset.inspireTouchBound = '1';
-      document.addEventListener('click', e => {
-        if (!e.target.closest('.image-inspire-card')) {
-          document.querySelectorAll('.image-inspire-card.is-active').forEach(c => c.classList.remove('is-active'));
-        }
+  function bindImageRefUpload() {
+    const dropZone = document.querySelector('.image-composer-unified');
+    const strip = document.getElementById('image-ref-strip');
+    const list = document.getElementById('image-ref-list');
+    const addBtn = document.getElementById('image-ref-add-btn');
+    const addWrap = document.getElementById('image-ref-add-wrap');
+    const fileInput = document.getElementById('image-ref-input');
+    if (!strip || !list || !addBtn || !fileInput) return;
+
+    function removeImageRef(id) {
+      STATE.imageRefs = (STATE.imageRefs || []).filter(r => r.id !== id);
+      renderImageRefUI();
+      toast('已移除参考图', 'info');
+    }
+
+    function addImageRefFiles(files) {
+      const refs = STATE.imageRefs || [];
+      const room = IMAGE_REF_MAX - refs.length;
+      if (room <= 0) {
+        toast('最多上传 ' + IMAGE_REF_MAX + ' 张参考图', 'info');
+        return;
+      }
+      const picked = Array.from(files || []).filter(f => f.type.startsWith('image/')).slice(0, room);
+      if (!picked.length) {
+        toast('请选择图片文件（JPG / PNG / WebP）', 'info');
+        return;
+      }
+      let pending = picked.length;
+      picked.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          STATE.imageRefs.push({
+            id: 'ref-' + Date.now() + '-' + Math.random().toString(36).slice(2, 7),
+            name: file.name,
+            dataUrl: reader.result,
+          });
+          pending -= 1;
+          if (pending === 0) {
+            renderImageRefUI();
+            toast('已添加 ' + picked.length + ' 张参考图', 'success');
+          }
+        };
+        reader.onerror = () => {
+          pending -= 1;
+          toast('图片读取失败：' + file.name, 'error');
+        };
+        reader.readAsDataURL(file);
       });
     }
+
+    addBtn.addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', () => {
+      if (fileInput.files?.length) addImageRefFiles(fileInput.files);
+      fileInput.value = '';
+    });
+
+    if (dropZone) {
+      dropZone.addEventListener('dragover', e => {
+        e.preventDefault();
+        dropZone.classList.add('is-dragover');
+      });
+      dropZone.addEventListener('dragleave', e => {
+        if (!dropZone.contains(e.relatedTarget)) dropZone.classList.remove('is-dragover');
+      });
+      dropZone.addEventListener('drop', e => {
+        e.preventDefault();
+        dropZone.classList.remove('is-dragover');
+        if (e.dataTransfer?.files?.length) addImageRefFiles(e.dataTransfer.files);
+      });
+    }
+
+    renderImageRefUI();
   }
 
   function bindImageInspireCategories() {
@@ -1842,10 +2888,13 @@
     const text = item?.prompt || item?.preview || '';
     if (!text) return;
     switchContentSubTab('create');
+    if (item.platform) setContentPlatform(item.platform);
+    if (item.ratio) setContentRatio(item.ratio);
     const editor = document.getElementById('content-editor');
     if (editor) {
       editor.value = text;
       setDraft('content-editor', text);
+      updateContentCharCount();
       if (fullEdit) editor.focus();
     }
   }
@@ -1934,8 +2983,68 @@
     applyImagePrompt(item.prompt);
     if (!fullEdit) return;
     setImageModel(item.model);
-    setSelectByValue('image-ratio-select', item.ratio);
+    if (item.ratio) setImageRatio(item.ratio);
+    if (item.styleId) setImageStyle(item.styleId);
     if (item.count != null) setSelectByValue('image-count-select', item.count);
+  }
+
+  function applyImageRefFromUrl(url, name = '参考图', source = 'upload') {
+    if (!url) return false;
+    STATE.imageRefs = [{
+      id: 'ref-' + Date.now() + '-' + Math.random().toString(36).slice(2, 5),
+      name: String(name).slice(0, 32),
+      dataUrl: url,
+      source,
+    }];
+    renderImageRefUI();
+    return true;
+  }
+
+  function focusImageComposer() {
+    const composer = document.getElementById('image-create-block') || document.querySelector('.image-composer-unified');
+    const prompt = document.getElementById('image-prompt');
+    requestAnimationFrame(() => {
+      composer?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      prompt?.focus({ preventScroll: true });
+    });
+  }
+
+  function flashImageRefStrip() {
+    const strip = document.getElementById('image-ref-strip');
+    if (!strip) return;
+    strip.classList.add('is-img2img-highlight');
+    window.setTimeout(() => strip.classList.remove('is-img2img-highlight'), 2200);
+  }
+
+  function applyImageImg2img(item, specificImageUrl, cardIndex = -1) {
+    if (!item) return false;
+    const prompt = item.prompt || item.preview || '';
+    if (!prompt && !specificImageUrl) return false;
+
+    switchImageSubTab('create');
+
+    if (prompt) applyImagePrompt(prompt);
+    setImageModel(item.model);
+    if (item.ratio) setImageRatio(item.ratio);
+    if (item.styleId) setImageStyle(item.styleId);
+    if (item.count != null) setSelectByValue('image-count-select', item.count);
+
+    const imgUrl = specificImageUrl || item.resultImage || getImageResultUrls(item, cardIndex)[0];
+    const promptEl = document.getElementById('image-prompt');
+    if (promptEl) {
+      promptEl.placeholder = '描述希望在原图基础上的变化，例：保持主体构图，将背景改为纯白电商主图风格…';
+    }
+
+    if (imgUrl) {
+      applyImageRefFromUrl(imgUrl, item.title || '生成图', 'img2img');
+      flashImageRefStrip();
+      focusImageComposer();
+      toast('已提取原图作为参考，修改描述后点击生成即可图生图', 'success');
+    } else if (prompt) {
+      focusImageComposer();
+      toast('已载入提示词，请上传参考图或从作品中选择图片', 'info');
+    }
+    return true;
   }
 
   function getImageItemFromCard(card) {
@@ -2069,16 +3178,25 @@
     const metaExtra = [h.ratio, h.count ? h.count + ' 张' : '', h.model].filter(Boolean).join(' · ');
     const demoClass = demo ? ' is-demo' : '';
     const disabled = demo ? ' disabled' : '';
+    const resultImage = h.resultImage || getImageResultUrls(h, index)[0];
+    const resultImages = h.resultImages || getImageResultUrls(h, index);
     const itemPayload = encodeURIComponent(JSON.stringify({
       prompt: h.prompt || h.preview || '',
       model: h.model || '',
       ratio: h.ratio || '',
       count: h.count || 1,
+      styleId: h.styleId || '',
+      title: h.title || '',
+      resultImage,
+      resultImages,
     }));
+    const thumbInner = resultImage
+      ? `<img class="studio-work-cover-img" src="${resultImage}" alt="${h.title || 'AI 生成图片'}" loading="lazy">`
+      : `<span class="studio-work-emoji">${h.emoji || '🖼'}</span>`;
     return `
       <article class="studio-work-card image-work-card${demoClass}" data-index="${index}" data-prompt="${encodeURIComponent(h.prompt || h.preview || '')}" data-item="${itemPayload}">
-        <div class="studio-work-thumb studio-work-thumb--image">
-          <span class="studio-work-emoji">${h.emoji || '🖼'}</span>
+        <div class="studio-work-thumb studio-work-thumb--image"${resultImage ? ` data-action="img2img-thumb" title="点击图生图"` : ''}>
+          ${thumbInner}
           <div class="studio-work-cover-shine" aria-hidden="true"></div>
         </div>
         ${renderStudioWorkIconbar(demo, h.starred)}
@@ -2093,7 +3211,7 @@
           <div class="studio-work-actions studio-work-actions--3">
             <button type="button" class="btn btn-sm btn-primary" data-action="reuse"${disabled}>复用</button>
             <button type="button" class="btn btn-sm btn-secondary" data-action="download"${disabled}>下载</button>
-            <button type="button" class="btn btn-sm btn-ghost" data-action="img2img"${disabled}>图生图</button>
+            <button type="button" class="btn btn-sm btn-ghost" data-action="img2img">图生图</button>
           </div>
         </div>
       </article>`;
@@ -2143,9 +3261,18 @@
         renderHistory('image');
       });
     });
+    container.querySelectorAll('.studio-work-card.image-work-card [data-action="img2img"]').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        const card = btn.closest('.studio-work-card');
+        const index = parseInt(card?.dataset.index || '-1', 10);
+        applyImageImg2img(getImageItemFromCard(card), null, index);
+      });
+    });
     container.querySelectorAll('.studio-work-card.image-work-card:not(.is-demo) [data-action]').forEach(btn => {
       btn.addEventListener('click', e => {
         e.stopPropagation();
+        if (btn.dataset.action === 'img2img') return;
         const card = btn.closest('.studio-work-card');
         const action = btn.dataset.action;
         const index = parseInt(card?.dataset.index || '-1', 10);
@@ -2162,9 +3289,6 @@
           toast('已复用历史提示词', 'success');
         } else if (action === 'download') {
           toast('开始下载…', 'info');
-        } else if (action === 'img2img' && prompt) {
-          applyImageHistoryItem(item || { prompt }, false);
-          toast('已进入图生图创作', 'info');
         } else if (action === 'delete' && index >= 0) {
           showDeleteConfirm({
             title: '确认删除作品',
@@ -2174,9 +3298,15 @@
         }
       });
     });
-    container.querySelectorAll('.studio-work-card.image-work-card:not(.is-demo)').forEach(card => {
+    container.querySelectorAll('.studio-work-card.image-work-card').forEach(card => {
       card.addEventListener('click', e => {
         if (e.target.closest('[data-action]')) return;
+        const thumb = e.target.closest('[data-action="img2img-thumb"]');
+        if (thumb) {
+          const index = parseInt(card.dataset.index || '-1', 10);
+          applyImageImg2img(getImageItemFromCard(card), null, index);
+          return;
+        }
         toast('正在打开预览…', 'info');
       });
     });
@@ -2255,12 +3385,17 @@
     const disabled = demo ? ' disabled' : '';
     const itemPayload = encodeURIComponent(JSON.stringify({
       prompt: h.prompt || h.preview || '',
+      platform: h.platform || '',
+      ratio: h.ratio || '',
       cost: h.cost || 5,
     }));
+    const thumbHtml = h.resultImage
+      ? `<img src="${h.resultImage}" alt="" loading="lazy">`
+      : `<span class="studio-work-emoji">${h.emoji || '📝'}</span>`;
     return `
       <article class="studio-work-card content-work-card${demoClass}" data-index="${index}" data-prompt="${encodeURIComponent(h.prompt || h.preview || '')}" data-item="${itemPayload}">
-        <div class="studio-work-thumb studio-work-thumb--content">
-          <span class="studio-work-emoji">${h.emoji || '📝'}</span>
+        <div class="studio-work-thumb studio-work-thumb--content${h.resultImage ? ' studio-work-thumb--cover' : ''}">
+          ${thumbHtml}
           <div class="studio-work-cover-shine" aria-hidden="true"></div>
         </div>
         ${renderStudioWorkIconbar(demo, h.starred)}
@@ -2285,7 +3420,7 @@
         <div class="video-history-empty-main">
           <div class="video-history-empty-icon">📝</div>
           <h4 class="video-history-empty-title">还没有历史图文</h4>
-          <p class="video-history-empty-tip">在「爆款图文」页选择场景模板、编辑文案并点击生成，作品将自动保存在这里。</p>
+          <p class="video-history-empty-tip">在「爆款图文」页输入创作主题并点击生成，作品将自动保存在这里。</p>
           <button type="button" class="btn btn-primary btn-sm video-history-empty-cta" data-switch-content-tab="create">去创作</button>
         </div>
         <div class="video-history-empty-demo">
@@ -2436,12 +3571,11 @@
   function renderAvatarSelect() {
     const select = document.getElementById('avatar-avatar-select');
     if (!select) return;
-    const frequent = getFrequentAvatars();
-    const options = frequent.map(a => `
+    const options = AVATAR_GALLERY_ITEMS.map(a => `
       <option value="${a.name}" data-category="${a.category}" data-emoji="${a.emoji}">
         ${a.emoji} ${a.name}
       </option>`).join('');
-    select.innerHTML = `<option value="">选择数字人形象</option>${options}<option value="${AVATAR_SELECT_MORE}">查看全部形象 →</option>`;
+    select.innerHTML = `<option value="">数字人形象</option>${options}<option value="${AVATAR_SELECT_MORE}">查看全部形象 →</option>`;
     syncAvatarSelectValue();
   }
 
@@ -2581,6 +3715,11 @@
 
   function openInspire(type) {
     inspireContext = type || inspireContext;
+    if (type === 'content' && STATE.currentPage === 'content') {
+      switchContentSubTab('inspire');
+      renderContentInspireLibrary();
+      return;
+    }
     if (['image', 'video', 'content', 'avatar', 'avatar-speech'].includes(type)) inspireFilter = type;
     document.querySelectorAll('[data-inspire-filter]').forEach(t => {
       t.classList.toggle('active', t.dataset.inspireFilter === inspireFilter);
@@ -2672,6 +3811,10 @@
       if (resolvedType === 'avatar') {
         const editor = document.getElementById('avatar-script');
         if (editor) showDraftSaved(editor);
+      }
+      if (resolvedType === 'content') {
+        updateContentCharCount();
+        switchContentSubTab('create');
       }
       if (resolvedType !== STATE.currentPage && ['image', 'video', 'avatar', 'content'].includes(resolvedType)) navigate(resolvedType);
       closeInspire();
@@ -2918,36 +4061,7 @@
       });
     });
 
-    /* Content template nav */
-    document.querySelectorAll('.template-nav-item, .content-scene-item').forEach(item => {
-      item.addEventListener('click', () => {
-        document.querySelectorAll('.template-nav-item, .content-scene-item').forEach(i => i.classList.remove('active'));
-        item.classList.add('active');
-        const editor = document.getElementById('content-editor');
-        if (editor) {
-          editor.placeholder = '在此编辑「' + item.textContent.trim() + '」文案…';
-        }
-      });
-    });
-
-    /* Content toolbar */
-    document.getElementById('btn-rewrite')?.addEventListener('click', () => toast('风格改写完成', 'success'));
-    document.getElementById('btn-wordcount')?.addEventListener('click', () => toast('已调整至目标字数', 'info'));
-    document.getElementById('btn-keywords')?.addEventListener('click', () => toast('关键词已植入', 'info'));
-
-    /* Push to digital human */
-    document.getElementById('btn-push-digital')?.addEventListener('click', () => {
-      const content = document.getElementById('content-editor')?.value;
-      if (!content?.trim()) {
-        toast('请先编辑文案内容', 'info');
-        return;
-      }
-      setDraft('avatar-script', content);
-      const avatarEditor = document.getElementById('avatar-script');
-      if (avatarEditor) avatarEditor.value = content;
-      toast('文案已同步至数字人模块', 'success');
-      navigate('avatar');
-    });
+    bindContentStudio();
 
     /* Receive from content */
     document.getElementById('btn-receive-content')?.addEventListener('click', () => {
@@ -2977,8 +4091,6 @@
     renderHistory('content');
     updateAvatarPreview();
     renderAvatarSelect();
-    bindImageInspireCategories();
-    renderImageInspireStrip();
     bindInspireCards(document);
   }
 

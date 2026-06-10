@@ -251,7 +251,7 @@
             <div class="hub-ad-carousel-viewport">
               <div class="hub-ad-carousel-track" id="hub-ad-carousel-track">
                 <article class="hub-ad-slide is-active" data-ad-slide="0">
-                  <div class="hub-ad-slide-bg hub-ad-slide-bg--digital" aria-hidden="true"></div>
+                  <img class="hub-ad-slide-bg" src="assets/hub/banner-digital.png" alt="" aria-hidden="true">
                   <div class="hub-ad-slide-body">
                     <span class="hub-ad-badge">限时活动</span>
                     <h3 class="hub-ad-title">数字人创作节</h3>
@@ -259,7 +259,7 @@
                   </div>
                 </article>
                 <article class="hub-ad-slide" data-ad-slide="1">
-                  <div class="hub-ad-slide-bg hub-ad-slide-bg--hologram" aria-hidden="true"></div>
+                  <img class="hub-ad-slide-bg" src="assets/hub/banner-hologram.png" alt="" aria-hidden="true">
                   <div class="hub-ad-slide-body">
                     <span class="hub-ad-badge">限时活动</span>
                     <h3 class="hub-ad-title">AI，想象和尖叫</h3>
@@ -267,7 +267,7 @@
                   </div>
                 </article>
                 <article class="hub-ad-slide" data-ad-slide="2">
-                  <div class="hub-ad-slide-bg hub-ad-slide-bg--member" aria-hidden="true"></div>
+                  <img class="hub-ad-slide-bg" src="assets/hub/banner-hottrend.png" alt="" aria-hidden="true">
                   <div class="hub-ad-slide-body">
                     <span class="hub-ad-badge">限时活动</span>
                     <h3 class="hub-ad-title">会员特惠上线</h3>
@@ -327,81 +327,99 @@
       <div class="hub-scene-rail">
         <button type="button" class="hub-scene-scroll-btn hub-scene-scroll-btn-prev" id="hub-scene-scroll-prev" aria-label="向左滚动" hidden>‹</button>
         <div class="hub-scene-scroll" id="hub-scene-scroll" tabindex="0">
-          <article class="hub-scene-card" data-scene="content" data-preset="content-media">
+          <article class="hub-scene-card scene-interactive-card interactive-card" data-scene="content" data-preset="content-media" tabindex="0" role="button" aria-label="自媒体创作">
             <div class="hub-scene-cover">
               <img src="assets/hub/scene-media.png" alt="" loading="lazy" width="320" height="400">
+              <div class="interactive-card-overlay scene-card-overlay" aria-hidden="true"></div>
+              <span class="scene-enter-label">进入爆款图文</span>
             </div>
             <div class="hub-scene-copy">
               <h3 class="hub-scene-name">自媒体创作</h3>
               <p class="hub-scene-desc">脚本、种草、朋友圈文案一键生成</p>
             </div>
           </article>
-          <article class="hub-scene-card" data-scene="image" data-preset="image-ecommerce">
+          <article class="hub-scene-card scene-interactive-card interactive-card" data-scene="image" data-preset="image-ecommerce" tabindex="0" role="button" aria-label="电商美工">
             <div class="hub-scene-cover">
               <img src="assets/hub/scene-ecommerce.png" alt="" loading="lazy" width="320" height="400">
+              <div class="interactive-card-overlay scene-card-overlay" aria-hidden="true"></div>
+              <span class="scene-enter-label">进入 AI 图片</span>
             </div>
             <div class="hub-scene-copy">
               <h3 class="hub-scene-name">电商美工</h3>
               <p class="hub-scene-desc">主图、海报、详情页视觉快速出图</p>
             </div>
           </article>
-          <article class="hub-scene-card" data-scene="avatar" data-preset="avatar-host">
+          <article class="hub-scene-card scene-interactive-card interactive-card" data-scene="avatar" data-preset="avatar-host" tabindex="0" role="button" aria-label="虚拟主播">
             <div class="hub-scene-cover">
               <img src="assets/hub/scene-avatar.png" alt="" loading="lazy" width="320" height="400">
+              <div class="interactive-card-overlay scene-card-overlay" aria-hidden="true"></div>
+              <span class="scene-enter-label">进入数字人创作</span>
             </div>
             <div class="hub-scene-copy">
               <h3 class="hub-scene-name">虚拟主播</h3>
               <p class="hub-scene-desc">数字人口播，横竖屏自由切换</p>
             </div>
           </article>
-          <article class="hub-scene-card" data-scene="content" data-preset="content-sales">
+          <article class="hub-scene-card scene-interactive-card interactive-card" data-scene="content" data-preset="content-sales" tabindex="0" role="button" aria-label="文案带货">
             <div class="hub-scene-cover">
               <img src="assets/hub/scene-sales.png" alt="" loading="lazy" width="320" height="400">
+              <div class="interactive-card-overlay scene-card-overlay" aria-hidden="true"></div>
+              <span class="scene-enter-label">进入爆款图文</span>
             </div>
             <div class="hub-scene-copy">
               <h3 class="hub-scene-name">文案带货</h3>
               <p class="hub-scene-desc">标题、标语、带货话术智能撰写</p>
             </div>
           </article>
-          <article class="hub-scene-card" data-scene="avatar" data-preset="workplace-office">
+          <article class="hub-scene-card scene-interactive-card interactive-card" data-scene="avatar" data-preset="workplace-office" tabindex="0" role="button" aria-label="职场办公">
             <div class="hub-scene-cover">
               <img src="assets/hub/scene-workplace.png" alt="" loading="lazy" width="320" height="400">
+              <div class="interactive-card-overlay scene-card-overlay" aria-hidden="true"></div>
+              <span class="scene-enter-label">进入数字人创作</span>
             </div>
             <div class="hub-scene-copy">
               <h3 class="hub-scene-name">职场办公</h3>
               <p class="hub-scene-desc">PPT、简历、会议纪要</p>
             </div>
           </article>
-          <article class="hub-scene-card" data-scene="avatar" data-preset="knowledge-science">
+          <article class="hub-scene-card scene-interactive-card interactive-card" data-scene="avatar" data-preset="knowledge-science" tabindex="0" role="button" aria-label="知识科普">
             <div class="hub-scene-cover">
               <img src="assets/hub/scene-knowledge.png" alt="" loading="lazy" width="320" height="400">
+              <div class="interactive-card-overlay scene-card-overlay" aria-hidden="true"></div>
+              <span class="scene-enter-label">进入数字人创作</span>
             </div>
             <div class="hub-scene-copy">
               <h3 class="hub-scene-name">知识科普</h3>
               <p class="hub-scene-desc">科普视频、课程课件</p>
             </div>
           </article>
-          <article class="hub-scene-card" data-scene="image" data-preset="brand-promo">
+          <article class="hub-scene-card scene-interactive-card interactive-card" data-scene="image" data-preset="brand-promo" tabindex="0" role="button" aria-label="品牌宣传">
             <div class="hub-scene-cover">
               <img src="assets/hub/scene-brand.png" alt="" loading="lazy" width="320" height="400">
+              <div class="interactive-card-overlay scene-card-overlay" aria-hidden="true"></div>
+              <span class="scene-enter-label">进入 AI 图片</span>
             </div>
             <div class="hub-scene-copy">
               <h3 class="hub-scene-name">品牌宣传</h3>
               <p class="hub-scene-desc">品牌海报、店铺引流</p>
             </div>
           </article>
-          <article class="hub-scene-card" data-scene="image" data-preset="family-edu">
+          <article class="hub-scene-card scene-interactive-card interactive-card" data-scene="image" data-preset="family-edu" tabindex="0" role="button" aria-label="亲子教育">
             <div class="hub-scene-cover">
               <img src="assets/hub/scene-family.png" alt="" loading="lazy" width="320" height="400">
+              <div class="interactive-card-overlay scene-card-overlay" aria-hidden="true"></div>
+              <span class="scene-enter-label">进入 AI 图片</span>
             </div>
             <div class="hub-scene-copy">
               <h3 class="hub-scene-name">亲子教育</h3>
               <p class="hub-scene-desc">儿童绘本、启蒙教学</p>
             </div>
           </article>
-          <article class="hub-scene-card" data-scene="video" data-preset="life-record">
+          <article class="hub-scene-card scene-interactive-card interactive-card" data-scene="video" data-preset="life-record" tabindex="0" role="button" aria-label="生活记录">
             <div class="hub-scene-cover">
               <img src="assets/hub/scene-life.png" alt="" loading="lazy" width="320" height="400">
+              <div class="interactive-card-overlay scene-card-overlay" aria-hidden="true"></div>
+              <span class="scene-enter-label">进入 AI 视频</span>
             </div>
             <div class="hub-scene-copy">
               <h3 class="hub-scene-name">生活记录</h3>
@@ -426,6 +444,21 @@
       </div>
       <div class="hub-inspire-subtabs" id="hub-inspire-subtabs" role="tablist" aria-label="灵感子分类"></div>
       <div class="hub-inspire-grid" id="hub-inspire-grid"></div>
+    </section>
+
+    <section class="hub-section" id="hub-my-works-section">
+      <div class="hub-section-head">
+        <h2 class="hub-section-title">我的作品</h2>
+        <button type="button" class="hub-section-more" id="hub-my-works-more">查看全部 →</button>
+      </div>
+      <div class="hub-my-works-filters" id="hub-my-works-filters" role="tablist" aria-label="作品类型">
+        <button type="button" class="hub-my-works-filter active" data-hub-works-filter="all" role="tab" aria-selected="true">全部</button>
+        <button type="button" class="hub-my-works-filter" data-hub-works-filter="image" role="tab">AI 图片</button>
+        <button type="button" class="hub-my-works-filter" data-hub-works-filter="video" role="tab">AI 视频</button>
+        <button type="button" class="hub-my-works-filter" data-hub-works-filter="avatar" role="tab">数字人</button>
+        <button type="button" class="hub-my-works-filter" data-hub-works-filter="content" role="tab">爆款图文</button>
+      </div>
+      <div class="hub-works-grid hub-my-works-grid" id="hub-my-works-grid"></div>
     </section>
 
     <section class="hub-section hub-section-last" id="hub-template-section">
@@ -511,10 +544,12 @@
           </div>
         </header>
 
-        <div class="image-create-block">
+        <div class="image-create-block" id="image-create-block">
           <div class="image-composer image-composer-unified">
             <div class="image-composer-body image-composer-body--hero">
-              <textarea class="image-composer-prompt" id="image-prompt" data-draft="image-prompt" rows="5" placeholder="描述你想生成的画面，例：夏季清爽护肤品主图，白色背景，产品居中，突出水润质感"></textarea>
+              <div class="image-composer-input-wrap" id="image-composer-input-wrap">
+                <textarea class="image-composer-prompt" id="image-prompt" data-draft="image-prompt" rows="2" placeholder="描述你想生成的画面，例：夏季清爽护肤品主图，白色背景，产品居中，突出水润质感"></textarea>
+              </div>
             </div>
 
             <div class="image-gen-progress" id="image-gen-progress" hidden>
@@ -529,21 +564,70 @@
 
             <div class="image-composer-footer image-create-actions">
               <div class="image-create-params">
-                <select class="studio-select studio-select-sm" id="image-model-select" title="选择生成模型">
+                <div class="image-ref-strip image-ref-strip--toolbar" id="image-ref-strip" aria-label="参考图">
+                  <div class="image-ref-list" id="image-ref-list"></div>
+                  <div class="image-ref-add-wrap" id="image-ref-add-wrap">
+                    <input type="file" id="image-ref-input" accept="image/png,image/jpeg,image/webp,image/gif" multiple hidden>
+                    <button type="button" class="image-ref-add-btn" id="image-ref-add-btn" title="上传参考图（最多 4 张）" aria-label="上传参考图">
+                      <span class="image-ref-add-plus" aria-hidden="true">+</span>
+                      <span class="image-ref-add-label">参考图</span>
+                    </button>
+                  </div>
+                </div>
+
+                <select class="studio-select studio-select-sm image-toolbar-select" id="image-model-select" title="选择生成模型">
                   <option>智能图片 V2</option>
                   <option>Seedream 5.0</option>
                   <option>Qwen-Image</option>
                 </select>
-                <select class="studio-select studio-select-sm" id="image-ratio-select">
-                  <option value="1:1">1:1</option>
-                  <option value="16:9">16:9</option>
-                  <option value="9:16">9:16</option>
-                  <option value="4:3">4:3</option>
-                </select>
-                <select class="studio-select studio-select-sm" id="image-count-select">
+
+                <div class="image-picker-wrap" id="image-ratio-picker-wrap">
+                  <button type="button" class="image-picker-trigger" id="image-ratio-trigger" aria-expanded="false" aria-haspopup="listbox">
+                    <span class="image-ratio-glyph" id="image-ratio-glyph" aria-hidden="true">
+                      <svg class="image-picker-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" focusable="false">
+                        <rect x="2" y="2" width="20" height="20" rx="4.5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        <rect x="6.5" y="6.5" width="11" height="11" rx="2.5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                    <span class="image-picker-text">比例</span>
+                    <svg class="image-picker-chevron" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2.5 4L5 6.5 7.5 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                  <div class="image-picker-popover" id="image-ratio-popover" role="listbox" aria-label="选择比例" hidden>
+                    <div class="image-picker-popover-head">选择比例</div>
+                    <div class="image-ratio-grid" id="image-ratio-grid"></div>
+                  </div>
+                </div>
+
+                <div class="image-picker-wrap" id="image-style-picker-wrap">
+                  <button type="button" class="image-picker-trigger" id="image-style-trigger" aria-expanded="false" aria-haspopup="listbox">
+                    <span class="image-style-glyph" id="image-style-glyph" aria-hidden="true">
+                      <svg class="image-picker-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" focusable="false">
+                        <circle cx="9.5" cy="13" r="5.25" stroke="currentColor" stroke-width="1.75"/>
+                        <circle cx="14.5" cy="13" r="5.25" stroke="currentColor" stroke-width="1.75"/>
+                        <circle cx="12" cy="8.5" r="5.25" stroke="currentColor" stroke-width="1.75"/>
+                      </svg>
+                    </span>
+                    <span class="image-picker-text">风格</span>
+                    <svg class="image-picker-chevron" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2.5 4L5 6.5 7.5 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                  <div class="image-picker-popover image-style-popover" id="image-style-popover" role="listbox" aria-label="选择风格" hidden>
+                    <div class="image-picker-popover-head">选择风格</div>
+                    <div class="image-style-grid" id="image-style-grid"></div>
+                  </div>
+                </div>
+
+                <select class="studio-select studio-select-sm image-toolbar-select" id="image-count-select" title="生成数量">
                   <option value="1">1 张</option>
                   <option value="2">2 张</option>
                   <option value="4">4 张</option>
+                </select>
+
+                <select id="image-ratio-select" class="image-ratio-select-hidden" aria-hidden="true" tabindex="-1">
+                  <option value="1:1">1:1</option>
+                  <option value="4:3">4:3</option>
+                  <option value="3:4">3:4</option>
+                  <option value="16:9">16:9</option>
+                  <option value="9:16">9:16</option>
                 </select>
               </div>
               <div class="image-create-submit">
@@ -588,7 +672,64 @@
             </div>
           </div>
 
-          <div class="image-inspire-strip image-inspire-card-flow" id="image-inspire-strip"></div>
+          <div class="image-inspire-strip image-inspire-card-flow" id="image-inspire-strip">
+            <div class="image-inspire-card" data-template-id="scene-1" tabindex="0" role="group" aria-label="电商主图">
+              <div class="image-inspire-thumb-wrap">
+                <div class="image-inspire-thumb"><img src="assets/inspire/scene-1-product.png" alt="电商主图" loading="lazy" decoding="async"></div>
+              </div>
+              <div class="image-inspire-card-action"><button type="button" class="btn btn-sm btn-primary image-inspire-overlay-btn" data-inspire-action="template">使用该模板</button></div>
+              <div class="image-inspire-body"><strong>电商主图</strong><span>纯白背景产品图，突出质感与卖点</span></div>
+            </div>
+            <div class="image-inspire-card" data-template-id="scene-2" tabindex="0" role="group" aria-label="赛博海报">
+              <div class="image-inspire-thumb-wrap">
+                <div class="image-inspire-thumb"><img src="assets/inspire/scene-2-cyber.png" alt="赛博海报" loading="lazy" decoding="async"></div>
+              </div>
+              <div class="image-inspire-card-action"><button type="button" class="btn btn-sm btn-primary image-inspire-overlay-btn" data-inspire-action="template">使用该模板</button></div>
+              <div class="image-inspire-body"><strong>赛博海报</strong><span>霓虹未来风，适合活动与潮牌视觉</span></div>
+            </div>
+            <div class="image-inspire-card" data-template-id="scene-3" tabindex="0" role="group" aria-label="插画头像">
+              <div class="image-inspire-thumb-wrap">
+                <div class="image-inspire-thumb"><img src="assets/inspire/scene-3-anime.png" alt="插画头像" loading="lazy" decoding="async"></div>
+              </div>
+              <div class="image-inspire-card-action"><button type="button" class="btn btn-sm btn-primary image-inspire-overlay-btn" data-inspire-action="template">使用该模板</button></div>
+              <div class="image-inspire-body"><strong>插画头像</strong><span>柔和插画感，个人品牌与社交场景</span></div>
+            </div>
+            <div class="image-inspire-card" data-template-id="scene-4" tabindex="0" role="group" aria-label="3D 产品">
+              <div class="image-inspire-thumb-wrap">
+                <div class="image-inspire-thumb"><img src="assets/inspire/scene-4-3d.png" alt="3D 产品" loading="lazy" decoding="async"></div>
+              </div>
+              <div class="image-inspire-card-action"><button type="button" class="btn btn-sm btn-primary image-inspire-overlay-btn" data-inspire-action="template">使用该模板</button></div>
+              <div class="image-inspire-body"><strong>3D 产品</strong><span>潮玩质感棚拍，科技产品展示</span></div>
+            </div>
+            <div class="image-inspire-card" data-template-id="scene-5" tabindex="0" role="group" aria-label="国潮美食">
+              <div class="image-inspire-thumb-wrap">
+                <div class="image-inspire-thumb"><img src="assets/inspire/scene-5-festival.png" alt="国潮美食" loading="lazy" decoding="async"></div>
+              </div>
+              <div class="image-inspire-card-action"><button type="button" class="btn btn-sm btn-primary image-inspire-overlay-btn" data-inspire-action="template">使用该模板</button></div>
+              <div class="image-inspire-body"><strong>国潮美食</strong><span>红金国潮，餐饮与节日促销</span></div>
+            </div>
+            <div class="image-inspire-card" data-template-id="scene-6" tabindex="0" role="group" aria-label="人像写真">
+              <div class="image-inspire-thumb-wrap">
+                <div class="image-inspire-thumb"><img src="assets/inspire/scene-3-anime.png" alt="人像写真" loading="lazy" decoding="async"></div>
+              </div>
+              <div class="image-inspire-card-action"><button type="button" class="btn btn-sm btn-primary image-inspire-overlay-btn" data-inspire-action="template">使用该模板</button></div>
+              <div class="image-inspire-body"><strong>人像写真</strong><span>柔光浅景深，高级感人像摄影</span></div>
+            </div>
+            <div class="image-inspire-card" data-template-id="scene-7" tabindex="0" role="group" aria-label="动漫角色">
+              <div class="image-inspire-thumb-wrap">
+                <div class="image-inspire-thumb"><img src="assets/inspire/scene-2-cyber.png" alt="动漫角色" loading="lazy" decoding="async"></div>
+              </div>
+              <div class="image-inspire-card-action"><button type="button" class="btn btn-sm btn-primary image-inspire-overlay-btn" data-inspire-action="template">使用该模板</button></div>
+              <div class="image-inspire-body"><strong>动漫角色</strong><span>赛璐璐风角色立绘，游戏宣传</span></div>
+            </div>
+            <div class="image-inspire-card" data-template-id="scene-8" tabindex="0" role="group" aria-label="促销海报">
+              <div class="image-inspire-thumb-wrap">
+                <div class="image-inspire-thumb"><img src="assets/inspire/scene-5-festival.png" alt="促销海报" loading="lazy" decoding="async"></div>
+              </div>
+              <div class="image-inspire-card-action"><button type="button" class="btn btn-sm btn-primary image-inspire-overlay-btn" data-inspire-action="template">使用该模板</button></div>
+              <div class="image-inspire-body"><strong>促销海报</strong><span>大标题留白，节日活动吸睛</span></div>
+            </div>
+          </div>
         </section>
       </div>
 
@@ -794,7 +935,18 @@
 
             <div class="avatar-composer-footer image-create-actions">
               <div class="avatar-composer-toolbar image-create-params">
-                <select class="studio-select studio-select-sm avatar-toolbar-select" id="avatar-avatar-select" title="数字人形象"></select>
+                <select class="studio-select studio-select-sm avatar-toolbar-select" id="avatar-avatar-select" title="数字人形象">
+                  <option value="">数字人形象</option>
+                  <option value="直播主播" data-category="anchor" data-emoji="🎙">🎙 直播主播</option>
+                  <option value="职场精英" data-category="workplace" data-emoji="👔">👔 职场精英</option>
+                  <option value="Q 版萌妹" data-category="cartoon" data-emoji="🎀">🎀 Q 版萌妹</option>
+                  <option value="写实女性" data-category="realistic" data-emoji="👩">👩 写实女性</option>
+                  <option value="时尚达人" data-category="anchor" data-emoji="✨">✨ 时尚达人</option>
+                  <option value="商务顾问" data-category="workplace" data-emoji="💼">💼 商务顾问</option>
+                  <option value="卡通男孩" data-category="cartoon" data-emoji="🦸">🦸 卡通男孩</option>
+                  <option value="写实男性" data-category="realistic" data-emoji="👨">👨 写实男性</option>
+                  <option value="__picker__">查看全部形象 →</option>
+                </select>
                 <select class="studio-select studio-select-sm avatar-toolbar-select" id="avatar-template-select" title="口播模板">
                   <option value="">口播模板</option>
                   <option value="嗨，欢迎来到我的频道！今天想和大家分享一个超实用的小技巧，记得点赞关注哦～">🎤 短视频口播</option>
@@ -993,84 +1145,147 @@
 
 <!-- ═══ CONTENT / 爆款图文 ═══ -->
 <section class="page studio-page" id="page-content">
-  <div class="studio-page-inner">
+  <div class="studio-page-inner content-studio-inner">
     <div class="content-module-workspace">
       <div class="content-subpanel active" data-panel="content-sub" data-panel-value="create">
-        <header class="studio-hero">
-          <div class="studio-hero-actions">
-            <button type="button" class="studio-inspire-link" data-inspire-open="content" aria-label="打开灵感库">
+        <header class="content-studio-head">
+          <div class="content-studio-head-main">
+            <h1 class="content-studio-title"><span class="content-studio-icon" aria-hidden="true">⚡</span>爆款图文</h1>
+            <div class="content-platform-tabs" id="content-platform-tabs" role="tablist" aria-label="图文类型">
+              <button type="button" class="content-platform-tab active" data-content-platform="xiaohongshu" role="tab" aria-selected="true">小红书种草</button>
+              <button type="button" class="content-platform-tab" data-content-platform="douyin" role="tab">抖音封面</button>
+              <button type="button" class="content-platform-tab" data-content-platform="wechat" role="tab">公众号头图</button>
+              <button type="button" class="content-platform-tab" data-content-platform="moments" role="tab">朋友圈海报</button>
+            </div>
+          </div>
+          <div class="content-studio-head-actions">
+            <button type="button" class="studio-hero-extra disabled" title="即将上线">模板库<span class="content-soon-badge">即将上线</span></button>
+            <button type="button" class="studio-inspire-link content-inspire-entry" data-inspire-open="content" aria-label="打开灵感库">
               <span class="studio-inspire-icon" aria-hidden="true">✨</span>灵感库
             </button>
           </div>
-          <div class="studio-hero-center">
-            <h1 class="studio-title">爆款图文</h1>
-            <div class="studio-model-row">
-              <span class="studio-model-dot" style="--c:#8b5cf6">种草</span>
-              <span class="studio-model-dot" style="--c:#60a5fa">脚本</span>
-              <span class="studio-model-dot" style="--c:#f472b6">标题</span>
-              <span class="studio-model-dot" style="--c:#34d399">标语</span>
-            </div>
-            <p class="studio-subtitle">多场景模板 · 一键推送数字人 · 创作闭环</p>
-          </div>
         </header>
 
-        <div class="content-create-main">
-          <div class="studio-card">
-            <div class="studio-module-tabs">
-              <button type="button" class="studio-mod-tab" data-nav="image"><span class="mod-icon">🖼</span> 图片生成</button>
-              <button type="button" class="studio-mod-tab" data-nav="video"><span class="mod-icon">🎬</span> 视频生成</button>
-              <button type="button" class="studio-mod-tab" data-nav="avatar"><span class="mod-icon">🤖</span> 数字人</button>
-              <button type="button" class="studio-mod-tab active" data-nav="content"><span class="mod-icon">📝</span> 爆款图文</button>
-            </div>
-
-            <div class="studio-mode-bar">
-              <span class="text-sm text-muted">选择场景模板开始创作</span>
-              <span class="studio-cost-hint">预计 <strong>5</strong> 积分 · 剩余 <strong data-credits>1,280</strong></span>
-            </div>
-
-            <div class="studio-form-block">
-              <p class="studio-field-label">场景模板</p>
-              <div class="content-scene-scroll">
-                <button type="button" class="template-nav-item content-scene-item active">短视频脚本</button>
-                <button type="button" class="template-nav-item content-scene-item">小红书种草</button>
-                <button type="button" class="template-nav-item content-scene-item">朋友圈文案</button>
-                <button type="button" class="template-nav-item content-scene-item">产品标题</button>
-                <button type="button" class="template-nav-item content-scene-item">海报标语</button>
+        <div class="content-studio-layout">
+          <aside class="content-studio-side">
+            <div class="content-topic-card studio-card">
+              <div class="content-topic-head">
+                <h2 class="content-panel-label">创作主题</h2>
+                <span class="content-char-count" id="content-char-count">0/500</span>
               </div>
+              <textarea class="content-topic-input" id="content-editor" data-draft="content-editor" maxlength="500" placeholder="输入创作主题/标题，一键生成图文"></textarea>
+              <button type="button" class="content-copy-edit-btn disabled" disabled title="即将上线">
+                文案编辑<span class="content-soon-badge">即将上线</span>
+              </button>
+              <button type="button" class="btn btn-primary btn-lg content-generate-btn" id="content-generate-btn" data-generate="content" data-cost="5">
+                <span class="content-generate-icon" aria-hidden="true">✨</span>
+                <span class="content-generate-text">立即生成</span>
+              </button>
             </div>
+          </aside>
 
-            <div class="content-editor-panel">
-              <div class="editor-toolbar studio-editor-toolbar">
-                <button type="button" class="btn btn-sm btn-secondary" id="btn-rewrite">风格改写</button>
-                <button type="button" class="btn btn-sm btn-secondary" id="btn-wordcount">字数控制</button>
-                <button type="button" class="btn btn-sm btn-secondary" id="btn-keywords">关键词植入</button>
+          <div class="content-studio-main">
+            <div class="content-result-card studio-card">
+              <div class="content-result-head">
+                <div class="content-result-head-left">
+                  <h2 class="content-panel-label">生成结果</h2>
+                  <span class="content-result-count" id="content-result-count" hidden>0</span>
+                </div>
+                <div class="content-result-head-right">
+                  <span class="content-result-mode" id="content-mode-label">小红书种草 · 3:4</span>
+                  <button type="button" class="studio-hero-extra disabled content-batch-btn" title="即将上线">批量对比<span class="content-soon-badge">即将上线</span></button>
+                </div>
               </div>
-              <textarea class="studio-prompt content-editor-area" id="content-editor" data-draft="content-editor" placeholder="在此编辑文案内容，选择上方模板开始创作…"></textarea>
-              <div class="draft-hint">内容将自动保存为草稿</div>
-            </div>
 
-            <div class="studio-toolbar">
-              <div class="studio-toolbar-left">
-                <button type="button" class="btn btn-secondary push-digital-btn-inline" id="btn-push-digital">🚀 推送至数字人</button>
-              </div>
-              <div class="studio-toolbar-right">
-                <button type="button" class="studio-generate" data-generate="content" data-cost="5"><span>⚡ 5</span><span class="gen-arrow">↑</span></button>
+              <div class="content-result-body" id="content-result-body">
+                <div class="content-result-empty" id="content-result-empty">
+                  <div class="content-result-empty-visual">
+                    <img src="assets/inspire/scene-3-anime.png" alt="" class="content-result-empty-img">
+                  </div>
+                  <p class="content-result-empty-title">输入主题，开始创作</p>
+                  <p class="content-result-empty-desc">在左侧输入创作主题，AI 将为你生成精美图文</p>
+                </div>
+
+                <div class="content-result-loading" id="content-result-loading" hidden>
+                  <div class="content-result-skeleton-grid">
+                    <article class="content-skeleton-card"><div class="content-skeleton-thumb"></div><div class="content-skeleton-line"></div><div class="content-skeleton-line short"></div></article>
+                    <article class="content-skeleton-card"><div class="content-skeleton-thumb"></div><div class="content-skeleton-line"></div><div class="content-skeleton-line short"></div></article>
+                    <article class="content-skeleton-card"><div class="content-skeleton-thumb"></div><div class="content-skeleton-line"></div><div class="content-skeleton-line short"></div></article>
+                  </div>
+                  <div class="content-loading-status">
+                    <span class="content-loading-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+                    <span id="content-gen-status">AI 正在为你生成图文…</span>
+                  </div>
+                  <div class="content-gen-progress" id="content-gen-progress" hidden>
+                    <div class="content-gen-progress-bar"><div class="content-gen-progress-fill" id="content-gen-progress-fill"></div></div>
+                  </div>
+                </div>
+
+                <div class="content-result-grid" id="content-result-grid" hidden></div>
               </div>
             </div>
           </div>
+        </div>
 
-          <section class="studio-section studio-section-compact">
-            <div class="studio-section-head">
-              <h2 class="studio-section-title">热门文案模板</h2>
-              <button type="button" class="studio-more-link" data-inspire-open="content">查看更多 →</button>
+        <footer class="content-studio-footer">
+          <div class="content-footer-settings">
+            <div class="content-pill-group" role="group" aria-label="风格">
+              <span class="content-pill-label">风格</span>
+              <button type="button" class="content-pill active" data-content-style="tech">科技风</button>
+              <button type="button" class="content-pill" data-content-style="minimal">简约风</button>
+              <button type="button" class="content-pill" data-content-style="fresh">清新风</button>
             </div>
-            <div class="studio-template-scroll">
-              <div class="inspire-card" data-inspire-prompt="3秒短视频口播脚本，开头抓眼球，结尾引导关注" data-inspire-type="content"><span class="inspire-badge">短视频</span><div class="inspire-thumb">🎬</div><p>口播脚本</p></div>
-              <div class="inspire-card" data-inspire-prompt="小红书种草文案，真实体验感，emoji 点缀，分段清晰" data-inspire-type="content"><span class="inspire-badge">种草</span><div class="inspire-thumb">🌿</div><p>小红书种草</p></div>
-              <div class="inspire-card" data-inspire-prompt="朋友圈文案，简短有温度，适合日常分享" data-inspire-type="content"><span class="inspire-badge">社交</span><div class="inspire-thumb">💬</div><p>朋友圈文案</p></div>
-              <div class="inspire-card" data-inspire-prompt="电商产品标题，突出卖点，15字以内" data-inspire-type="content"><span class="inspire-badge">标题</span><div class="inspire-thumb">🏷</div><p>产品标题</p></div>
+            <div class="content-pill-group" role="group" aria-label="尺寸">
+              <span class="content-pill-label">尺寸</span>
+              <button type="button" class="content-pill active" data-content-ratio="3:4">3:4</button>
+              <button type="button" class="content-pill" data-content-ratio="9:16">9:16</button>
+              <button type="button" class="content-pill" data-content-ratio="16:9">16:9</button>
             </div>
-          </section>
+          </div>
+          <div class="content-footer-actions">
+            <button type="button" class="btn btn-secondary content-footer-btn disabled" id="btn-push-digital" disabled title="即将上线">联动数字人<span class="content-soon-badge">即将上线</span></button>
+            <button type="button" class="btn btn-secondary content-footer-btn" id="content-regenerate-btn">↻ 重新生成</button>
+            <button type="button" class="btn btn-primary content-footer-btn" id="content-download-btn">↓ 下载保存</button>
+          </div>
+        </footer>
+        <p class="content-studio-note">生成内容自动同步至「我的作品」。支持二次编辑</p>
+      </div>
+
+      <div class="content-subpanel" data-panel="content-sub" data-panel-value="inspire">
+        <div class="content-inspire-page">
+          <header class="content-inspire-head">
+            <button type="button" class="btn btn-secondary btn-sm content-inspire-back" id="content-inspire-back" aria-label="返回创作">←</button>
+            <div class="content-inspire-head-text">
+              <h2 class="content-inspire-title">图文灵感库</h2>
+              <span class="content-inspire-count" id="content-inspire-count">24 个灵感</span>
+            </div>
+            <div class="content-inspire-search-wrap">
+              <svg class="content-inspire-search-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.242 1.156a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"/></svg>
+              <input type="search" class="content-inspire-search" id="content-inspire-search" placeholder="搜索灵感名称或关键词" aria-label="搜索灵感">
+            </div>
+          </header>
+
+          <div class="content-inspire-toolbar">
+            <div class="content-inspire-cats" id="content-inspire-cats" role="tablist">
+              <button type="button" class="content-inspire-cat active" data-content-inspire-cat="all" role="tab">全部</button>
+              <button type="button" class="content-inspire-cat" data-content-inspire-cat="beauty" role="tab">美妆护肤</button>
+              <button type="button" class="content-inspire-cat" data-content-inspire-cat="food" role="tab">美食探店</button>
+              <button type="button" class="content-inspire-cat" data-content-inspire-cat="fashion" role="tab">穿搭时尚</button>
+              <button type="button" class="content-inspire-cat" data-content-inspire-cat="travel" role="tab">旅行攻略</button>
+              <button type="button" class="content-inspire-cat" data-content-inspire-cat="tech" role="tab">数码科技</button>
+              <button type="button" class="content-inspire-cat" data-content-inspire-cat="lifestyle" role="tab">生活好物</button>
+              <button type="button" class="content-inspire-cat" data-content-inspire-cat="knowledge" role="tab">知识干货</button>
+            </div>
+            <div class="content-inspire-sort" data-tab-group="content-inspire-sort">
+              <button type="button" class="content-inspire-sort-btn active" data-tab="hot">热门</button>
+              <button type="button" class="content-inspire-sort-btn" data-tab="new">最新</button>
+            </div>
+          </div>
+
+          <div class="content-inspire-grid" id="content-inspire-grid"></div>
+
+          <div class="content-inspire-pagination" id="content-inspire-pagination" aria-label="分页"></div>
+          <p class="content-inspire-footnote">选择一个灵感快速开始创作，也可在生成页面随时更换灵感风格</p>
         </div>
       </div>
 
@@ -1222,6 +1437,22 @@
         </div>
       </aside>
     </div>
+  </div>
+</div>
+
+<!-- ═══ Content Card Modal ═══ -->
+<div class="content-card-modal-overlay" id="content-card-modal" hidden aria-hidden="true">
+  <div class="content-card-modal" role="dialog" aria-labelledby="content-card-modal-title" aria-modal="true">
+    <header class="content-card-modal-head">
+      <h3 id="content-card-modal-title">图文操作</h3>
+      <button type="button" class="content-card-modal-close" id="content-card-modal-close" aria-label="关闭">×</button>
+    </header>
+    <div class="content-card-modal-body" id="content-card-modal-body"></div>
+    <div class="content-card-modal-actions">
+      <button type="button" class="btn btn-primary" id="content-card-edit-btn">✎ 二次编辑</button>
+      <button type="button" class="btn btn-secondary" id="content-card-regen-btn">↻ 重新生成</button>
+    </div>
+    <p class="content-card-modal-note"><span aria-hidden="true">ℹ</span> 已自动保存至「我的作品」</p>
   </div>
 </div>
 
