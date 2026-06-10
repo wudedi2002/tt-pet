@@ -11,7 +11,10 @@
     avatar: 'fm_avatar',
     recent: 'fm_recent',
     recentAvatars: 'fm_recent_avatars',
+    lastPage: 'fm_last_page',
   };
+
+  const VALID_PAGES = ['home', 'hub', 'me', 'image', 'video', 'avatar', 'avatar-select', 'content'];
 
   const DEFAULT_RECENT_AVATARS = [
     { name: '直播主播', category: 'anchor', emoji: '🎙' },
@@ -74,9 +77,8 @@
     contentRatio: '3:4',
     contentResults: [],
     contentActiveCard: null,
-    contentInspireCat: 'all',
-    contentInspireSort: 'hot',
-    contentInspirePage: 1,
+    contentQuickTemplateId: null,
+    contentCommonTemplateId: null,
     imageInspireFilter: 'all',
     hubTemplateFilter: 'all',
     hubInspirePrimary: 'image',
@@ -86,9 +88,17 @@
     avatar: { name: '', category: '', emoji: '' },
     avatarGalleryFilter: 'all',
     imageRefs: [],
-    imageRatio: '1:1',
+    imageRatio: '3:4',
     imageStyle: 'default',
+    videoFrameEnabled: false,
+    videoFirstFrame: null,
+    videoLastFrame: null,
+    videoAssets: { image: null, video: null, audio: null },
+    videoPreview: null,
+    avatarContentImages: [],
   };
+
+  const VIDEO_FRAME_MAX_BYTES = 5 * 1024 * 1024;
 
   const IMAGE_REF_MAX = 4;
 
@@ -124,6 +134,13 @@
     { value: '9:16', label: '9:16', w: 9, h: 16 },
   ];
 
+  const ASPECT_RATIO_VALUES = IMAGE_RATIO_OPTIONS.map(opt => opt.value);
+
+  function normalizeAspectRatio(ratio, fallback = '3:4') {
+    const value = String(ratio || '').trim();
+    return ASPECT_RATIO_VALUES.includes(value) ? value : fallback;
+  }
+
   const IMAGE_STYLE_OPTIONS = [
     { id: 'default', label: '默认', emoji: '◻', hint: '不限定风格', tag: '' },
     { id: 'photo', label: '摄影写实', emoji: '📷', hint: '高清棚拍质感', tag: '写实摄影，高清细节，自然光影' },
@@ -156,6 +173,7 @@
   /* ── Init ── */
   function init() {
     loadState();
+    loadAvatarContentImagesFromDraft();
     bindNavigation();
     bindDrafts();
     bindGeneration();
@@ -170,7 +188,7 @@
     bindImageComposerPickers();
     bindPageSpecific();
     updateCreditsUI();
-    navigate(getPageFromHash() || 'home');
+    navigate(resolvePageFromLocation(), { restore: true });
   }
 
   function loadState() {
@@ -212,7 +230,10 @@
         navigate(el.dataset.sidebar);
       });
     });
-    window.addEventListener('hashchange', () => navigate(getPageFromHash() || 'home'));
+    window.addEventListener('hashchange', () => {
+      const page = getPageFromHash();
+      if (page) navigate(page, { restore: true });
+    });
   }
 
   const SIDEBAR_PAGES = ['hub', 'me', 'image', 'video', 'avatar', 'avatar-select', 'content'];
@@ -432,6 +453,17 @@
     '海报标语': 'moments',
   };
 
+  const CONTENT_COMMON_TEMPLATES = [
+    { id: 'ct-xhs', name: '小红书种草', label: '小红书种草', prompt: '小红书种草文案，真实体验感，emoji 点缀，分段清晰，适合自媒体传播' },
+    { id: 'ct-video', name: '短视频脚本', label: '短视频脚本', prompt: '3秒短视频口播脚本，开头抓眼球，结尾引导关注' },
+    { id: 'ct-moments', name: '朋友圈文案', label: '朋友圈文案', prompt: '朋友圈文案，简短有温度，适合日常分享' },
+    { id: 'ct-title', name: '产品标题', label: '产品标题', prompt: '电商产品标题优化，突出卖点与关键词，吸引点击转化' },
+    { id: 'ct-poster', name: '海报标语', label: '海报标语', prompt: '节日促销海报标语，简短有力，视觉冲击力强' },
+    { id: 'ct-seed', name: '小红书种草', label: '种草带货话术', prompt: '电商种草带货文案，突出卖点与优惠，引导下单转化' },
+    { id: 'ct-work', name: '产品标题', label: '职场周报摘要', prompt: '职场周报摘要，条理清晰，成果与计划分明，适合团队同步' },
+    { id: 'ct-fest', name: '海报标语', label: '节日祝福文案', prompt: '节日祝福文案，温暖有仪式感，适合品牌节庆传播' },
+  ];
+
   const CONTENT_INSPIRE_ITEMS = [
     { id: 'ci-1', title: '美妆种草·清新粉', platform: 'xiaohongshu', ratio: '3:4', likes: 2300, image: 'assets/inspire/scene-1-product.png', category: 'beauty', prompt: '夏日清爽护肤好物推荐，敏感肌也能用的宝藏单品合集' },
     { id: 'ci-2', title: '美食探店·氛围感', platform: 'xiaohongshu', ratio: '3:4', likes: 1800, image: 'assets/inspire/scene-5-festival.png', category: 'food', prompt: '城市宝藏小店探店，氛围感拉满的美食打卡文案' },
@@ -467,15 +499,31 @@
   ];
 
   function getPageFromHash() {
-    const hash = location.hash.replace('#', '');
+    const hash = decodeURIComponent(location.hash.replace(/^#/, '').trim());
+    if (!hash) return null;
     if (hash === 'chat') return 'hub';
-    const valid = ['home', 'hub', 'me', 'image', 'video', 'avatar', 'avatar-select', 'content'];
-    return valid.includes(hash) ? hash : null;
+    return VALID_PAGES.includes(hash) ? hash : null;
   }
 
-  function navigate(page) {
+  function resolvePageFromLocation() {
+    const fromHash = getPageFromHash();
+    if (fromHash) return fromHash;
+    try {
+      const last = localStorage.getItem(STORAGE.lastPage);
+      if (last && VALID_PAGES.includes(last)) return last;
+    } catch (_) { /* ignore */ }
+    return 'home';
+  }
+
+  function navigate(page, options = {}) {
+    if (!VALID_PAGES.includes(page)) page = 'home';
     STATE.currentPage = page;
-    location.hash = page;
+    try {
+      localStorage.setItem(STORAGE.lastPage, page);
+    } catch (_) { /* ignore */ }
+    if (location.hash.replace(/^#/, '') !== page) {
+      location.hash = page;
+    }
 
     document.body.classList.toggle('has-sidebar', SIDEBAR_PAGES.includes(page));
     document.body.classList.toggle('on-landing', page === 'home');
@@ -490,7 +538,7 @@
         (page === 'avatar-select' && key === 'avatar'));
     });
 
-    window.scrollTo(0, 0);
+    if (!options.restore) window.scrollTo(0, 0);
     updateTopbar(page);
     addRecent(page);
     if (page === 'hub') renderHubPage();
@@ -499,6 +547,7 @@
     if (page === 'avatar' || page === 'avatar-select') {
       renderAvatarSelect();
       syncAvatarSelectValue();
+      if (page === 'avatar') renderAvatarContentImages();
     }
   }
 
@@ -549,12 +598,46 @@
       p.classList.toggle('active', p.dataset.panelValue === tab);
     });
     if (tab === 'history') renderHistory('content');
-    if (tab === 'inspire') renderContentInspireLibrary();
-    if (tab === 'create') updateContentModeLabel();
+    if (tab === 'create') {
+      updateContentModeLabel();
+      renderContentQuickTemplates();
+      syncContentCommonTemplateSelect();
+    }
   }
 
-  function applyContentTemplate(templateName, prompt) {
+  function syncContentCommonTemplateSelect() {
+    const select = document.getElementById('content-common-template-select');
+    if (!select) return;
+    select.value = STATE.contentCommonTemplateId || '';
+  }
+
+  function renderContentCommonTemplateSelect() {
+    const select = document.getElementById('content-common-template-select');
+    if (!select) return;
+    const options = CONTENT_COMMON_TEMPLATES.map(t =>
+      `<option value="${t.id}">${t.label}</option>`
+    ).join('');
+    select.innerHTML = '<option value="">选择常用模版…</option>' + options;
+    syncContentCommonTemplateSelect();
+  }
+
+  function applyContentCommonTemplate(id, options = {}) {
+    const tpl = CONTENT_COMMON_TEMPLATES.find(t => t.id === id);
+    if (!tpl) return;
+    STATE.contentCommonTemplateId = tpl.id;
+    STATE.contentQuickTemplateId = null;
+    applyContentTemplate(tpl.name, tpl.prompt, { fromCommonSelect: true });
+    syncContentCommonTemplateSelect();
+    renderContentQuickTemplates();
+    if (!options.silentToast) toast('已应用「' + tpl.label + '」模版', 'success');
+  }
+
+  function applyContentTemplate(templateName, prompt, options = {}) {
     const platform = CONTENT_TEMPLATE_PLATFORM[templateName] || STATE.contentPlatform || 'xiaohongshu';
+    if (!options.fromCommonSelect) {
+      const match = CONTENT_COMMON_TEMPLATES.find(t => t.name === templateName && t.prompt === prompt);
+      STATE.contentCommonTemplateId = match?.id || null;
+    }
     setContentPlatform(platform);
     const el = document.getElementById('content-editor');
     if (el && prompt) {
@@ -562,19 +645,27 @@
       setDraft('content-editor', prompt);
       updateContentCharCount();
     }
+    syncContentCommonTemplateSelect();
   }
 
   function setContentPlatform(platform) {
     if (!CONTENT_PLATFORMS[platform]) return;
+    if (STATE.contentQuickTemplateId) {
+      const selected = CONTENT_INSPIRE_ITEMS.find(x => x.id === STATE.contentQuickTemplateId);
+      if (selected && selected.platform !== platform) STATE.contentQuickTemplateId = null;
+    }
     STATE.contentPlatform = platform;
     document.querySelectorAll('[data-content-platform]').forEach(tab => {
       const active = tab.dataset.contentPlatform === platform;
       tab.classList.toggle('active', active);
-      tab.setAttribute('aria-selected', active ? 'true' : 'false');
+      if (tab.getAttribute('role') === 'tab') {
+        tab.setAttribute('aria-selected', active ? 'true' : 'false');
+      }
     });
     const defaultRatio = CONTENT_PLATFORMS[platform].defaultRatio;
     if (defaultRatio) setContentRatio(defaultRatio, { silent: true });
     updateContentModeLabel();
+    renderContentQuickTemplates();
   }
 
   function setContentStyle(style) {
@@ -585,11 +676,25 @@
   }
 
   function setContentRatio(ratio, options = {}) {
-    STATE.contentRatio = ratio;
+    STATE.contentRatio = normalizeAspectRatio(ratio, '3:4');
     document.querySelectorAll('[data-content-ratio]').forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.contentRatio === ratio);
+      btn.classList.toggle('active', btn.dataset.contentRatio === STATE.contentRatio);
     });
+    syncContentResultAspectRatio();
     if (!options.silent) updateContentModeLabel();
+  }
+
+  function syncContentResultAspectRatio() {
+    const ratio = normalizeAspectRatio(STATE.contentRatio);
+    const body = document.getElementById('content-result-body');
+    const grid = document.getElementById('content-result-grid');
+    const skeletonGrid = document.querySelector('.content-result-skeleton-grid');
+    if (body) body.dataset.ratio = ratio;
+    if (grid) grid.dataset.ratio = ratio;
+    if (skeletonGrid) skeletonGrid.dataset.ratio = ratio;
+    document.querySelectorAll('#content-result-loading .content-skeleton-thumb').forEach(el => {
+      el.dataset.ratio = ratio;
+    });
   }
 
   function updateContentModeLabel() {
@@ -629,17 +734,109 @@
       image: IMAGE_RESULT_POOL[(seed + i) % IMAGE_RESULT_POOL.length],
       tags,
       platform: STATE.contentPlatform,
-      ratio: STATE.contentRatio,
+      ratio: normalizeAspectRatio(STATE.contentRatio),
       style: STATE.contentStyle,
       prompt: prompt.trim(),
     }));
   }
 
+  function updateContentAvatarLinkBtn() {
+    const btn = document.getElementById('btn-content-avatar-video');
+    const wrap = document.getElementById('content-avatar-link-wrap');
+    const hasResults = STATE.contentResults?.length > 0;
+    if (btn) {
+      btn.disabled = !hasResults;
+      btn.classList.toggle('is-ready', hasResults);
+    }
+    if (wrap) wrap.classList.toggle('is-ready', hasResults);
+  }
+
+  function loadAvatarContentImagesFromDraft() {
+    try {
+      const raw = getDraft('avatar-content-images');
+      STATE.avatarContentImages = raw ? JSON.parse(raw) : [];
+      if (!Array.isArray(STATE.avatarContentImages)) STATE.avatarContentImages = [];
+    } catch (_) {
+      STATE.avatarContentImages = [];
+    }
+  }
+
+  function saveAvatarContentImages() {
+    setDraft('avatar-content-images', JSON.stringify(STATE.avatarContentImages || []));
+  }
+
+  function setAvatarContentImagesFromResults(results) {
+    const items = (results || []).filter(r => r?.image).map((r, i) => ({
+      id: r.id || 'aci-' + i,
+      url: r.image,
+      title: r.title || '',
+      ratio: normalizeAspectRatio(r.ratio || STATE.contentRatio),
+    }));
+    STATE.avatarContentImages = items;
+    saveAvatarContentImages();
+    renderAvatarContentImages();
+  }
+
+  function mapContentRatioToAvatarOption(ratio) {
+    const r = normalizeAspectRatio(ratio);
+    if (r === '9:16' || r === '3:4') return '9:16 · 720p';
+    if (r === '16:9' || r === '4:3') return '16:9 · 1080p';
+    if (r === '1:1') return '1:1 · 720p';
+    return '16:9 · 1080p';
+  }
+
+  function syncAvatarRatioFromContent() {
+    const select = document.getElementById('avatar-ratio-select');
+    if (!select || !STATE.contentRatio) return;
+    const target = mapContentRatioToAvatarOption(STATE.contentRatio);
+    const match = [...select.options].find(o => o.textContent.trim() === target);
+    if (match) select.value = match.value;
+  }
+
+  function renderAvatarContentImages() {
+    const strip = document.getElementById('avatar-content-strip');
+    const list = document.getElementById('avatar-content-images');
+    if (!strip || !list) return;
+    const images = STATE.avatarContentImages || [];
+    strip.hidden = images.length === 0;
+    list.innerHTML = images.map(img => `
+      <div class="avatar-content-thumb" data-ratio="${normalizeAspectRatio(img.ratio)}" title="${img.title || '图文素材'}">
+        <img src="${img.url}" alt="${img.title || '图文素材'}" loading="lazy">
+      </div>`).join('');
+  }
+
+  function pushContentToAvatar() {
+    const editorText = document.getElementById('content-editor')?.value?.trim();
+    const resultText = STATE.contentResults?.[0]?.prompt || STATE.contentResults?.[0]?.title;
+    const content = editorText || resultText;
+    if (!content && !STATE.contentResults?.length) return;
+    if (content) {
+      setDraft('avatar-script', content);
+      const avatarEditor = document.getElementById('avatar-script');
+      if (avatarEditor) avatarEditor.value = content;
+    }
+    setAvatarContentImagesFromResults(STATE.contentResults);
+    syncAvatarRatioFromContent();
+    const imgCount = STATE.avatarContentImages.length;
+    toast(
+      imgCount
+        ? `文案与 ${imgCount} 张图文素材已同步至数字人`
+        : '文案已同步至数字人模块',
+      'success',
+    );
+    navigate('avatar');
+  }
+
   function showContentResultState(state) {
+    const body = document.getElementById('content-result-body');
     const empty = document.getElementById('content-result-empty');
     const loading = document.getElementById('content-result-loading');
     const grid = document.getElementById('content-result-grid');
     const countEl = document.getElementById('content-result-count');
+    if (body) {
+      body.classList.remove('is-empty', 'is-loading', 'is-results');
+      body.classList.add('is-' + state);
+    }
     if (empty) empty.hidden = state !== 'empty';
     if (loading) loading.hidden = state !== 'loading';
     if (grid) grid.hidden = state !== 'results';
@@ -651,6 +848,38 @@
         countEl.hidden = true;
       }
     }
+    updateContentAvatarLinkBtn();
+    if (state === 'loading' || state === 'results') syncContentResultAspectRatio();
+  }
+
+  function downloadContentResult(item) {
+    if (!item?.image) return;
+    const link = document.createElement('a');
+    link.href = item.image;
+    link.download = `facemini-content-${item.id}.png`;
+    link.rel = 'noopener';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    toast('图片已开始下载', 'success');
+  }
+
+  function regenerateContentResult(id) {
+    const idx = STATE.contentResults.findIndex(r => r.id === id);
+    if (idx < 0) return;
+    const item = STATE.contentResults[idx];
+    const card = document.querySelector(`[data-content-result-id="${id}"]`);
+    if (card) card.classList.add('is-regenerating');
+
+    setTimeout(() => {
+      const seed = Date.now() + idx;
+      STATE.contentResults[idx] = {
+        ...item,
+        image: IMAGE_RESULT_POOL[seed % IMAGE_RESULT_POOL.length],
+      };
+      renderContentResultGrid();
+      toast('已重新生成该图文', 'success');
+    }, 1100);
   }
 
   function renderContentResultGrid() {
@@ -663,17 +892,39 @@
     }
     showContentResultState('results');
     grid.innerHTML = STATE.contentResults.map(item => `
-      <button type="button" class="content-result-card-item" data-content-result-id="${item.id}">
-        <div class="content-result-card-thumb" data-ratio="${item.ratio || '3:4'}">
-          <img src="${item.image}" alt="" loading="lazy">
+      <article class="content-result-card-item" data-content-result-id="${item.id}">
+        <button type="button" class="content-result-card-preview" data-open-content-card="${item.id}" aria-label="查看大图">
+          <div class="content-result-card-thumb" data-ratio="${normalizeAspectRatio(item.ratio)}">
+            <img src="${item.image}" alt="" loading="lazy">
+          </div>
+        </button>
+        <div class="content-result-card-meta">
+          <div class="content-result-card-title">${item.title}</div>
+          <div class="content-result-tags">${item.tags.map(t => `<span class="content-result-tag">${t}</span>`).join('')}</div>
         </div>
-        <div class="content-result-card-title">${item.title}</div>
-        <div class="content-result-tags">${item.tags.map(t => `<span class="content-result-tag">${t}</span>`).join('')}</div>
-      </button>`).join('');
-    grid.querySelectorAll('[data-content-result-id]').forEach(btn => {
+        <div class="content-result-card-actions">
+          <button type="button" class="content-result-action content-result-action--primary" data-download-content="${item.id}">下载</button>
+          <button type="button" class="content-result-action" data-regen-content="${item.id}">重新生成</button>
+        </div>
+      </article>`).join('');
+
+    grid.querySelectorAll('[data-open-content-card]').forEach(btn => {
       btn.addEventListener('click', () => {
-        const item = STATE.contentResults.find(r => r.id === Number(btn.dataset.contentResultId));
+        const item = STATE.contentResults.find(r => r.id === Number(btn.dataset.openContentCard));
         if (item) openContentCardModal(item);
+      });
+    });
+    grid.querySelectorAll('[data-download-content]').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        const item = STATE.contentResults.find(r => r.id === Number(btn.dataset.downloadContent));
+        if (item) downloadContentResult(item);
+      });
+    });
+    grid.querySelectorAll('[data-regen-content]').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        regenerateContentResult(Number(btn.dataset.regenContent));
       });
     });
   }
@@ -685,7 +936,7 @@
     if (!overlay || !body || !item) return;
     const platform = CONTENT_PLATFORMS[item.platform] || CONTENT_PLATFORMS.xiaohongshu;
     body.innerHTML = `
-      <div class="content-card-modal-preview">
+      <div class="content-card-modal-preview" data-ratio="${normalizeAspectRatio(item.ratio)}">
         <img src="${item.image}" alt="">
       </div>
       <div class="content-card-modal-title">${item.title}</div>
@@ -703,113 +954,99 @@
     STATE.contentActiveCard = null;
   }
 
-  function renderContentInspireLibrary() {
-    const grid = document.getElementById('content-inspire-grid');
-    const countEl = document.getElementById('content-inspire-count');
-    const pagination = document.getElementById('content-inspire-pagination');
-    if (!grid) return;
-
-    const q = (document.getElementById('content-inspire-search')?.value || '').trim().toLowerCase();
-    const cat = STATE.contentInspireCat || 'all';
-    let items = CONTENT_INSPIRE_ITEMS.filter(item => {
-      if (cat !== 'all' && item.category !== cat) return false;
-      if (q && !item.title.toLowerCase().includes(q) && !item.prompt.toLowerCase().includes(q)) return false;
-      return true;
-    });
-    if (STATE.contentInspireSort === 'new') {
-      items = [...items].reverse();
-    } else {
-      items = [...items].sort((a, b) => b.likes - a.likes);
-    }
-
-    const perPage = 10;
-    const totalPages = Math.max(1, Math.ceil(items.length / perPage));
-    const page = Math.min(STATE.contentInspirePage || 1, totalPages);
-    STATE.contentInspirePage = page;
-    const pageItems = items.slice((page - 1) * perPage, page * perPage);
-
-    if (countEl) countEl.textContent = items.length + ' 个灵感';
-    grid.innerHTML = pageItems.length
-      ? pageItems.map(item => {
-          const platform = CONTENT_PLATFORMS[item.platform] || CONTENT_PLATFORMS.xiaohongshu;
-          const likes = item.likes >= 1000 ? (item.likes / 1000).toFixed(1) + 'k' : String(item.likes);
-          return `
-          <button type="button" class="content-inspire-card" data-content-inspire-id="${item.id}">
-            <div class="content-inspire-card-thumb"><img src="${item.image}" alt="" loading="lazy"></div>
-            <div class="content-inspire-card-body">
-              <div class="content-inspire-card-title">${item.title}</div>
-              <div class="content-inspire-card-meta">
-                <span class="content-inspire-card-badge">${platform.badge}</span>
-                <span>${item.ratio}</span>
-                <span class="content-inspire-card-likes">♥ ${likes}</span>
-              </div>
-            </div>
-          </button>`;
-        }).join('')
-      : '<div class="hub-empty" style="grid-column:1/-1">暂无匹配灵感</div>';
-
-    grid.querySelectorAll('[data-content-inspire-id]').forEach(card => {
-      card.addEventListener('click', () => {
-        const item = CONTENT_INSPIRE_ITEMS.find(x => x.id === card.dataset.contentInspireId);
-        if (item) applyContentInspireItem(item);
-      });
-    });
-
-    if (pagination) {
-      pagination.innerHTML = '';
-      const prev = document.createElement('button');
-      prev.type = 'button';
-      prev.className = 'content-inspire-page-btn';
-      prev.textContent = '‹';
-      prev.disabled = page <= 1;
-      prev.addEventListener('click', () => {
-        STATE.contentInspirePage = Math.max(1, page - 1);
-        renderContentInspireLibrary();
-      });
-      pagination.appendChild(prev);
-      for (let i = 1; i <= totalPages; i += 1) {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'content-inspire-page-btn' + (i === page ? ' active' : '');
-        btn.textContent = String(i);
-        btn.addEventListener('click', () => {
-          STATE.contentInspirePage = i;
-          renderContentInspireLibrary();
-        });
-        pagination.appendChild(btn);
-      }
-      const next = document.createElement('button');
-      next.type = 'button';
-      next.className = 'content-inspire-page-btn';
-      next.textContent = '›';
-      next.disabled = page >= totalPages;
-      next.addEventListener('click', () => {
-        STATE.contentInspirePage = Math.min(totalPages, page + 1);
-        renderContentInspireLibrary();
-      });
-      pagination.appendChild(next);
-    }
-
-    document.querySelectorAll('[data-content-inspire-cat]').forEach(tab => {
-      tab.classList.toggle('active', tab.dataset.contentInspireCat === cat);
-    });
-    document.querySelectorAll('[data-tab-group="content-inspire-sort"] [data-tab]').forEach(tab => {
-      tab.classList.toggle('active', tab.dataset.tab === STATE.contentInspireSort);
-    });
-  }
-
-  function applyContentInspireItem(item) {
+  function applyContentQuickTemplate(item) {
     if (!item) return;
-    switchContentSubTab('create');
-    setContentPlatform(item.platform);
-    setContentRatio(item.ratio);
+    STATE.contentQuickTemplateId = item.id;
+    STATE.contentCommonTemplateId = null;
+    syncContentCommonTemplateSelect();
+    if (item.platform) setContentPlatform(item.platform);
+    if (item.ratio) setContentRatio(item.ratio);
     const el = document.getElementById('content-editor');
     if (el) {
       el.value = item.prompt;
       setDraft('content-editor', item.prompt);
       updateContentCharCount();
+      el.focus();
     }
-    toast('已应用灵感「' + item.title + '」', 'success');
+    renderContentQuickTemplates();
+    toast('已应用「' + item.title + '」模板', 'success');
+  }
+
+  function renderContentQuickTemplates() {
+    const strip = document.getElementById('content-quick-templates');
+    if (!strip) return;
+    const platform = STATE.contentPlatform || 'xiaohongshu';
+    const items = CONTENT_INSPIRE_ITEMS
+      .filter(item => item.platform === platform)
+      .sort((a, b) => b.likes - a.likes)
+      .slice(0, 8);
+    if (!items.length) {
+      strip.innerHTML = '<div class="content-quick-empty">当前类型暂无快捷模板</div>';
+      return;
+    }
+    strip.innerHTML = items.map(item => {
+      const active = STATE.contentQuickTemplateId === item.id;
+      return `
+      <button type="button" class="content-quick-card${active ? ' active' : ''}" data-content-quick-id="${item.id}" role="listitem" aria-pressed="${active}">
+        <div class="content-quick-thumb"><img src="${item.image}" alt="" loading="lazy"></div>
+        <div class="content-quick-body">
+          <strong class="content-quick-title">${item.title}</strong>
+          <span class="content-quick-desc-line">${item.prompt.slice(0, 36)}…</span>
+        </div>
+      </button>`;
+    }).join('');
+    strip.querySelectorAll('[data-content-quick-id]').forEach(card => {
+      card.addEventListener('click', () => {
+        const item = CONTENT_INSPIRE_ITEMS.find(x => x.id === card.dataset.contentQuickId);
+        if (item) applyContentQuickTemplate(item);
+      });
+    });
+    updateContentQuickScrollBtns();
+  }
+
+  function updateContentQuickScrollBtns() {
+    const scrollEl = document.getElementById('content-quick-templates');
+    const prevBtn = document.getElementById('content-quick-scroll-prev');
+    const nextBtn = document.getElementById('content-quick-scroll-next');
+    if (!scrollEl) return;
+
+    const maxScroll = scrollEl.scrollWidth - scrollEl.clientWidth;
+    const canScroll = maxScroll > 4;
+    const atStart = scrollEl.scrollLeft <= 4;
+    const atEnd = scrollEl.scrollLeft >= maxScroll - 4;
+
+    if (prevBtn) {
+      prevBtn.hidden = atStart;
+      prevBtn.disabled = atStart;
+    }
+    if (nextBtn) {
+      nextBtn.hidden = !canScroll || atEnd;
+      nextBtn.disabled = !canScroll || atEnd;
+    }
+  }
+
+  function bindContentQuickRail() {
+    const scrollEl = document.getElementById('content-quick-templates');
+    const prevBtn = document.getElementById('content-quick-scroll-prev');
+    const nextBtn = document.getElementById('content-quick-scroll-next');
+    if (!scrollEl) return;
+
+    function scrollStep() {
+      const card = scrollEl.querySelector('.content-quick-card');
+      const gap = 12;
+      return card ? card.offsetWidth + gap : 160;
+    }
+
+    prevBtn?.addEventListener('click', () => {
+      scrollEl.scrollBy({ left: -scrollStep(), behavior: 'smooth' });
+    });
+    nextBtn?.addEventListener('click', () => {
+      scrollEl.scrollBy({ left: scrollStep(), behavior: 'smooth' });
+    });
+
+    scrollEl.addEventListener('scroll', updateContentQuickScrollBtns, { passive: true });
+    window.addEventListener('resize', updateContentQuickScrollBtns);
+    updateContentQuickScrollBtns();
   }
 
   function bindContentStudio() {
@@ -832,42 +1069,32 @@
       btn.addEventListener('click', () => setContentRatio(btn.dataset.contentRatio));
     });
 
-    document.getElementById('content-regenerate-btn')?.addEventListener('click', () => {
-      const prompt = document.getElementById('content-editor')?.value?.trim();
-      if (!prompt) {
-        toast('请先输入创作主题', 'info');
+    renderContentCommonTemplateSelect();
+    document.getElementById('content-common-template-select')?.addEventListener('change', e => {
+      const id = e.target.value;
+      if (!id) {
+        STATE.contentCommonTemplateId = null;
         return;
       }
-      const btn = document.getElementById('content-generate-btn');
-      if (btn) startGeneration('content', parseInt(btn.dataset.cost || '5', 10), btn);
+      applyContentCommonTemplate(id);
+      const editor = document.getElementById('content-editor');
+      if (editor) editor.focus();
     });
 
-    document.getElementById('content-download-btn')?.addEventListener('click', () => {
-      if (!STATE.contentResults.length) {
-        toast('暂无可下载的生成结果', 'info');
-        return;
+    document.getElementById('btn-content-avatar-video')?.addEventListener('click', () => {
+      if (!STATE.contentResults?.length) return;
+      pushContentToAvatar();
+    });
+
+    document.getElementById('content-empty-focus-input')?.addEventListener('click', () => {
+      const el = document.getElementById('content-editor');
+      if (el) {
+        el.focus();
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
-      toast('下载已开始（原型演示）', 'success');
     });
-
-    document.getElementById('content-inspire-back')?.addEventListener('click', () => switchContentSubTab('create'));
-    document.getElementById('content-inspire-search')?.addEventListener('input', debounce(() => {
-      STATE.contentInspirePage = 1;
-      renderContentInspireLibrary();
-    }, 200));
-
-    document.querySelectorAll('[data-content-inspire-cat]').forEach(tab => {
-      tab.addEventListener('click', () => {
-        STATE.contentInspireCat = tab.dataset.contentInspireCat || 'all';
-        STATE.contentInspirePage = 1;
-        renderContentInspireLibrary();
-      });
-    });
-    document.querySelectorAll('[data-tab-group="content-inspire-sort"] [data-tab]').forEach(tab => {
-      tab.addEventListener('click', () => {
-        STATE.contentInspireSort = tab.dataset.tab || 'hot';
-        renderContentInspireLibrary();
-      });
+    document.getElementById('content-empty-scroll-templates')?.addEventListener('click', () => {
+      document.querySelector('.content-quick-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
     document.getElementById('content-card-modal-close')?.addEventListener('click', closeContentCardModal);
@@ -878,6 +1105,10 @@
       if (e.key === 'Escape' && !document.getElementById('content-card-modal')?.hidden) {
         closeContentCardModal();
       }
+    });
+    document.getElementById('content-card-download-btn')?.addEventListener('click', () => {
+      const item = STATE.contentActiveCard;
+      if (item) downloadContentResult(item);
     });
     document.getElementById('content-card-edit-btn')?.addEventListener('click', () => {
       const item = STATE.contentActiveCard;
@@ -907,7 +1138,10 @@
       if (btn) startGeneration('content', parseInt(btn.dataset.cost || '5', 10), btn);
     });
 
+    bindContentQuickRail();
     updateContentModeLabel();
+    syncContentResultAspectRatio();
+    renderContentQuickTemplates();
     showContentResultState('empty');
   }
 
@@ -2295,6 +2529,22 @@
     if (eta) eta.textContent = '预计剩余 ' + (type === 'video' ? '45' : '20') + ' 秒';
     if (fill) fill.style.width = '0%';
 
+    const videoStagesEl = document.getElementById('video-gen-stages');
+    const progressLabel = document.getElementById('gen-progress-label');
+    if (type === 'video' && videoStagesEl) {
+      videoStagesEl.hidden = !STATE.videoFrameEnabled;
+      ['video-stage-main-fill', 'video-stage-frames-fill', 'video-stage-merge-fill'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.width = '0%';
+      });
+      ['video-stage-main-eta', 'video-stage-frames-eta', 'video-stage-merge-eta'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = id.includes('main') ? '0%' : '待开始';
+      });
+    } else if (videoStagesEl) {
+      videoStagesEl.hidden = true;
+    }
+
     const finish = () => {
       if (type === 'content') {
         const prompt = document.getElementById('content-editor')?.value?.trim() || '';
@@ -2304,7 +2554,7 @@
         const contentProgress = document.getElementById('content-gen-progress');
         if (contentProgress) contentProgress.hidden = true;
         btn?.classList.remove('is-generating');
-        if (contentGenText) contentGenText.textContent = '立即生成';
+        if (contentGenText) contentGenText.textContent = '⚡ 生成';
         const statusEl = document.getElementById('content-gen-status');
         if (statusEl) statusEl.textContent = 'AI 正在为你生成图文…';
       } else if (useInline && inlineWrap) {
@@ -2329,29 +2579,81 @@
       if (type === 'image') {
         switchImageSubTab('works');
       } else if (type === 'video') {
-        switchVideoSubTab('history');
+        buildVideoPreviewModel();
+        renderVideoPreview();
+        switchVideoSubTab('create');
       } else if (type === 'avatar') {
         switchAvatarSubTab('history');
+      }
+      if (videoStagesEl) videoStagesEl.hidden = true;
+      if (progressLabel) progressLabel.textContent = '生成进度';
+    };
+
+    const updateVideoStageUI = (pct) => {
+      const mainFill = document.getElementById('video-stage-main-fill');
+      const framesFill = document.getElementById('video-stage-frames-fill');
+      const mergeFill = document.getElementById('video-stage-merge-fill');
+      const mainEta = document.getElementById('video-stage-main-eta');
+      const framesEta = document.getElementById('video-stage-frames-eta');
+      const mergeEta = document.getElementById('video-stage-merge-eta');
+      if (pct <= 80) {
+        const local = (pct / 80) * 100;
+        if (mainFill) mainFill.style.width = local + '%';
+        if (mainEta) mainEta.textContent = Math.round(local) + '%';
+        if (framesEta) framesEta.textContent = '待开始';
+        if (mergeEta) mergeEta.textContent = '待开始';
+        if (framesFill) framesFill.style.width = '0%';
+        if (mergeFill) mergeFill.style.width = '0%';
+        if (progressLabel) progressLabel.textContent = '主体视频生成 / 加工';
+        if (status) status.textContent = STATE.videoAssets.video
+          ? '二次加工原视频（换音 / 改风格）…'
+          : STATE.videoAssets.image
+            ? '基于图片生成动态正片…'
+            : STATE.videoAssets.audio
+              ? '生成画面并叠加用户音频…'
+              : messages[Math.min(msgIndex, messages.length - 1)];
+      } else if (pct <= 95) {
+        if (mainFill) mainFill.style.width = '100%';
+        if (mainEta) mainEta.textContent = '完成';
+        const local = ((pct - 80) / 15) * 100;
+        if (framesFill) framesFill.style.width = local + '%';
+        if (framesEta) framesEta.textContent = Math.round(local) + '%';
+        if (progressLabel) progressLabel.textContent = '渲染首尾帧';
+        if (status) status.textContent = '渲染首尾帧画面…';
+      } else {
+        if (mainFill) mainFill.style.width = '100%';
+        if (framesFill) framesFill.style.width = '100%';
+        if (mainEta) mainEta.textContent = '完成';
+        if (framesEta) framesEta.textContent = '完成';
+        const local = ((pct - 95) / 5) * 100;
+        if (mergeFill) mergeFill.style.width = local + '%';
+        if (mergeEta) mergeEta.textContent = Math.round(local) + '%';
+        if (progressLabel) progressLabel.textContent = '拼接封装导出';
+        if (status) status.textContent = '拼接首帧 + 正片 + 尾帧…';
       }
     };
 
     const interval = setInterval(() => {
-      progress += Math.random() * 15 + 5;
+      progress += type === 'video' ? Math.random() * 8 + 4 : Math.random() * 15 + 5;
       if (progress >= 100) {
         progress = 100;
         clearInterval(interval);
         if (fill) fill.style.width = '100%';
+        if (type === 'video' && STATE.videoFrameEnabled) updateVideoStageUI(100);
         if (status) status.textContent = '生成完成';
         setTimeout(finish, 500);
         return;
       }
       if (fill) fill.style.width = progress + '%';
+      if (type === 'video' && STATE.videoFrameEnabled) updateVideoStageUI(progress);
       const newIndex = Math.min(Math.floor(progress / 25), messages.length - 1);
       if (newIndex !== msgIndex) {
         msgIndex = newIndex;
-        if (status) status.textContent = messages[msgIndex];
+        if (status && (type !== 'video' || !STATE.videoFrameEnabled)) {
+          status.textContent = messages[msgIndex];
+        }
       }
-      if (eta) eta.textContent = '预计剩余 ' + Math.max(1, Math.round((100 - progress) / 5)) + ' 秒';
+      if (eta) eta.textContent = '预计剩余 ' + Math.max(1, Math.round((100 - progress) / (type === 'video' ? 4 : 5))) + ' 秒';
     }, 400);
   }
 
@@ -2380,6 +2682,334 @@
     if (genBtn) genBtn.dataset.cost = cost;
   }
 
+  function parseVideoRatioValue() {
+    const raw = document.getElementById('video-ratio-select')?.value || '9:16 · 720p';
+    const match = raw.match(/(\d+:\d+)/);
+    return match ? match[1] : '9:16';
+  }
+
+  function validateFrameImageFile(file) {
+    if (!file) return false;
+    const okType = file.type === 'image/jpeg' || file.type === 'image/png';
+    if (!okType) {
+      toast('首尾帧仅支持 JPG/PNG 图片', 'error');
+      return false;
+    }
+    if (file.size > VIDEO_FRAME_MAX_BYTES) {
+      toast('首尾帧图片不能超过 5MB', 'error');
+      return false;
+    }
+    return true;
+  }
+
+  let pendingVideoFrameSlot = 'first';
+
+  function syncVideoFrameEnabled() {
+    STATE.videoFrameEnabled = !!(STATE.videoFirstFrame || STATE.videoLastFrame);
+    const trigger = document.getElementById('video-frame-trigger');
+    if (trigger) trigger.classList.toggle('has-frames', STATE.videoFrameEnabled);
+  }
+
+  function setVideoFrame(slot, data) {
+    if (slot === 'first') STATE.videoFirstFrame = data;
+    else STATE.videoLastFrame = data;
+    syncVideoFrameEnabled();
+    renderVideoFrameUI();
+  }
+
+  function clearVideoFrame(slot) {
+    setVideoFrame(slot, null);
+    toast((slot === 'first' ? '首帧' : '尾帧') + '已清除', 'info');
+  }
+
+  function clearAllVideoFrames() {
+    STATE.videoFirstFrame = null;
+    STATE.videoLastFrame = null;
+    syncVideoFrameEnabled();
+    renderVideoFrameUI();
+    toast('已清除首尾帧', 'info');
+  }
+
+  function resolveNextVideoFrameSlot() {
+    if (!STATE.videoFirstFrame) return 'first';
+    if (!STATE.videoLastFrame) return 'last';
+    return 'last';
+  }
+
+  function applyVideoFrameFile(file) {
+    if (!validateFrameImageFile(file)) return false;
+    const slot = pendingVideoFrameSlot || resolveNextVideoFrameSlot();
+    const replacing = slot === 'first' ? STATE.videoFirstFrame : STATE.videoLastFrame;
+    const url = URL.createObjectURL(file);
+    const label = slot === 'first' ? '自定义首帧' : '自定义尾帧';
+    setVideoFrame(slot, { type: 'upload', name: file.name, url, label });
+    if (slot === 'first') toast(replacing ? '首帧图片已更新' : '首帧图片已上传', 'success');
+    else toast(replacing ? '尾帧图片已更新' : '尾帧图片已上传', 'success');
+    return true;
+  }
+
+  function openVideoFrameUpload() {
+    pendingVideoFrameSlot = resolveNextVideoFrameSlot();
+    document.getElementById('video-frame-upload-input')?.click();
+  }
+
+  function renderVideoFrameUI() {
+    const hasFirst = !!STATE.videoFirstFrame;
+    const emptyEl = document.getElementById('video-frame-trigger-empty');
+    const filledEl = document.getElementById('video-frame-trigger-filled');
+    if (emptyEl) emptyEl.hidden = hasFirst;
+    if (filledEl) filledEl.hidden = !hasFirst;
+
+    const thumbImg = document.getElementById('video-frame-thumb-first-img');
+    const thumbPh = document.getElementById('video-frame-thumb-first-ph');
+    if (thumbImg && thumbPh) {
+      if (STATE.videoFirstFrame) {
+        thumbImg.src = STATE.videoFirstFrame.url;
+        thumbImg.hidden = false;
+        thumbPh.hidden = true;
+      } else {
+        thumbImg.hidden = true;
+        thumbPh.hidden = false;
+      }
+    }
+
+    const lastDot = document.getElementById('video-frame-last-dot');
+    if (lastDot) lastDot.hidden = !STATE.videoLastFrame;
+  }
+
+  function renderVideoMainAssetStrip() {
+    const strip = document.getElementById('video-main-asset-strip');
+    if (!strip) return;
+    const items = [];
+    if (STATE.videoAssets.image) items.push({ type: 'image', label: '图片素材', name: STATE.videoAssets.image.name, thumb: STATE.videoAssets.image.url });
+    if (STATE.videoAssets.video) items.push({ type: 'video', label: '视频素材', name: STATE.videoAssets.video.name });
+    if (STATE.videoAssets.audio) items.push({ type: 'audio', label: '音频素材', name: STATE.videoAssets.audio.name });
+    strip.hidden = items.length === 0;
+    strip.innerHTML = items.map(item => `
+      <div class="video-main-asset-chip" data-asset-type="${item.type}">
+        ${item.thumb ? `<img class="video-main-asset-thumb" src="${item.thumb}" alt="">` : `<span class="video-main-asset-icon">${item.type === 'video' ? '🎬' : '🎵'}</span>`}
+        <div class="video-main-asset-meta">
+          <span class="video-main-asset-label">${item.label}</span>
+          <span class="video-main-asset-name">${item.name}</span>
+        </div>
+        <button type="button" class="video-main-asset-remove" data-remove-asset="${item.type}" aria-label="移除素材">×</button>
+      </div>`).join('');
+    strip.querySelectorAll('[data-remove-asset]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const type = btn.dataset.removeAsset;
+        STATE.videoAssets[type] = null;
+        renderVideoMainAssetStrip();
+        toast('已移除' + (type === 'image' ? '图片' : type === 'video' ? '视频' : '音频') + '素材', 'info');
+      });
+    });
+  }
+
+  function buildVideoPreviewModel() {
+    const mainDuration = parseInt(getActiveDuration().replace('s', ''), 10) || 5;
+    const frameDur = 1;
+    const segments = [];
+    const hasFirst = STATE.videoFrameEnabled && STATE.videoFirstFrame;
+    const hasLast = STATE.videoFrameEnabled && STATE.videoLastFrame;
+    if (hasFirst) {
+      segments.push({
+        type: 'first',
+        label: '首帧',
+        duration: frameDur,
+        preview: STATE.videoFirstFrame.url,
+        emoji: '🎞',
+      });
+    }
+    const mainAsset = STATE.videoAssets.video ? 'video' : STATE.videoAssets.image ? 'image' : STATE.videoAssets.audio ? 'audio' : 'ai';
+    segments.push({
+      type: 'main',
+      label: '正片',
+      duration: mainDuration,
+      preview: STATE.videoAssets.image?.url || 'assets/inspire/scene-2-cyber.png',
+      emoji: mainAsset === 'video' ? '🎬' : mainAsset === 'audio' ? '🎵' : '🎥',
+      assetType: mainAsset,
+    });
+    if (hasLast) {
+      segments.push({
+        type: 'last',
+        label: '尾帧',
+        duration: frameDur,
+        preview: STATE.videoLastFrame.url,
+        emoji: '🎞',
+      });
+    }
+    const totalDuration = segments.reduce((sum, s) => sum + s.duration, 0);
+    STATE.videoPreview = { segments, totalDuration };
+    return STATE.videoPreview;
+  }
+
+  function renderVideoPreview(activeSegment) {
+    const panel = document.getElementById('video-preview-panel');
+    const preview = STATE.videoPreview;
+    if (!panel || !preview) return;
+    panel.hidden = false;
+    const timeline = document.getElementById('video-preview-timeline');
+    const scrubber = document.getElementById('video-preview-scrubber');
+    if (timeline) {
+      timeline.querySelectorAll('.video-preview-segment').forEach(btn => {
+        const seg = preview.segments.find(s => s.type === btn.dataset.segment);
+        btn.hidden = !seg;
+        btn.classList.toggle('active', seg && seg.type === (activeSegment || preview.segments[0]?.type));
+      });
+    }
+    const currentType = activeSegment || preview.segments[0]?.type;
+    const seg = preview.segments.find(s => s.type === currentType) || preview.segments[0];
+    const labelEl = document.getElementById('video-preview-segment-label');
+    const emojiEl = document.getElementById('video-preview-segment-emoji');
+    const screen = document.getElementById('video-preview-screen');
+    if (labelEl) labelEl.textContent = seg?.label || '正片';
+    if (emojiEl) emojiEl.textContent = seg?.emoji || '🎬';
+    if (screen && seg?.preview) {
+      screen.style.backgroundImage = `url(${seg.preview})`;
+      screen.classList.add('has-preview');
+    }
+    if (scrubber) scrubber.value = '0';
+  }
+
+  function updateVideoPreviewFromScrubber(value) {
+    const preview = STATE.videoPreview;
+    if (!preview) return;
+    const pct = parseInt(value, 10) / 100;
+    let acc = 0;
+    let active = preview.segments[0];
+    const target = preview.totalDuration * pct;
+    for (const seg of preview.segments) {
+      if (target <= acc + seg.duration) {
+        active = seg;
+        break;
+      }
+      acc += seg.duration;
+    }
+    renderVideoPreview(active.type);
+  }
+
+  function bindVideoStudio() {
+    renderVideoMainAssetStrip();
+    renderVideoFrameUI();
+
+    document.getElementById('video-frame-slot-first')?.addEventListener('click', e => {
+      if (e.target.closest('.video-frame-kling-card-clear')) return;
+      openVideoFrameUpload('first');
+    });
+    document.getElementById('video-frame-slot-last')?.addEventListener('click', e => {
+      if (e.target.closest('.video-frame-kling-card-clear')) return;
+      openVideoFrameUpload('last');
+    });
+    document.getElementById('video-frame-first-clear')?.addEventListener('click', e => {
+      e.stopPropagation();
+      clearVideoFrame('first');
+    });
+    document.getElementById('video-frame-last-clear')?.addEventListener('click', e => {
+      e.stopPropagation();
+      clearVideoFrame('last');
+    });
+    document.getElementById('video-frame-swap')?.addEventListener('click', () => swapVideoFrames());
+    document.getElementById('video-frame-history')?.addEventListener('click', e => {
+      e.stopPropagation();
+      switchVideoSubTab('history');
+      toast('已打开历史视频，可选择素材作为尾帧', 'info');
+    });
+    document.getElementById('video-frame-subject-bar')?.addEventListener('click', () => {
+      toast('主体绑定功能即将上线', 'info');
+    });
+
+    document.getElementById('video-frame-upload-input')?.addEventListener('change', e => {
+      const file = e.target.files?.[0];
+      if (file) applyVideoFrameFile(file);
+      e.target.value = '';
+    });
+
+    const videoAssetAddWrap = document.getElementById('video-asset-add-wrap');
+    const videoAssetAddBtn = document.getElementById('video-asset-add-btn');
+    const videoAssetPopover = document.getElementById('video-asset-popover');
+
+    function setVideoAssetPopoverOpen(open) {
+      if (videoAssetPopover) videoAssetPopover.hidden = !open;
+      if (videoAssetAddBtn) videoAssetAddBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      videoAssetAddWrap?.classList.toggle('is-popover-open', open);
+    }
+
+    videoAssetAddBtn?.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      const willOpen = !!(videoAssetPopover && videoAssetPopover.hidden);
+      setVideoAssetPopoverOpen(willOpen);
+    });
+    videoAssetPopover?.querySelectorAll('[data-video-upload]').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        const inputId = btn.getAttribute('data-video-upload');
+        const input = inputId ? document.getElementById(inputId) : null;
+        if (input) input.click();
+        setVideoAssetPopoverOpen(false);
+      });
+    });
+    document.addEventListener('click', e => {
+      if (!videoAssetAddWrap || videoAssetAddWrap.contains(e.target)) return;
+      setVideoAssetPopoverOpen(false);
+    });
+
+    document.getElementById('video-upload-image')?.addEventListener('change', e => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      const url = URL.createObjectURL(file);
+      STATE.videoAssets.image = { name: file.name, url, file };
+      renderVideoMainAssetStrip();
+      toast('图片素材已上传，将作为正片主体画面', 'success');
+      e.target.value = '';
+    });
+
+    document.getElementById('video-upload-video')?.addEventListener('change', e => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      STATE.videoAssets.video = { name: file.name, file };
+      const ratioSelect = document.getElementById('video-ratio-select');
+      if (ratioSelect) {
+        const opt916 = [...ratioSelect.options].find(o => o.textContent.includes('9:16'));
+        if (opt916) ratioSelect.value = opt916.value;
+      }
+      updateVideoCost(document.querySelector('#page-video .duration-btn.active')?.dataset.duration || '5');
+      renderVideoMainAssetStrip();
+      toast('视频素材已上传，比例与时长已同步（原型模拟）', 'success');
+      e.target.value = '';
+    });
+
+    document.getElementById('video-upload-audio')?.addEventListener('change', e => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      STATE.videoAssets.audio = { name: file.name, file };
+      renderVideoMainAssetStrip();
+      toast('音频素材已上传，将替换正片配音', 'success');
+      e.target.value = '';
+    });
+
+    document.getElementById('video-ratio-select')?.addEventListener('change', () => {
+      if (STATE.videoFirstFrame || STATE.videoLastFrame) {
+        toast('首尾帧已自动适配新画面比例', 'info');
+      }
+    });
+
+    document.getElementById('video-preview-timeline')?.addEventListener('click', e => {
+      const btn = e.target.closest('.video-preview-segment');
+      if (!btn || btn.hidden) return;
+      renderVideoPreview(btn.dataset.segment);
+    });
+
+    document.getElementById('video-preview-scrubber')?.addEventListener('input', e => {
+      updateVideoPreviewFromScrubber(e.target.value);
+    });
+
+    document.getElementById('video-preview-regen')?.addEventListener('click', () => {
+      const btn = document.getElementById('video-generate-btn');
+      if (btn) startGeneration('video', parseInt(btn.dataset.cost || '25', 10), btn);
+    });
+  }
+
   function addHistory(type) {
     const history = JSON.parse(localStorage.getItem(STORAGE.history) || '{}');
     if (!history[type]) history[type] = [];
@@ -2396,7 +3026,7 @@
           preview: prompt.slice(0, 48),
           cost: imageCost,
           emoji: '🖼',
-          ratio: STATE.imageRatio || document.getElementById('image-ratio-select')?.value || '1:1',
+          ratio: normalizeAspectRatio(STATE.imageRatio || document.getElementById('image-ratio-select')?.value),
           style: getImageStyleLabel(STATE.imageStyle),
           styleId: STATE.imageStyle,
           count,
@@ -2435,6 +3065,8 @@
         cost: parseInt(document.getElementById('avatar-generate-btn')?.dataset.cost || '20', 10),
         emoji: STATE.avatar.emoji || '👔',
         avatarName: STATE.avatar.name || '',
+        resultImage: STATE.avatarContentImages?.[0]?.url,
+        contentImages: (STATE.avatarContentImages || []).map(i => i.url),
         starred: false,
         createdAt: Date.now(),
       },
@@ -2448,7 +3080,7 @@
           prompt,
           resultImage: firstResult?.image,
           platform: STATE.contentPlatform,
-          ratio: STATE.contentRatio,
+          ratio: normalizeAspectRatio(STATE.contentRatio),
           cost: 5,
           emoji: '📝',
           starred: false,
@@ -2513,7 +3145,8 @@
   }
 
   function setImageRatio(value) {
-    const opt = IMAGE_RATIO_OPTIONS.find(r => r.value === value) || IMAGE_RATIO_OPTIONS[0];
+    const normalized = normalizeAspectRatio(value);
+    const opt = IMAGE_RATIO_OPTIONS.find(r => r.value === normalized) || IMAGE_RATIO_OPTIONS.find(r => r.value === '3:4');
     STATE.imageRatio = opt.value;
     setSelectByValue('image-ratio-select', opt.value);
     updateImageRatioTrigger(opt);
@@ -2594,7 +3227,7 @@
         </button>
       `).join('');
     }
-    setImageRatio(STATE.imageRatio || '1:1');
+    setImageRatio(STATE.imageRatio || '3:4');
     setImageStyle(STATE.imageStyle || 'default');
   }
 
@@ -3183,7 +3816,7 @@
     const itemPayload = encodeURIComponent(JSON.stringify({
       prompt: h.prompt || h.preview || '',
       model: h.model || '',
-      ratio: h.ratio || '',
+      ratio: normalizeAspectRatio(h.ratio),
       count: h.count || 1,
       styleId: h.styleId || '',
       title: h.title || '',
@@ -3195,7 +3828,7 @@
       : `<span class="studio-work-emoji">${h.emoji || '🖼'}</span>`;
     return `
       <article class="studio-work-card image-work-card${demoClass}" data-index="${index}" data-prompt="${encodeURIComponent(h.prompt || h.preview || '')}" data-item="${itemPayload}">
-        <div class="studio-work-thumb studio-work-thumb--image"${resultImage ? ` data-action="img2img-thumb" title="点击图生图"` : ''}>
+        <div class="studio-work-thumb studio-work-thumb--image" data-ratio="${normalizeAspectRatio(h.ratio)}"${resultImage ? ` data-action="img2img-thumb" title="点击图生图"` : ''}>
           ${thumbInner}
           <div class="studio-work-cover-shine" aria-hidden="true"></div>
         </div>
@@ -3386,7 +4019,7 @@
     const itemPayload = encodeURIComponent(JSON.stringify({
       prompt: h.prompt || h.preview || '',
       platform: h.platform || '',
-      ratio: h.ratio || '',
+      ratio: normalizeAspectRatio(h.ratio),
       cost: h.cost || 5,
     }));
     const thumbHtml = h.resultImage
@@ -3394,7 +4027,7 @@
       : `<span class="studio-work-emoji">${h.emoji || '📝'}</span>`;
     return `
       <article class="studio-work-card content-work-card${demoClass}" data-index="${index}" data-prompt="${encodeURIComponent(h.prompt || h.preview || '')}" data-item="${itemPayload}">
-        <div class="studio-work-thumb studio-work-thumb--content${h.resultImage ? ' studio-work-thumb--cover' : ''}">
+        <div class="studio-work-thumb studio-work-thumb--content${h.resultImage ? ' studio-work-thumb--cover' : ''}" data-ratio="${normalizeAspectRatio(h.ratio)}">
           ${thumbHtml}
           <div class="studio-work-cover-shine" aria-hidden="true"></div>
         </div>
@@ -3715,11 +4348,6 @@
 
   function openInspire(type) {
     inspireContext = type || inspireContext;
-    if (type === 'content' && STATE.currentPage === 'content') {
-      switchContentSubTab('inspire');
-      renderContentInspireLibrary();
-      return;
-    }
     if (['image', 'video', 'content', 'avatar', 'avatar-speech'].includes(type)) inspireFilter = type;
     document.querySelectorAll('[data-inspire-filter]').forEach(t => {
       t.classList.toggle('active', t.dataset.inspireFilter === inspireFilter);
@@ -3904,13 +4532,7 @@
       applyVideoScenePrompt(e.target.value);
     });
 
-    const ASSET_LABELS = { video: '视频', image: '图片', audio: '音频' };
-    document.querySelectorAll('.video-asset-btn[data-asset]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const label = ASSET_LABELS[btn.dataset.asset] || '文件';
-        toast('请选择' + label + '上传', 'info');
-      });
-    });
+    bindVideoStudio();
 
     /* Style tags (image page) */
     document.querySelectorAll('.image-style-tags .tag').forEach(tag => {
@@ -4066,15 +4688,25 @@
     /* Receive from content */
     document.getElementById('btn-receive-content')?.addEventListener('click', () => {
       const content = getDraft('content-editor');
+      loadAvatarContentImagesFromDraft();
+      renderAvatarContentImages();
+      const imgCount = STATE.avatarContentImages.length;
       if (content) {
         const editor = document.getElementById('avatar-script');
         if (editor) {
           editor.value = content;
           setDraft('avatar-script', content);
-          toast('已接收爆款图文文案', 'success');
+          toast(
+            imgCount
+              ? `已接收爆款图文文案与 ${imgCount} 张素材图`
+              : '已接收爆款图文文案',
+            'success',
+          );
         }
+      } else if (imgCount) {
+        toast(`已接收 ${imgCount} 张爆款图文素材`, 'success');
       } else {
-        toast('暂无待接收的图文文案', 'info');
+        toast('暂无待接收的图文文案或素材', 'info');
       }
     });
 
